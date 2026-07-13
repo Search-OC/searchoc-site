@@ -1,46 +1,60 @@
-# Astro Starter Kit: Basics
+# Search OC Website
+
+Public website for Search OC at searchoc.org.
+
+- Home: `/`
+- Formation primer: `/formation`
+
+## Update Path (Notion → Build → Deploy)
+
+1. Update or create content in the corresponding Reference Pack in Notion.
+2. Run the Reference Pack (Hermes or other agent) to generate or update site content.
+3. Commit changes and open PR to `jhar921/searchoc-site`.
+4. Vercel auto-deploys preview from PR.
+5. Merge to main for production.
+
+**Working directory for builds:** `~/jake-command/search-oc/searchoc-site`
+
+**Contact for this site:** jhartson@searchnational.org
+
+## Tech
+
+- Astro (static site)
+- Tailwind CSS
+- Simple, fast, accessible
+
+## Local Development
 
 ```sh
-npm create astro@latest -- --template basics
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Build
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+Output goes to `dist/`.
 
-## 🧞 Commands
+## Vercel
 
-All commands are run from the root of the project, from a terminal:
+Framework preset: Astro
+Build command: `npm run build`
+Output directory: `dist`
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## Namecheap DNS (once ready)
 
-## 👀 Want to learn more?
+Typical Vercel records (verify in Vercel dashboard first):
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- A record: `@` → `76.76.21.21`
+- CNAME: `www` → `cname.vercel-dns.com`
+
+Do not change DNS until a Vercel preview is confirmed working and content is approved.
+
+## Notes
+
+- Keep the site Search-branded (see Search OC design system in Notion).
+- No em dashes in copy.
+- No stock church imagery.
+- Future pathways will be added as they are ready.

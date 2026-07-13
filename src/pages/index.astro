@@ -1,11 +1,71 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Welcome />
+	<!-- Hero -->
+	<section class="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
+		<div class="inline-block px-3 py-1 rounded-full bg-[#3C8ECC]/10 text-[#3C8ECC] text-xs tracking-[2px] font-sans font-semibold mb-6">SEARCH OC</div>
+		<h1 class="text-5xl md:text-6xl font-bold tracking-tighter text-[#1A1A1A] leading-none">
+			Inviting adults to take a next step toward God.
+		</h1>
+		<p class="mt-6 max-w-xl mx-auto text-xl text-[#2F5567]">
+			We create safe spaces for honest conversations about faith, doubt, and life. No pressure. No scripts. Just real questions and real people.
+		</p>
+		<div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+			<a href="/formation" class="btn-primary inline-flex items-center justify-center">Explore Formation</a>
+			<a href="mailto:jhartson@searchnational.org" class="btn-secondary inline-flex items-center justify-center">Start the conversation</a>
+		</div>
+		<p class="mt-4 text-sm text-[#797A78]">Orange County, California</p>
+	</section>
+
+	<!-- Mission & Intro -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+		<div class="grid md:grid-cols-2 gap-10 items-center">
+			<div>
+				<h2 class="text-3xl font-semibold tracking-tight">A local expression of Search Ministries.</h2>
+				<p class="mt-4 text-lg text-[#2F5567]">
+					For nearly 50 years Search Ministries has helped adults explore questions about God in safe, relational settings. Search OC has served Orange County for over 40 years.
+				</p>
+				<p class="mt-4">
+					Our mission is simple: create spaces where people can be curious about God without feeling judged or pressured.
+				</p>
+			</div>
+			<div class="card">
+				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#3C8ECC] mb-2">Our Approach</div>
+				<ul class="space-y-3 text-[#1A1A1A]">
+					<li class="flex gap-3"><span class="text-[#ADCC37] font-bold">1</span> Value the one in front of you.</li>
+					<li class="flex gap-3"><span class="text-[#ADCC37] font-bold">2</span> Trust God with the results. Spiritual growth is a process.</li>
+					<li class="flex gap-3"><span class="text-[#ADCC37] font-bold">3</span> Address real barriers with gentleness and honesty.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Pathways -->
+	<section class="max-w-5xl mx-auto px-6 section bg-white border-t border-[#E5E7EB]">
+		<h2 class="text-3xl font-semibold tracking-tight mb-8">Pathways to explore</h2>
+		<div class="grid md:grid-cols-2 gap-6">
+			<a href="/formation" class="card block group">
+				<div class="text-[#3C8ECC] font-sans text-sm tracking-widest mb-2">EQUIP YOUR CHURCH</div>
+				<h3 class="text-2xl font-semibold group-hover:text-[#3C8ECC]">Search Formation</h3>
+				<p class="mt-3 text-[#2F5567]">A 12-week cohort that trains everyday Christians in relational evangelism. Practical. Reproducible. Focused on honest conversations.</p>
+				<div class="mt-4 text-sm font-medium text-[#3C8ECC]">Learn more →</div>
+			</a>
+			<div class="card opacity-75">
+				<div class="text-[#797A78] font-sans text-sm tracking-widest mb-2">COMING SOON</div>
+				<h3 class="text-2xl font-semibold">Forums &amp; Conversations</h3>
+				<p class="mt-3 text-[#797A78]">One-hour discussions for guests curious about God and life. Safe setting. No debates. Real follow-up.</p>
+				<div class="mt-4 text-sm">Details will be added as pathways launch.</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Simple CTA -->
+	<section class="max-w-3xl mx-auto px-6 py-16 text-center">
+		<h2 class="text-2xl font-semibold">Ready to start a conversation?</h2>
+		<p class="mt-3 text-[#2F5567]">Whether you are a church leader, a curious friend, or someone who wants to learn how to talk about faith naturally, we are here.</p>
+		<a href="mailto:jhartson@searchnational.org" class="mt-6 inline-block btn-primary">Email jhartson@searchnational.org</a>
+		<p class="mt-3 text-xs text-[#797A78]">Jake Hartson, Area Director, Search OC</p>
+	</section>
 </Layout>

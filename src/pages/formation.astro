@@ -1,0 +1,131 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<!-- Hero -->
+	<section class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+		<div class="text-center">
+			<div class="uppercase tracking-[3px] text-xs font-sans text-[#3C8ECC] mb-3">SEARCH FORMATION</div>
+			<h1 class="text-4xl md:text-5xl font-bold tracking-tighter">Equip your church for relational evangelism.</h1>
+			<p class="mt-4 max-w-2xl mx-auto text-lg text-[#2F5567]">
+				Search Formation helps everyday Christians move beyond guilt, pressure, and uncertainty into a practical way of loving people, asking better questions, and inviting honest conversations about God and life.
+			</p>
+			<div class="mt-6 flex flex-wrap gap-3 justify-center">
+				<a href="#how-to-begin" class="btn-primary">Start the conversation</a>
+				<a href="#model" class="btn-secondary">See the 1-2-3 model</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Problem -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+		<div class="max-w-3xl">
+			<div class="uppercase text-xs tracking-widest text-[#ADCC37] font-sans mb-2">THE REALITY</div>
+			<h2 class="text-3xl font-semibold tracking-tight">The Great Commission guilt cycle</h2>
+			<div class="mt-4 space-y-4 text-[#2F5567]">
+				<p>Many Christians feel pressure to share their faith but lack a clear, sustainable way to do it. The result is often guilt, awkwardness, or avoidance.</p>
+				<p>Search Formation exists to equip Christians to share their faith by:</p>
+				<ul class="list-disc pl-5 space-y-1">
+					<li>Deepening their appreciation of God’s love for the lost</li>
+					<li>Developing a vision for personal ministry</li>
+					<li>Practicing relational evangelism</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- What is Formation -->
+	<section class="max-w-5xl mx-auto px-6 section">
+		<div class="max-w-3xl">
+			<div class="uppercase text-xs tracking-widest text-[#ADCC37] font-sans mb-2">WHAT IT IS</div>
+			<h2 class="text-3xl font-semibold tracking-tight">What Formation is</h2>
+			<p class="mt-4 text-lg">A 12-week cohort pathway that trains believers to have natural, meaningful conversations about God. It is not a program to run once. It is a repeatable model for personal ministry and church equipping.</p>
+		</div>
+	</section>
+
+	<!-- 1-2-3 Model -->
+	<section id="model" class="max-w-5xl mx-auto px-6 section bg-white border-y border-[#E5E7EB]">
+		<h2 class="text-3xl font-semibold tracking-tight mb-8">The Search 1-2-3 model</h2>
+		<div class="grid md:grid-cols-3 gap-6">
+			<div class="card">
+				<div class="text-4xl font-bold text-[#3C8ECC] mb-2">1</div>
+				<h3 class="font-semibold text-xl">Value the one</h3>
+				<p class="mt-2 text-[#2F5567]">Focus on the person in front of you. One conversation at a time. Presence over programs.</p>
+			</div>
+			<div class="card">
+				<div class="text-4xl font-bold text-[#3C8ECC] mb-2">2</div>
+				<h3 class="font-semibold text-xl">Two principles</h3>
+				<ul class="mt-2 text-[#2F5567] space-y-1 text-sm">
+					<li>God is responsible for the results.</li>
+					<li>A person’s spiritual journey is a process.</li>
+				</ul>
+			</div>
+			<div class="card">
+				<div class="text-4xl font-bold text-[#3C8ECC] mb-2">3</div>
+				<h3 class="font-semibold text-xl">Three barriers</h3>
+				<p class="mt-2 text-[#2F5567]">Intellectual. Emotional. Spiritual. Formation addresses each with gentleness and clarity.</p>
+			</div>
+		</div>
+	</section>
+
+	<!-- 12-week path -->
+	<section class="max-w-5xl mx-auto px-6 section">
+		<h2 class="text-3xl font-semibold tracking-tight mb-2">The 12-week cohort path</h2>
+		<p class="text-[#2F5567] mb-6">A structured but relational journey through core questions of faith.</p>
+		<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm">
+			{[
+				"1. The Person of Christ",
+				"2. The Problem of Sin",
+				"3. The Provision of Jesus",
+				"4. The Resurrection of Jesus",
+				"5. Our Response to Jesus",
+				"6. Truth",
+				"7. The Reliability of the Bible",
+				"8. Is Jesus the Only Way?",
+				"9. The Problem of Evil and Suffering",
+				"10. Will God Judge Those Who Haven’t Heard About Jesus?",
+				"11. Preparing for a Forum",
+				"12. Commissioning"
+			].map((item, i) => (
+				<div key={i} class="card py-3 px-4 text-sm flex items-start gap-3">
+					<span class="font-mono text-[#ADCC37] w-6">{item.split('.')[0]}.</span>
+					<span>{item.split('. ').slice(1).join('. ')}</span>
+				</div>
+			))}
+		</div>
+	</section>
+
+	<!-- What is a Forum -->
+	<section class="max-w-5xl mx-auto px-6 section bg-white border-t border-[#E5E7EB]">
+		<div class="max-w-3xl">
+			<h2 class="text-3xl font-semibold tracking-tight">What is a Forum?</h2>
+			<p class="mt-4 text-lg">A Forum is a one-hour discussion where guests explore core questions about God and life in a comfortable setting.</p>
+			<p class="mt-3 text-[#2F5567]">The goal is not to win a debate, but to deepen trust, invite honest reflection, and create space for meaningful follow-up.</p>
+			<p class="mt-3">"More Jesus. Less awkward."</p>
+		</div>
+	</section>
+
+	<!-- Credibility -->
+	<section class="max-w-5xl mx-auto px-6 section">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-widest text-xs text-[#ADCC37] font-sans mb-2">WHY SEARCH</div>
+			<h2 class="text-3xl font-semibold tracking-tight">Trusted local ministry</h2>
+			<p class="mt-4 text-[#2F5567]">
+				Search Ministries has served adults for nearly 50 years. Search Orange County has served locally for just over 40 years. We are not a new fad. We are a steady, relational presence focused on honest conversations.
+			</p>
+		</div>
+	</section>
+
+	<!-- How to begin + CTA -->
+	<section id="how-to-begin" class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+		<div class="max-w-2xl">
+			<h2 class="text-3xl font-semibold tracking-tight">How to begin</h2>
+			<p class="mt-4">Whether you lead a church, a small group, or simply want to grow in having better conversations about faith, Formation can help.</p>
+			<div class="mt-6">
+				<a href="mailto:jhartson@searchnational.org" class="btn-primary inline-block">Start the conversation</a>
+			</div>
+			<p class="mt-4 text-sm text-[#797A78]">Contact: Jake Hartson, Area Director<br />jhartson@searchnational.org</p>
+		</div>
+	</section>
+</Layout>
