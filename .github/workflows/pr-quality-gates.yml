@@ -77,7 +77,8 @@ jobs:
             const summary = fs.existsSync(summaryPath)
               ? fs.readFileSync(summaryPath, 'utf8')
               : 'lighthouse-summary.md not found.';
-            const body = `${marker}\n## Lighthouse CI Summary (PR Quality Gates)\n\n${summary}`;
+
+            const body = `${marker}\n## [Lighthouse] CI Summary (PR Quality Gates)\n\n${summary}`;
 
             const { owner, repo } = context.repo;
             const issue_number = context.payload.pull_request.number;
