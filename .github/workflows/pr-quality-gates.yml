@@ -29,13 +29,20 @@ jobs:
       - name: Verify required routes in build output
         run: node scripts/verify-routes.mjs
 
-      - name: Lighthouse CI (collect + assert)
+      - name: Lighthouse CI (collect)
         shell: bash
         run: |
           set -euo pipefail
-          mkdir -p lighthouse-reports
-          # Capture full LHCI console output while preserving the failing exit code.
-          npx -y @lhci/cli@0.14.0 autorun --config=./lighthouserc.cjs 2>&1 | tee lighthouse-output.txt
+          # Collect reports into .lighthouseci (default).
+          # Capture output while preserving exit code.
+          npx -y @lhci/cli@0.14.0 collect --config=./lighthouserc.cjs 2>&1 | tee lighthouse-output.txt
+
+      - name: Lighthouse CI (assert thresholds from collected reports)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Append assert output to the same log; fail this step if thresholds are not met.
+          node scripts/assert-lighthouse.mjs 2>&1 | tee -a lighthouse-output.txt
 
       - name: Upload Lighthouse artifacts (reports + console log)
         if: always()
@@ -43,6 +50,6 @@ jobs:
         with:
           name: lighthouseci-report
           path: |
-            lighthouse-reports
+            .lighthouseci
             lighthouse-output.txt
           if-no-files-found: warn

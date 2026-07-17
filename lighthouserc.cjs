@@ -5,17 +5,10 @@ module.exports = {
       staticDistDir: './dist',
       url: ['/', '/formation/']
     },
-    assert: {
-      assertions: {
-        'categories:performance': ['error', { minScore: 0.9 }],
-        'categories:accessibility': ['error', { minScore: 0.95 }],
-        'categories:best-practices': ['error', { minScore: 0.95 }],
-        'categories:seo': ['error', { minScore: 0.95 }]
-      }
-    },
+    // Do not rely on LHCI's assert/upload phases in CI; we run a deterministic
+    // assert step (scripts/assert-lighthouse.mjs) and upload artifacts ourselves.
     upload: {
-      target: 'filesystem',
-      outputDir: './lighthouse-reports'
+      target: 'temporary-public-storage'
     }
   }
 };
