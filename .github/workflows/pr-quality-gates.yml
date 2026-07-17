@@ -29,18 +29,20 @@ jobs:
       - name: Verify required routes in build output
         run: node scripts/verify-routes.mjs
 
-      # We run LHCI collection without built-in assertions so we can always
-      # print exact per-route scores before failing the job.
-      - name: Lighthouse CI (collect)
-        run: npx -y @lhci/cli@0.14.0 collect --config=./lighthouserc.cjs
+      - name: Lighthouse CI (collect + assert)
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p lighthouse-reports
+          # Capture full LHCI console output while preserving the failing exit code.
+          npx -y @lhci/cli@0.14.0 autorun --config=./lighthouserc.cjs 2>&1 | tee lighthouse-output.txt
 
-      - name: Lighthouse CI (assert from collected reports)
-        run: node scripts/assert-lighthouse.mjs
-
-      - name: Upload Lighthouse report artifact
+      - name: Upload Lighthouse artifacts (reports + console log)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: lighthouseci-report
-          path: .lighthouseci
+          path: |
+            lighthouse-reports
+            lighthouse-output.txt
           if-no-files-found: warn
