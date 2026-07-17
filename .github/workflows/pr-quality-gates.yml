@@ -1,0 +1,41 @@
+name: PR Quality Gates
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies (lockfile)
+        run: npm ci
+
+      - name: Build (production)
+        run: npm run build
+
+      - name: Verify required routes in build output
+        run: node scripts/verify-routes.mjs
+
+      - name: Run Lighthouse CI (against built site)
+        run: npx -y @lhci/cli@0.14.0 autorun --config=./lighthouserc.cjs
+
+      - name: Upload Lighthouse report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouseci-report
+          path: .lighthouseci
+          if-no-files-found: warn
