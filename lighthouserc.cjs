@@ -1,15 +1,11 @@
 module.exports = {
   ci: {
     collect: {
-      // Run LHCI against the built Astro site
-      staticDistDir: './dist',
-      // With staticDistDir, LHCI expects explicit localhost URLs so it can
-      // substitute the temporary port it starts the static server on.
-      url: ['http://localhost/', 'http://localhost/formation/']
+      // We serve dist/ ourselves in CI. Collect against explicit localhost URLs.
+      url: ['http://localhost:8080/', 'http://localhost:8080/formation/']
     },
-    // Do not rely on LHCI's assert/upload phases in CI; we run a deterministic
-    // assert step (scripts/assert-lighthouse.mjs) and upload artifacts ourselves.
     upload: {
+      // Avoid LHCI upload; we upload artifacts ourselves.
       target: 'temporary-public-storage'
     }
   }
