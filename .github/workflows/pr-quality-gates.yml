@@ -37,13 +37,25 @@ jobs:
           python3 -m http.server 8080 --directory dist > server.log 2>&1 &
           echo $! > server.pid
 
-      - name: Wait for server
+      - name: Wait for server + smoke HTML
         shell: bash
         run: |
           set -euo pipefail
           for i in {1..30}; do
-            if curl -fsS --max-time 2 http://localhost:8080/ > /dev/null; then
+            if curl -fsS --max-time 2 http://localhost:8080/ > /tmp/home.html; then
               echo "Server is up"
+              # Fail early if homepage is an empty JS shell (Lighthouse NO_FCP)
+              if ! grep -qi '<h1' /tmp/home.html; then
+                echo "Homepage has no static <h1>. Body preview:"
+                head -c 800 /tmp/home.html || true
+                exit 1
+              fi
+              curl -fsS --max-time 2 http://localhost:8080/formation/ > /tmp/formation.html
+              if ! grep -qi '<h1' /tmp/formation.html; then
+                echo "Formation page has no static <h1>"
+                exit 1
+              fi
+              echo "Static HTML smoke OK"
               exit 0
             fi
             sleep 1
