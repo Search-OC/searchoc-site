@@ -1,6 +1,16 @@
 ---
 import '../styles/global.css';
 import SpeedInsights from '@vercel/speed-insights/astro';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const {
+	title = 'Search OC | Inviting adults to take a next step toward God',
+	description = 'Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.'
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -10,31 +20,32 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Search OC invites adults to take a next step toward God through honest conversations and relational evangelism." />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-		<title>Search OC | Inviting adults to take a next step toward God</title>
+		<meta name="description" content={description} />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+		<title>{title}</title>
 	</head>
 	<body class="bg-[#FAF8F5] text-[#1A1A1A] font-serif">
+		<a href="#main-content" class="sr-only">Skip to content</a>
 		<SpeedInsights />
 		<header class="border-b border-[#E5E7EB] bg-white">
-			<nav class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-				<a href="/" class="text-xl font-semibold tracking-tight text-[#3C8ECC] font-sans">Search OC</a>
-				<div class="flex items-center gap-6 text-sm font-medium font-sans">
-					<a href="/" class="hover:text-[#3C8ECC]">Home</a>
-					<a href="/formation" class="hover:text-[#3C8ECC]">Formation</a>
+			<nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4" aria-label="Primary">
+				<a href="/" class="text-xl font-semibold tracking-tight text-[#2A6AA3] font-sans min-h-11 inline-flex items-center">Search OC</a>
+				<div class="flex items-center gap-2 text-sm font-medium font-sans">
+					<a href="/" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Home</a>
+					<a href="/formation" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Formation</a>
 				</div>
-				<a href="mailto:jhartson@searchnational.org" class="px-4 py-2 rounded-lg bg-[#3C8ECC] text-white text-sm font-medium hover:bg-[#2a6aa3] transition">Start the conversation</a>
+				<a href="mailto:jhartson@searchnational.org" class="min-h-11 px-4 py-2 rounded-lg bg-[#2A6AA3] text-white text-sm font-medium hover:bg-[#1f527d] transition inline-flex items-center justify-center">Start the conversation</a>
 			</nav>
 		</header>
 
-		<main>
+		<main id="main-content">
 			<slot />
 		</main>
 
 		<footer class="border-t border-[#E5E7EB] bg-white mt-16">
-			<div class="max-w-5xl mx-auto px-6 py-10 text-sm text-[#797A78] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+			<div class="max-w-5xl mx-auto px-6 py-10 text-sm text-[#3F3F46] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 				<div>
 					Search OC is a local expression of Search Ministries.
 					<br />
@@ -43,8 +54,8 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 					<span class="sr-only">Site builder smoke 2026-07-20</span>
 				</div>
 				<div class="font-sans">
-					<a href="mailto:jhartson@searchnational.org" class="hover:text-[#3C8ECC]">jhartson@searchnational.org</a>
-					<span class="mx-2">·</span>
+					<a href="mailto:jhartson@searchnational.org" class="underline underline-offset-2 hover:text-[#2A6AA3] min-h-11 inline-flex items-center">jhartson@searchnational.org</a>
+					<span class="mx-2" aria-hidden="true">·</span>
 					<span>Orange County, CA</span>
 				</div>
 			</div>

@@ -131,3 +131,9 @@ jobs:
             lighthouse-summary.md
             server.log
           if-no-files-found: warn
+
+      - name: Stop static server
+        if: always()
+        shell: bash
+        run: |
+          if [ -f server.pid ]; then kill "$(cat server.pid)" 2>/dev/null || true; fi
