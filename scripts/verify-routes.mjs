@@ -8,16 +8,54 @@ function assertExists(relativePath) {
   if (!fs.existsSync(fullPath)) {
     throw new Error(`Missing required build output: dist/${relativePath}`);
   }
+  return fullPath;
+}
+
+function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [] } = {}) {
+  const fullPath = assertExists(relativePath);
+  const html = fs.readFileSync(fullPath, 'utf8');
+  if (html.length < minBytes) {
+    throw new Error(
+      `dist/${relativePath} is too small (${html.length} bytes). Expected a real static page, not a JS shell.`
+    );
+  }
+  // Fail client-only shells that Lighthouse cannot paint (NO_FCP).
+  if (/document\.write\s*\(/.test(html) && !/<h1[\s>]/i.test(html)) {
+    throw new Error(
+      `dist/${relativePath} looks client-rendered only (document.write without <h1>). Use static HTML in the initial response.`
+    );
+  }
+  if (!/<body[\s>]/i.test(html)) {
+    throw new Error(`dist/${relativePath} is missing a <body>.`);
+  }
+  for (const needle of mustInclude) {
+    if (!html.includes(needle)) {
+      throw new Error(`dist/${relativePath} missing expected content: ${JSON.stringify(needle)}`);
+    }
+  }
+  // noscript-only body is not acceptable for public SEO pages
+  const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+  const body = bodyMatch ? bodyMatch[1] : '';
+  const bodyWithoutNoscript = body.replace(/<noscript[\s\S]*?<\/noscript>/gi, '').trim();
+  if (bodyWithoutNoscript.length < 200) {
+    throw new Error(
+      `dist/${relativePath} body has almost no static content after removing noscript. Lighthouse will fail with NO_FCP.`
+    );
+  }
 }
 
 if (!fs.existsSync(distDir)) {
   throw new Error('dist/ directory does not exist. Did the build step run?');
 }
 
-// Home route: dist/index.html
-assertExists('index.html');
+assertStaticHtml('index.html', {
+  minBytes: 2000,
+  mustInclude: ['Search OC', 'Formation']
+});
 
-// /formation route: dist/formation/index.html
-assertExists(path.join('formation', 'index.html'));
+assertStaticHtml(path.join('formation', 'index.html'), {
+  minBytes: 2000,
+  mustInclude: ['Formation', '1-2-3']
+});
 
-console.log('✅ Required routes exist in dist/: / and /formation');
+console.log('✅ Required routes exist in dist/ with static content: / and /formation');

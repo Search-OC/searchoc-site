@@ -23,3 +23,12 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# Local CI / RP artifacts
+lighthouse-output.txt
+lighthouse-summary.md
+server.log
+server.pid
+rp-final-update.json
+rp-post-build-log.md
+.lighthouseci/

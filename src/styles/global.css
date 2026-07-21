@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --search-blue: #3C8ECC;
-  --lime: #ADCC37;
-  --dark-teal: #2F5567;
-  --muted-teal: #638C96;
-  --orange: #EA7824;
-  --cool-gray: #797A78;
+  --search-blue: #2A6AA3;
+  --search-blue-bright: #3C8ECC;
+  --lime: #6B8E23;
+  --dark-teal: #243B48;
+  --muted-teal: #3F5A68;
+  --orange: #C45F14;
+  --cool-gray: #3F3F46;
   --bg: #FAF8F5;
   --ink: #1A1A1A;
   --border: #E5E7EB;
@@ -39,18 +40,25 @@ a {
 }
 
 .btn-primary:hover {
-  background-color: #2a6aa3;
+  background-color: #1f527d;
   transform: translateY(-1px);
 }
 
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--search-blue);
+  outline-offset: 2px;
+}
+
 .btn-secondary {
-  border: 1px solid var(--search-blue);
+  border: 2px solid var(--search-blue);
   color: var(--search-blue);
   padding: 0.75rem 1.25rem;
   border-radius: 12px;
   font-weight: 600;
   font-size: 0.95rem;
   transition: all 0.2s ease;
+  background: transparent;
 }
 
 .btn-secondary:hover {
@@ -74,6 +82,37 @@ a {
 .section {
   padding-top: 3rem;
   padding-bottom: 3rem;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only:focus,
+.sr-only:focus-visible {
+  position: fixed;
+  left: 1rem;
+  top: 1rem;
+  z-index: 50;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+  background: white;
+  color: #1a1a1a;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
 }
 
 @media (min-width: 768px) {
