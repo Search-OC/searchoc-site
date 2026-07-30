@@ -4,6 +4,7 @@ Public website for Search OC at searchoc.org.
 
 - Home: `/`
 - Formation primer: `/formation`
+- Open Forums: `/open-forums`
 
 ## Update Path (Notion → Build → Deploy)
 
@@ -51,6 +52,14 @@ Typical Vercel records (verify in Vercel dashboard first):
 - CNAME: `www` → `cname.vercel-dns.com`
 
 Do not change DNS until a Vercel preview is confirmed working and content is approved.
+
+## Interest Form (Open Forums)
+
+The `/open-forums` interest form uses [FormSubmit.co](https://formsubmit.co) to deliver submissions to `jhartson@searchnational.org`.
+
+**Activation step:** The first form submission will trigger a confirmation email to Jake. He must click the confirmation link in that email to activate the form. Until then, submissions will not be delivered.
+
+No API key or signup is required. FormSubmit handles spam filtering and email delivery automatically.
 
 ## Notes
 
