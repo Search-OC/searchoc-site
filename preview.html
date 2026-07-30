@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search OC - Preview</title>
+    <style>
+        body {
+            font-family: 'Source Serif 4', serif;
+            background-color: #FAF8F5;
+            color: #1A1A1A;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: white;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 1rem;
+        }
+        .nav {
+            max-width: 5xl;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo {
+            color: #2A6AA3;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+        .nav-link {
+            padding: 0.75rem;
+            text-decoration: none;
+            color: #1A1A1A;
+        }
+        .nav-link:hover {
+            color: #2A6AA3;
+        }
+        .contact-button {
+            background-color: #2A6AA3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .hero {
+            max-width: 5xl;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+        .badge {
+            background-color: #2A6AA3/15;
+            color: #2A6AA3;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+        .hero p {
+            font-size: 1.25rem;
+            color: #243B48;
+            max-width: 640px;
+            margin: 0 auto 2rem;
+        }
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background-color: #2A6AA3;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid #2A6AA3;
+            color: #2A6AA3;
+        }
+        .section {
+            max-width: 5xl;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+        .mission {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: center;
+        }
+        .mission h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .mission p {
+            font-size: 1.125rem;
+            color: #243B48;
+            margin-bottom: 1rem;
+        }
+        .approach {
+            background-color: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .approach h3 {
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-size: 0.75rem;
+            color: #2A6AA3;
+            margin-bottom: 0.5rem;
+        }
+        .approach ul {
+            list-style: none;
+            padding: 0;
+        }
+        .approach li {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .approach li span {
+            font-weight: 700;
+            color: #2A6AA3;
+        }
+        .pathways {
+            background-color: white;
+        }
+        .pathways h2 {
+            font-size: 1.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .pathways-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        .card {
+            background-color: #F9FAFB;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+        }
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .card p {
+            color: #243B48;
+            margin-bottom: 1rem;
+        }
+        .card a {
+            color: #2A6AA3;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .coming-soon {
+            border: 2px dashed #3F3F46;
+        }
+        .cta {
+            text-align: center;
+            padding: 4rem 1.5rem;
+        }
+        .cta h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .cta p {
+            color: #243B48;
+            max-width: 640px;
+            margin: 0 auto 1.5rem;
+        }
+        .footer {
+            background-color: white;
+            border-top: 1px solid #E5E7EB;
+            padding: 2.5rem 1.5rem;
+            margin-top: 4rem;
+        }
+        .footer-content {
+            max-width: 5xl;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .footer-links a {
+            text-decoration: none;
+            color: #2A6AA3;
+            text-underline-offset: 2px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .footer-text {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #3F3F46;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="/" class="logo">Search OC</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/formation" class="nav-link">Formation</a>
+            </div>
+            <a href="mailto:jhartson@searchnational.org" class="contact-button">Start the conversation</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="badge">SEARCH OC</div>
+        <h1>Inviting adults to take a next step toward God.</h1>
+        <p>We create safe spaces for honest conversations about faith, doubt, and life. No pressure. No scripts. Just real questions and real people.</p>
+        <div class="buttons">
+            <a href="/formation" class="btn btn-primary">Explore Formation</a>
+            <a href="mailto:jhartson@searchnational.org" class="btn btn-secondary">Start the conversation</a>
+        </div>
+        <p class="location">Orange County, California</p>
+    </section>
+
+    <section class="section">
+        <div class="mission">
+            <div>
+                <h2>A local expression of Search Ministries.</h2>
+                <p>For nearly 50 years Search Ministries has helped adults explore questions about God in safe, relational settings. Search OC has served Orange County for over 40 years.</p>
+                <p>Our mission is simple: create spaces where people can be curious about God without feeling judged or pressured.</p>
+            </div>
+            <div class="approach">
+                <div class="approach-title">Our Approach</div>
+                <ul>
+                    <li><span>1</span> Value the one in front of you.</li>
+                    <li><span>2</span> Trust God with the results. Spiritual growth is a process.</li>
+                    <li><span>3</span> Address real barriers with gentleness and honesty.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section pathways">
+        <h2>Pathways to explore</h2>
+        <div class="pathways-grid">
+            <div class="card">
+                <div class="card-title" style="color: #2A6AA3; text-transform: uppercase; letter-spacing: 0.125rem; font-size: 0.875rem; margin-bottom: 0.5rem;">EQUIP YOUR CHURCH</div>
+                <h3>Search Formation</h3>
+                <p>A 12-week cohort that trains everyday Christians in relational evangelism. Practical. Reproducible. Focused on honest conversations.</p>
+                <a href="/formation">Learn more about Formation</a>
+            </div>
+            <div class="card coming-soon">
+                <div class="card-title" style="color: #3F3F46; text-transform: uppercase; letter-spacing: 0.125rem; font-size: 0.875rem; margin-bottom: 0.5rem;">COMING SOON</div>
+                <h3>Forums and Conversations</h3>
+                <p>One-hour discussions for guests curious about God and life. Safe setting. No debates. Real follow-up.</p>
+                <p style="color: #3F3F46;">Details will be added as pathways launch.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Ready to start a conversation?</h2>
+        <p>Whether you are a church leader, a curious friend, or someone who wants to learn how to talk about faith naturally, we are here.</p>
+        <a href="mailto:jhartson@searchnational.org" class="btn btn-primary">Email jhartson@searchnational.org</a>
+        <p class="footer-text">Jake Hartson, Area Director, Search OC</p>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-text">Search OC is a local expression of Search Ministries.<br>Inviting adults to take a next step toward God.</div>
+            <div class="footer-links">
+                <a href="mailto:jhartson@searchnational.org">jhartson@searchnational.org</a>
+                <span>·</span>
+                <span>Orange County, CA</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

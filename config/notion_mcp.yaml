@@ -1,0 +1,32 @@
+# Notion MCP Configuration
+# This file was updated to fix the Notion MCP integration
+
+# We're using the streamable HTTP transport for better compatibility
+# and make sure the environment variables are correctly configured
+mcp_servers:
+  notion:
+    command: npx
+    args:
+      - -y
+      - '@notionhq/notion-mcp-server'
+      - --transport
+      - http
+      - --port
+      - "3001"
+    env:
+      OPENAPI_MCP_HEADERS: '{"Authorization":"Bearer «redacted:ntn_…»","Notion-Version":"2025-09-03"}'
+    # Added the following to ensure proper environment variable handling:
+    # 1. Explicit port usage to prevent conflicts
+    # 2. Use of HTTP transport instead of stdio for better debugging
+    # 3. Better environment variable definition
+
+# For development purposes:
+# You might also want to add debug to better see what's going on:
+#    args:
+#      - -y
+#      - '@notionhq/notion-mcp-server'
+#      - --transport
+#      - http
+#      - --port
+#      - "3001"
+#      - --debug

@@ -1,18 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
+export function GET({ url }) {
+  return Astro.redirect('/open-forums', 301);
+}
 ---
 
-<Layout title="Open Forums | Search OC" description="Redirecting to Open Forums...">
-	<div class="max-w-3xl mx-auto px-6 py-16 text-center">
-		<p class="text-[#243B48]">Redirecting to Open Forums...</p>
-		<meta http-equiv="refresh" content="0;url=/open-forums" />
-		<p class="mt-4"><a href="/open-forums" class="text-[#2A6AA3] underline">Click here if you are not redirected</a></p>
-	</div>
-</Layout>
-
-<script>
-	// Client-side redirect as fallback
-	if (typeof window !== 'undefined') {
-		window.location.replace('/open-forums');
-	}
-</script>
+<div class="max-w-3xl mx-auto px-6 py-16 text-center">
+	<p class="text-[#243B48]">Redirecting to Open Forums...</p>
+	<meta http-equiv="refresh" content="0;url=/open-forums" />
+	<p class="mt-4"><a href="/open-forums" class="text-[#2A6AA3] underline">Click here if you are not redirected</a></p>
+</div>

@@ -5,11 +5,13 @@ import SpeedInsights from '@vercel/speed-insights/astro';
 interface Props {
 	title?: string;
 	description?: string;
+	canonical?: string;
 }
 
 const {
 	title = 'Search OC | Inviting adults to take a next step toward God',
-	description = 'Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.'
+	description = 'Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.',
+	canonical = '/'
 } = Astro.props;
 ---
 
@@ -21,6 +23,39 @@ const {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonical} />
+		<!-- Open Graph -->
+		<meta property="og:image" content="https://searchoc.org/og/card.svg" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:url" content={'https://searchoc.org' + canonical} />
+		<meta property="og:type" content="website" />
+		<!-- Twitter -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content="https://searchoc.org/og/card.svg" />
+		<!-- Plausible cookieless analytics -->
+		<script defer data-domain="searchoc.org" src="https://plausible.io/js/plausible.js"></script>
+		<!-- Organization JSON-LD -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Search OC",
+			"description": "Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.",
+			"url": "https://searchoc.org",
+			"email": "jake@searchoc.org",
+			"areaServed": {
+				"@type": "Place",
+				"name": "Orange County, California"
+			},
+			"parentOrganization": {
+				"@type": "Organization",
+				"name": "Search Ministries"
+			}
+		}
+		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
@@ -37,7 +72,7 @@ const {
 					<a href="/formation" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Formation</a>
 					<a href="/open-forums" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Open Forums</a>
 				</div>
-				<a href="mailto:jhartson@searchnational.org" class="min-h-11 px-4 py-2 rounded-lg bg-[#2A6AA3] text-white text-sm font-medium hover:bg-[#1f527d] transition inline-flex items-center justify-center">Start the conversation</a>
+				<a href="mailto:jake@searchoc.org" class="min-h-11 px-4 py-2 rounded-lg bg-[#2A6AA3] text-white text-sm font-medium hover:bg-[#1f527d] transition inline-flex items-center justify-center">Start the conversation</a>
 			</nav>
 		</header>
 
@@ -54,7 +89,7 @@ const {
 					<br class="hidden sm:block" />
 				</div>
 				<div class="font-sans">
-					<a href="mailto:jhartson@searchnational.org" class="underline underline-offset-2 hover:text-[#2A6AA3] min-h-11 inline-flex items-center">jhartson@searchnational.org</a>
+					<a href="mailto:jake@searchoc.org" class="underline underline-offset-2 hover:text-[#2A6AA3] min-h-11 inline-flex items-center">jake@searchoc.org</a>
 					<span class="mx-2" aria-hidden="true">·</span>
 					<span>Orange County, CA</span>
 				</div>
