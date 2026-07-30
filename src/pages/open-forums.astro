@@ -1,0 +1,272 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+	title="Open Forums | Search OC"
+	description="A casual OC conversation about God, faith, doubt, and life. No pressure. Come once."
+>
+	<!-- Hero -->
+	<section class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-[3px] text-xs font-sans text-[#2A6AA3] mb-3">OPEN FORUMS</div>
+			<h1 class="text-4xl md:text-5xl font-bold tracking-tighter">A casual conversation about God, faith, and life's big questions.</h1>
+			<p class="mt-4 text-xl text-[#243B48]">
+				An Open Forum is a hosted conversation over food and drinks. No sermon. No pressure. Real talk.
+			</p>
+			<p class="mt-4 text-[#243B48]">
+				Spiritually curious adults in Orange County are welcome. Come once. No commitment required.
+			</p>
+			<div class="mt-6">
+				<a href="#interest" class="btn-primary min-h-11 inline-flex items-center">Keep me posted</a>
+			</div>
+			<p class="mt-3 text-sm text-[#3F3F46]">Search OC — a local expression of Search Ministries.</p>
+		</div>
+	</section>
+
+	<!-- What to Expect -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHAT TO EXPECT</div>
+			<h2 class="text-3xl font-semibold tracking-tight">Three promises</h2>
+			<ul class="mt-6 space-y-4 text-[#243B48]">
+				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">1</span> <span>Truly open. No question is off-limits.</span></li>
+				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">2</span> <span>About one hour of moderated discussion, with food and drinks around it.</span></li>
+				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">3</span> <span>The moderator shares a viewpoint later in the night, not first. Guests speak first.</span></li>
+			</ul>
+
+			<h3 class="mt-8 text-xl font-semibold tracking-tight">How a night typically flows</h3>
+			<ol class="mt-4 space-y-2 text-[#243B48] list-decimal pl-5">
+				<li>Arrive, food and drinks, settle in.</li>
+				<li>Moderated conversation, about an hour.</li>
+				<li>Optional dessert or continued conversation for those who want to stay.</li>
+			</ol>
+		</div>
+	</section>
+
+	<!-- Who It's For / Not For -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+		<div class="grid md:grid-cols-2 gap-8">
+			<div>
+				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHO IT'S FOR</div>
+				<ul class="space-y-3 text-[#1A1A1A]">
+					<li>People curious about God but unsure where to start.</li>
+					<li>People with doubts, questions, or past church baggage.</li>
+					<li>People who want an honest, low-pressure conversation.</li>
+					<li>People who may come once and decide that's enough for now.</li>
+				</ul>
+			</div>
+			<div>
+				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHAT IT IS NOT</div>
+				<ul class="space-y-3 text-[#1A1A1A]">
+					<li>A church service.</li>
+					<li>A debate club or apologetics night.</li>
+					<li>An altar call or pressure to decide anything.</li>
+					<li>Content for social media about who attended.</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<!-- Dates / Coming Soon -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">DATES AND LOCATION</div>
+			<h2 class="text-3xl font-semibold tracking-tight">Coming soon</h2>
+			<p class="mt-4 text-[#243B48]">
+				Next Open Forums will be announced to people who have signed up. We keep the group small and the setting comfortable.
+			</p>
+			<p class="mt-3 text-[#243B48]">
+				Stay tuned. Sign up below and we will let you know when the next one opens.
+			</p>
+		</div>
+	</section>
+
+	<!-- For Hosts -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">FOR HOSTS</div>
+			<h2 class="text-3xl font-semibold tracking-tight">Invite a friend</h2>
+			<p class="mt-4 text-[#243B48]">
+				Hosts are encouraged to bring one or two friends who might be curious. Guests are welcome even if they only know one person in the room.
+			</p>
+			<p class="mt-3 text-[#243B48]">
+				Privacy matters: no photos or video, and no social posting about who attends.
+			</p>
+		</div>
+	</section>
+
+	<!-- Interest Form -->
+	<section id="interest" class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+		<div class="max-w-xl">
+			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">NEXT STEP</div>
+			<h2 class="text-3xl font-semibold tracking-tight">Keep me posted</h2>
+			<p class="mt-3 text-[#243B48]">Tell us you're interested. We'll reach out with the next date and details. No spam.</p>
+
+			<form
+				id="interest-form"
+				class="mt-6 space-y-4"
+				method="POST"
+				action="https://formsubmit.co/jhartson@searchnational.org"
+			>
+				<!-- FormSubmit config -->
+				<input type="hidden" name="_subject" value="Open Forum Interest Signup" />
+				<input type="hidden" name="_captcha" value="false" />
+				<input type="hidden" name="_template" value="table" />
+				<input type="hidden" name="_next" value="/" />
+
+				<div>
+					<label for="name" class="block text-sm font-medium text-[#243B48] mb-1">Name <span class="text-[#3F3F46]">(optional)</span></label>
+					<input
+						type="text"
+						id="name"
+						name="name"
+						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
+						autocomplete="name"
+					/>
+				</div>
+				<div>
+					<label for="email" class="block text-sm font-medium text-[#243B48] mb-1">Email <span class="text-red-600">*</span></label>
+					<input
+						type="email"
+						id="email"
+						name="email"
+						required
+						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
+						autocomplete="email"
+					/>
+				</div>
+				<div>
+					<label for="phone" class="block text-sm font-medium text-[#243B48] mb-1">Phone <span class="text-red-600">*</span></label>
+					<input
+						type="tel"
+						id="phone"
+						name="phone"
+						required
+						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
+						autocomplete="tel"
+						placeholder="(555) 555-5555"
+					/>
+				</div>
+
+				<!-- Honeypot -->
+				<div class="hidden" aria-hidden="true">
+					<label for="website">Website</label>
+					<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
+				</div>
+
+				<button type="submit" class="btn-primary w-full min-h-11 inline-flex items-center justify-center">
+					Keep me posted
+				</button>
+
+				<p class="text-xs text-[#3F3F46]">We respect your inbox. Unsubscribe anytime.</p>
+			</form>
+
+			<div id="form-success" class="hidden mt-6 rounded-xl border border-[#E5E7EB] bg-white p-6 text-[#243B48]">
+				<p class="font-medium text-[#1A1A1A]">Thanks. We'll be in touch.</p>
+				<p class="mt-1 text-sm">No spam. You can expect a short personal note with the next date and location when it is set.</p>
+			</div>
+
+			<div id="form-error" class="hidden mt-4 text-sm text-red-600">
+				Something went wrong submitting the form. You can also email <a href="mailto:jhartson@searchnational.org?subject=Open%20Forum%20Interest" class="underline">jhartson@searchnational.org</a> directly.
+			</div>
+		</div>
+	</section>
+
+	<!-- FAQ -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+		<div class="max-w-3xl">
+			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">QUESTIONS</div>
+			<h2 class="text-3xl font-semibold tracking-tight mb-6">FAQ</h2>
+
+			<div class="space-y-6 text-[#243B48]">
+				<div>
+					<p class="font-medium text-[#1A1A1A]">Do I have to be a Christian or believe anything specific?</p>
+					<p class="mt-1">No. This is for people exploring, questioning, or simply curious. No belief required to attend.</p>
+				</div>
+				<div>
+					<p class="font-medium text-[#1A1A1A]">What if I disagree with something that is said?</p>
+					<p class="mt-1">Respectful disagreement is welcome. The goal is honest conversation, not agreement.</p>
+				</div>
+				<div>
+					<p class="font-medium text-[#1A1A1A]">Is this a church service?</p>
+					<p class="mt-1">No. It is a small group conversation in a casual setting. There is no worship, sermon, or altar call.</p>
+				</div>
+				<div>
+					<p class="font-medium text-[#1A1A1A]">Can I come alone?</p>
+					<p class="mt-1">Yes. Many people do. Hosts also invite friends. You are welcome either way.</p>
+				</div>
+				<div>
+					<p class="font-medium text-[#1A1A1A]">Will I be put on the spot or asked to speak?</p>
+					<p class="mt-1">You can listen the whole time if you prefer. Participation is always optional.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA -->
+	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+		<div class="max-w-2xl">
+			<h2 class="text-2xl font-semibold tracking-tight">Questions before you decide?</h2>
+			<p class="mt-3 text-[#243B48]">Reach out directly. No pressure.</p>
+			<a href="mailto:jhartson@searchnational.org" class="mt-5 inline-flex btn-primary min-h-11 items-center">Email jhartson@searchnational.org</a>
+			<p class="mt-4 text-sm text-[#3F3F46]">Jake Hartson, Area Director, Search OC<br />Orange County, California</p>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	// Form handling via FormSubmit.co
+	// FormSubmit forwards submissions to jhartson@searchnational.org
+	// First submission will trigger a confirmation email — Jake must confirm to activate.
+	const form = document.getElementById('interest-form') as HTMLFormElement | null;
+	const success = document.getElementById('form-success') as HTMLDivElement | null;
+	const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
+
+	if (form) {
+		form.addEventListener('submit', async (e) => {
+			e.preventDefault();
+
+			if (success) success.classList.add('hidden');
+			if (errorBox) errorBox.classList.add('hidden');
+
+			const formData = new FormData(form);
+
+			// Honeypot check (basic bot trap)
+			if (formData.get('website')) {
+				form.reset();
+				if (success) success.classList.remove('hidden');
+				return;
+			}
+
+			// Validate required fields client-side for better UX
+			const email = (formData.get('email') || '').toString().trim();
+			const phone = (formData.get('phone') || '').toString().trim();
+			if (!email || !phone) {
+				if (errorBox) {
+					errorBox.textContent = 'Email and phone are required.';
+					errorBox.classList.remove('hidden');
+				}
+				return;
+			}
+
+			try {
+				const res = await fetch(form.action, {
+					method: 'POST',
+					headers: { 'Accept': 'application/json' },
+					body: formData
+				});
+
+				if (res.ok) {
+					form.reset();
+					if (success) success.classList.remove('hidden');
+					form.classList.add('hidden');
+				} else {
+					throw new Error('Form submission failed');
+				}
+			} catch (err) {
+				if (errorBox) errorBox.classList.remove('hidden');
+			}
+		});
+	}
+</script>
