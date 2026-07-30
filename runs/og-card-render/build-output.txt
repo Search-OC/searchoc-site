@@ -1,0 +1,28 @@
+
+> searchoc-site@0.0.1 build
+> astro build
+
+16:58:04 [types] Generated 85ms
+16:58:04 [build] output: "static"
+16:58:04 [build] mode: "static"
+16:58:04 [build] directory: /Users/bya/jake-command/work/owned/search-oc/searchoc-site/dist/
+16:58:04 [build] adapter: @astrojs/vercel
+16:58:04 [build] Collecting build info...
+16:58:04 [build] ✓ Completed in 206ms.
+16:58:04 [build] Building static entrypoints...
+16:58:05 [vite] ✓ built in 417ms
+16:58:05 [vite] ✓ built in 46ms
+16:58:05 [build] Rearranging server assets...
+
+ generating static routes 
+16:58:05   ├─ /formation/index.html (+26ms) 
+16:58:05   ├─ /open-forum/index.html (+5ms) 
+16:58:05   ├─ /open-forums/index.html (+6ms) 
+16:58:05   ├─ /index.html (+6ms) 
+16:58:05 ✓ Completed in 70ms.
+
+16:58:05 [build] ✓ Completed in 611ms.
+16:58:05 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+16:58:05 [@astrojs/vercel] Copying static files to .vercel/output/static
+16:58:05 [build] 4 page(s) built in 1.19s
+16:58:05 [build] Complete!

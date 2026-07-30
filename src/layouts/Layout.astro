@@ -6,12 +6,16 @@ interface Props {
 	title?: string;
 	description?: string;
 	canonical?: string;
+	ogImage?: string;
+	ogDescription?: string;
 }
 
 const {
 	title = 'Search OC | Inviting adults to take a next step toward God',
 	description = 'Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.',
-	canonical = '/'
+	canonical = '/',
+	ogImage = '/og/card.svg',
+	ogDescription = description
 } = Astro.props;
 ---
 
@@ -25,16 +29,16 @@ const {
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
 		<!-- Open Graph -->
-		<meta property="og:image" content="https://searchoc.org/og/card.svg" />
+		<meta property="og:image" content={ogImage} />
 		<meta property="og:title" content={title} />
-		<meta property="og:description" content={description} />
+		<meta property="og:description" content={ogDescription} />
 		<meta property="og:url" content={'https://searchoc.org' + canonical} />
 		<meta property="og:type" content="website" />
 		<!-- Twitter -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
-		<meta name="twitter:description" content={description} />
-		<meta name="twitter:image" content="https://searchoc.org/og/card.svg" />
+		<meta name="twitter:description" content={ogDescription} />
+		<meta name="twitter:image" content={ogImage} />
 		<!-- Plausible cookieless analytics -->
 		<script defer data-domain="searchoc.org" src="https://plausible.io/js/plausible.js"></script>
 		<!-- Organization JSON-LD -->

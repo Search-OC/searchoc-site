@@ -1,0 +1,16 @@
+=== public/og/home.png ===
+  pixelWidth: 1200
+  pixelHeight: 630
+Size: 50K
+=== public/og/forum.png ===
+  pixelWidth: 1200
+  pixelHeight: 630
+Size: 39K
+=== public/og/invite.png ===
+  pixelWidth: 1200
+  pixelHeight: 630
+Size: 42K
+=== public/og/formation.png ===
+  pixelWidth: 1200
+  pixelHeight: 630
+Size: 52K
