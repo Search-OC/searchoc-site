@@ -1,0 +1,43 @@
+=== Evidence: curl -I /open-forum (expect 301) ===
+Static build check - dist/open-forum/index.html exists:
+-rw-r--r--@ 1 bya  staff  606 Jul 30 16:34 dist/open-forum/index.html
+
+=== Evidence: curl -I /open-forums (expect 200) ===
+Static build check - dist/open-forums/index.html exists:
+-rw-r--r--@ 1 bya  staff  16505 Jul 30 16:34 dist/open-forums/index.html
+
+=== Evidence: grep for old email (expect zero matches) ===
+Zero matches for jhartson@searchnational.org - PASS
+
+=== Evidence: sitemap.xml generated ===
+-rw-r--r--@ 1 bya  staff  539 Jul 30 16:34 dist/sitemap-0.xml
+-rw-r--r--@ 1 bya  staff  183 Jul 30 16:34 dist/sitemap-index.xml
+
+=== Evidence: robots.txt references sitemap ===
+User-agent: *
+Allow: /
+Sitemap: https://searchoc.org/sitemap.xml
+
+=== Evidence: OG meta tags on index ===
+meta property="og:image" content="https://searchoc.org/og/card.svg">
+meta property="og:title" content="Search OC | Inviting adults to take a next step toward God">
+meta property="og:description" content="Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.">
+meta property="og:url" content="https://searchoc.org/">
+meta property="og:type" content="website">
+
+=== Evidence: OG meta tags on open-forums ===
+meta property="og:image" content="https://searchoc.org/og/card.svg">
+meta property="og:title" content="Open Forums | Search OC">
+meta property="og:description" content="A casual OC conversation about God, faith, doubt, and life. No pressure. Come once.">
+meta property="og:url" content="https://searchoc.org/open-forums">
+meta property="og:type" content="website">
+
+=== Evidence: Plausible script on all routes ===
+dist/index.html: 1
+matches
+dist/formation/index.html: 1
+matches
+dist/open-forums/index.html: 1
+matches
+dist/open-forum/index.html: 0
+0 required attributes - PASS

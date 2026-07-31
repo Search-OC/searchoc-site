@@ -1,0 +1,27 @@
+# Changed Files - Open Forums Site Build
+Run: 2026-07-27 21:36 PDT
+Directory: runs/open-forums-site-build-20260727-2136/
+
+## New Files
+src/pages/open-forums.astro
+src/pages/open-forum.astro
+runs/open-forums-site-build-20260727-2136/startup.md
+runs/open-forums-site-build-20260727-2136/changed-files.txt
+runs/open-forums-site-build-20260727-2136/validation.md
+runs/open-forums-site-build-20260727-2136/summary.md
+
+## Modified Files
+src/pages/index.astro          # Replaced dead "Forums and Conversations" card with linked "Open Forums" card
+src/layouts/Layout.astro       # Added "Open Forums" to primary nav
+
+## Files Not Changed (intentionally)
+- No changes to Formation page
+- No changes to global.css or design tokens
+- No new dependencies added
+- No backend or database created
+- No environment variables or credentials added
+
+## Notes
+- Form endpoint is a documented placeholder (Formspree pattern). Real endpoint wiring is a follow-up human step.
+- Redirect page (open-forum.astro) provides both meta refresh and JS fallback.
+- All copy follows locked brief: evergreen dates, jhartson@searchnational.org, email+phone form, no invented facts.
