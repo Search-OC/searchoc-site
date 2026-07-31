@@ -67,3 +67,4 @@ No API key or signup is required. FormSubmit handles spam filtering and email de
 - No em dashes in copy.
 - No stock church imagery.
 - Future pathways will be added as they are ready.
+- 
