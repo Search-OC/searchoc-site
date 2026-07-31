@@ -1,0 +1,4 @@
+wrote /Users/bya/jake-command/work/owned/search-oc/searchoc-site/public/og/home.png
+wrote /Users/bya/jake-command/work/owned/search-oc/searchoc-site/public/og/forum.png
+wrote /Users/bya/jake-command/work/owned/search-oc/searchoc-site/public/og/invite.png
+wrote /Users/bya/jake-command/work/owned/search-oc/searchoc-site/public/og/formation.png

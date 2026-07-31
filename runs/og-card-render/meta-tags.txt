@@ -1,0 +1,16 @@
+=== dist/index.html ===
+og:image: /og/home.png
+og:title: Search OC | Honest questions about God
+og:description: A safe place in Orange County to ask the questions you actually have. No pressure and no script.
+
+=== dist/open-forums/index.html ===
+og:image: /og/forum.png
+og:title: Open Forum | Search OC
+og:description: One night, real questions, no sermon. Bring the hardest thing you have got.
+
+=== dist/formation/index.html ===
+og:image: /og/formation.png
+og:title: Formation | Search OC
+og:description: Learn to talk about faith with people who disagree with you, without being weird about it.
+
+Note: /invite route does not exist yet (Wave 2). og/invite.png exists in public/og/ for when the route is created.
