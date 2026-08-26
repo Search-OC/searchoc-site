@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
-import CTABlock from '../components/CTABlock.astro';
+import StayInTouch from '../components/StayInTouch.astro';
 ---
 
 <Layout
@@ -135,62 +135,15 @@ import CTABlock from '../components/CTABlock.astro';
 	</div>
 </section>
 
-<!-- Interest Form -->
-<section id="interest" class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-xl">
-			<Eyebrow text="Next step" />
-			<h2 class="mt-3 text-3xl font-bold tracking-tight">Keep me posted</h2>
-			<p class="mt-3 text-[var(--muted)]">Tell us you are interested. We will reach out with the next date and details. No spam.</p>
-
-			<form
-				id="interest-form"
-				class="mt-6 space-y-4"
-				method="POST"
-				action="https://formsubmit.co/jake@searchoc.org"
-			>
-				<input type="hidden" name="_subject" value="Open Forum Interest Signup" />
-				<input type="hidden" name="_captcha" value="false" />
-				<input type="hidden" name="_template" value="table" />
-				<input type="hidden" name="_next" value="/" />
-
-				<div>
-					<label for="name" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Name <span class="text-[var(--cool-gray)]">(optional)</span></label>
-					<input type="text" id="name" name="name" class="input" autocomplete="name" />
-				</div>
-				<div>
-					<label for="email" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Email <span class="text-red-600">*</span></label>
-					<input type="email" id="email" name="email" required class="input" autocomplete="email" />
-				</div>
-				<div>
-					<label for="phone" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Phone <span class="text-[var(--cool-gray)]">(only if you'd rather I text you)</span></label>
-					<input type="tel" id="phone" name="phone" class="input" autocomplete="tel" placeholder="(555) 555-5555" />
-				</div>
-
-				<div class="hidden" aria-hidden="true">
-					<label for="website">Website</label>
-					<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
-				</div>
-
-				<button type="submit" class="btn-primary w-full min-h-11 inline-flex items-center justify-center">
-					Keep me posted
-				</button>
-
-				<p class="text-xs text-[var(--cool-gray)] font-sans">We respect your inbox. Unsubscribe anytime.</p>
-				<p class="text-sm text-[var(--cool-gray)]">Having trouble? Email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline text-[var(--search-blue)]">jake@searchoc.org</a> directly.</p>
-			</form>
-
-			<div id="form-success" class="hidden mt-6 card text-[var(--muted)]">
-				<p class="font-sans font-semibold text-[var(--ink)]">Thanks. We will be in touch.</p>
-				<p class="mt-1 text-sm">No spam. You can expect a short personal note with the next date and location when it is set.</p>
-			</div>
-
-			<div id="form-error" class="hidden mt-4 text-sm text-red-600 font-sans">
-				Something went wrong. You can also email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline">jake@searchoc.org</a> directly.
-			</div>
-		</div>
-	</div>
-</section>
+<StayInTouch
+	id="interest"
+	title="Keep me posted"
+	body="Tell us you are interested in upcoming Open Forums. We will reach out with the next date and details when it is set."
+	source="open-forums"
+	variant="warm"
+	submitLabel="Keep me posted"
+	defaultInterests={['open-forums']}
+/>
 
 <!-- FAQ -->
 <section class="section-warm section">
@@ -224,57 +177,12 @@ import CTABlock from '../components/CTABlock.astro';
 	</div>
 </section>
 
-<CTABlock
+<StayInTouch
+	id="forum-questions"
 	title="Questions before you decide?"
-	body="Reach out directly. No pressure."
-	primaryLabel="Email Jake"
-	primaryHref="mailto:jake@searchoc.org"
+	body="Sign up below and we will answer anything you need to know before the next Open Forum."
+	source="open-forums-faq"
 	variant="blue"
+	defaultInterests={['open-forums']}
+	submitLabel="Stay in touch"
 />
-
-<script>
-	const form = document.getElementById('interest-form') as HTMLFormElement | null;
-	const success = document.getElementById('form-success') as HTMLDivElement | null;
-	const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
-
-	if (form) {
-		form.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			if (success) success.classList.add('hidden');
-			if (errorBox) errorBox.classList.add('hidden');
-
-			const formData = new FormData(form);
-			if (formData.get('website')) {
-				form.reset();
-				if (success) success.classList.remove('hidden');
-				return;
-			}
-
-			const email = (formData.get('email') || '').toString().trim();
-			if (!email) {
-				if (errorBox) {
-					errorBox.textContent = 'Email is required.';
-					errorBox.classList.remove('hidden');
-				}
-				return;
-			}
-
-			try {
-				const res = await fetch(form.action, {
-					method: 'POST',
-					headers: { 'Accept': 'application/json' },
-					body: formData
-				});
-				if (res.ok) {
-					form.reset();
-					if (success) success.classList.remove('hidden');
-					form.classList.add('hidden');
-				} else {
-					throw new Error('Form submission failed');
-				}
-			} catch {
-				if (errorBox) errorBox.classList.remove('hidden');
-			}
-		});
-	}
-</script>

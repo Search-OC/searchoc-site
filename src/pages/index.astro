@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import GuiltCycle from '../components/GuiltCycle.astro';
-import CTABlock from '../components/CTABlock.astro';
+import StayInTouch from '../components/StayInTouch.astro';
 ---
 
 <Layout
@@ -139,13 +139,12 @@ import CTABlock from '../components/CTABlock.astro';
 	</div>
 </section>
 
-<!-- CTA -->
-<CTABlock
+<!-- Stay in touch -->
+<StayInTouch
+	id="stay-in-touch"
 	title="Ready to stop going in circles?"
-	body="Whether you are a professional wondering how to talk about faith at work, a church leader equipping your people, or someone who just wants to invite one friend to an honest conversation, we would love to hear from you."
-	primaryLabel="Email Jake"
-	primaryHref="mailto:jake@searchoc.org"
-	secondaryLabel="Explore Formation"
-	secondaryHref="/formation"
+	body="Tell us what you are looking for. Upcoming Open Forums, Formation details, or our newsletter — choose what fits. No pressure, no spam."
+	source="home"
 	variant="blue"
+	defaultNewsletter={false}
 />

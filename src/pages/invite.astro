@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
-import CTABlock from '../components/CTABlock.astro';
+import StayInTouch from '../components/StayInTouch.astro';
 ---
 
 <Layout
@@ -141,44 +141,18 @@ import CTABlock from '../components/CTABlock.astro';
 	</div>
 </section>
 
-<!-- CTA Form -->
-<section id="cta" class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-xl">
-			<Eyebrow text="Get the date" variant="amber" />
-			<h2 class="mt-3 text-3xl font-bold tracking-tight">You will want to know the date</h2>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				Hard to invite anyone to a night that doesn't have a date yet. Leave your email and you'll know the moment the next table is set, early enough to ask before it fills.
-			</p>
-			<p class="mt-3 text-[var(--muted)]">
-				If you already know who you're bringing, put their first name in. I'll watch for them and sit them somewhere good.
-			</p>
-
-			<form id="invite-form" class="mt-6 space-y-4" method="POST" action="/api/invite">
-				<div>
-					<label for="email" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Your email</label>
-					<input type="email" id="email" name="email" required class="input" autocomplete="email" />
-				</div>
-				<div>
-					<label for="guestName" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Who you're bringing (optional, first name is plenty)</label>
-					<input type="text" id="guestName" name="guestName" class="input" autocomplete="off" />
-				</div>
-				<button type="submit" id="submit-btn" class="btn-amber w-full min-h-11 inline-flex items-center justify-center">
-					Keep me in the loop
-				</button>
-				<p class="text-xs text-[var(--cool-gray)] font-sans">Two things show up in your inbox: the date of the next table, and Having Killer Conversations, a short note every other week for Christians who want to talk about their faith without being weird about it. Nothing else, and you can leave any time.</p>
-			</form>
-
-			<div id="form-success" class="hidden mt-6 card text-[var(--muted)]">
-				<p class="font-sans font-semibold text-[var(--ink)]">You are in. I will email you the second the next table has a date.</p>
-			</div>
-
-			<div id="form-error" class="hidden mt-4 text-sm text-red-600 font-sans">
-				That did not go through, which is on us, not you. Try again in a minute.
-			</div>
-		</div>
-	</div>
-</section>
+<StayInTouch
+	id="cta"
+	eyebrow="Get the date"
+	title="You will want to know the date"
+	body="Hard to invite anyone to a night that does not have a date yet. Sign up and you will know the moment the next table is set, early enough to ask before it fills. If you already know who you are bringing, add their first name below."
+	source="invite"
+	variant="warm"
+	submitLabel="Keep me in the loop"
+	showGuestName={true}
+	defaultInterests={['open-forums']}
+	defaultNewsletter={true}
+/>
 
 <script is:inline>
 	document.querySelectorAll('.copy-btn').forEach((btn) => {
@@ -199,52 +173,4 @@ import CTABlock from '../components/CTABlock.astro';
 			} catch {}
 		});
 	});
-
-	const form = document.getElementById('invite-form');
-	const success = document.getElementById('form-success');
-	const errorBox = document.getElementById('form-error');
-	const submitBtn = document.getElementById('submit-btn');
-
-	if (form && success && errorBox && submitBtn) {
-		form.addEventListener('submit', async (e) => {
-			e.preventDefault();
-			success.classList.add('hidden');
-			errorBox.classList.add('hidden');
-
-			const formData = new FormData(form);
-			const email = (formData.get('email') || '').toString().trim();
-
-			if (!email || !email.includes('@')) {
-				errorBox.textContent = 'Please enter a valid email.';
-				errorBox.classList.remove('hidden');
-				return;
-			}
-
-			submitBtn.disabled = true;
-			submitBtn.textContent = 'Sending...';
-
-			try {
-				const res = await fetch('/api/invite', {
-					method: 'POST',
-					headers: { 'Content-Type': 'application/json' },
-					body: JSON.stringify({
-						email: email,
-						guestName: (formData.get('guestName') || '').toString().trim()
-					})
-				});
-				if (res.ok) {
-					form.classList.add('hidden');
-					success.classList.remove('hidden');
-				} else {
-					throw new Error('Submission failed');
-				}
-			} catch {
-				errorBox.textContent = 'That did not go through, which is on us, not you. Try again in a minute.';
-				errorBox.classList.remove('hidden');
-			} finally {
-				submitBtn.disabled = false;
-				submitBtn.textContent = 'Keep me in the loop';
-			}
-		});
-	}
 </script>

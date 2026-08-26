@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import GuiltCycle from '../components/GuiltCycle.astro';
-import CTABlock from '../components/CTABlock.astro';
+import StayInTouch from '../components/StayInTouch.astro';
 
 const weeks = [
 	'The Person of Christ',
@@ -39,7 +39,7 @@ const weeks = [
 				Formation is a 12-week cohort for everyday Christians who want to move past the guilt cycle into a practical, sustainable way of loving people and talking about God in real life.
 			</p>
 			<div class="mt-7 flex flex-wrap gap-3">
-				<a href="#how-to-begin" class="btn-primary min-h-11 inline-flex items-center">Start the conversation</a>
+				<a href="#formation-interest" class="btn-primary min-h-11 inline-flex items-center">Learn more about Formation</a>
 				<a href="#model" class="btn-secondary min-h-11 inline-flex items-center">See the 1-2-3 model</a>
 			</div>
 		</div>
@@ -164,17 +164,19 @@ const weeks = [
 				Whether you lead a church, a small group, or simply want to grow in having better conversations about faith at work and in life, Formation can help.
 			</p>
 			<div class="mt-6">
-				<a href="mailto:jake@searchoc.org" class="btn-primary inline-flex min-h-11 items-center">Start the conversation</a>
+				<a href="#formation-interest" class="btn-primary inline-flex min-h-11 items-center">Learn more about Formation</a>
 			</div>
-			<p class="mt-4 text-sm text-[var(--cool-gray)] font-sans">Jake Hartson, Area Director &middot; jake@searchoc.org</p>
 		</div>
 	</div>
 </section>
 
-<CTABlock
+<StayInTouch
+	id="formation-interest"
+	eyebrow="Next step"
 	title="Your next conversation starts here"
-	body="No pressure, no commitment required to reach out. Just tell Jake where you are and what you are hoping for."
-	primaryLabel="Email Jake"
-	primaryHref="mailto:jake@searchoc.org"
+	body="Tell us you are interested in Formation. We will send details on upcoming cohorts and how to get started. No pressure."
+	source="formation"
 	variant="blue"
+	defaultInterests={['formation']}
+	showMessage={true}
 />
