@@ -44,7 +44,7 @@ const sectionClass = isBlue
 		? 'section-warm'
 		: '';
 const textClass = isBlue ? 'text-white' : '';
-const bodyClass = isBlue ? 'text-white/85' : 'text-[var(--muted)]';
+const bodyClass = isBlue ? 'text-white' : 'text-[var(--muted)]';
 ---
 
 <section id={id} class={`section ${sectionClass}`}>
@@ -57,7 +57,7 @@ const bodyClass = isBlue ? 'text-white/85' : 'text-[var(--muted)]';
 			{body && (
 				<p class={`mt-3 lead ${bodyClass} ${isBlue ? '!text-lg' : ''}`}>{body}</p>
 			)}
-			<div class={`mt-6 ${isBlue ? 'text-left' : ''}`}>
+			<div class={`mt-6 ${isBlue ? 'text-left stay-in-touch-on-dark' : ''}`}>
 				<InterestForm
 					formId={`${id}-form`}
 					source={source}
