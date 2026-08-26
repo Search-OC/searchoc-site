@@ -1,109 +1,147 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import CTABlock from '../components/CTABlock.astro';
 ---
 
 <Layout
-	title="Open Forum | Search OC"
-	description="One night, real questions, no sermon. Bring the hardest thing you have got."
+	title="Open Forums | Search OC"
+	description="A casual, hosted conversation about God, faith, and life's big questions. One hour, no sermon, no pressure."
 	canonical="/open-forums"
 	ogImage="/og/forum.png"
 />
-	<!-- Hero -->
-	<section class="max-w-5xl mx-auto px-6 pt-12 pb-10">
+
+<!-- Hero -->
+<section class="hero-gradient">
+	<div class="max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-20">
 		<div class="max-w-3xl">
-			<div class="uppercase tracking-[3px] text-xs font-sans text-[#2A6AA3] mb-3">OPEN FORUMS</div>
-			<h1 class="text-4xl md:text-5xl font-bold tracking-tighter">A casual conversation about God, faith, and life's big questions.</h1>
-			<p class="mt-4 text-xl text-[#243B48]">
-				An Open Forum is a hosted conversation over food and drinks. No sermon. No pressure. Real talk.
+			<Eyebrow text="Open Forums" variant="amber" />
+			<h1 class="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
+				The table your curious friend might actually say yes to.
+			</h1>
+			<p class="mt-5 lead">
+				An Open Forum is a hosted conversation over food and drinks. No sermon. No pressure. Real talk about God, faith, doubt, and life's big questions.
 			</p>
-			<p class="mt-4 text-[#243B48]">
+			<p class="mt-4 text-[var(--muted)]">
 				Spiritually curious adults in Orange County are welcome. Come once. No commitment required.
 			</p>
-			<div class="mt-6">
-				<a href="#interest" class="btn-primary min-h-11 inline-flex items-center">Keep me posted</a>
+			<div class="mt-7">
+				<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Keep me posted</a>
 			</div>
-			<p class="mt-3 text-sm text-[#3F3F46]">Search OC — a local expression of Search Ministries.</p>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- What to Expect -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+<!-- What to Expect -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHAT TO EXPECT</div>
-			<h2 class="text-3xl font-semibold tracking-tight">Three promises</h2>
-			<ul class="mt-6 space-y-4 text-[#243B48]">
-				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">1</span> <span>Truly open. No question is off-limits.</span></li>
-				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">2</span> <span>About one hour of moderated discussion, with food and drinks around it.</span></li>
-				<li class="flex gap-3"><span class="font-bold text-[#2A6AA3] mt-1" aria-hidden="true">3</span> <span>The moderator shares a viewpoint later in the night, not first. Guests speak first.</span></li>
-			</ul>
+			<Eyebrow text="What to expect" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Three promises</h2>
+			<div class="mt-8 space-y-4">
+				<div class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">1</span>
+					<div>
+						<p class="font-sans font-semibold">Truly open</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">No question is off-limits. Doubt, anger, and skepticism are welcome.</p>
+					</div>
+				</div>
+				<div class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">2</span>
+					<div>
+						<p class="font-sans font-semibold">About one hour</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">Moderated discussion with food and drinks around it. Not a marathon.</p>
+					</div>
+				</div>
+				<div class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">3</span>
+					<div>
+						<p class="font-sans font-semibold">Guests speak first</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">The moderator shares a viewpoint later in the night, not first. Your questions lead.</p>
+					</div>
+				</div>
+			</div>
 
-			<h3 class="mt-8 text-xl font-semibold tracking-tight">How a night typically flows</h3>
-			<ol class="mt-4 space-y-2 text-[#243B48] list-decimal pl-5">
+			<h3 class="mt-10 font-sans text-xl font-bold tracking-tight">How a night typically flows</h3>
+			<ol class="mt-4 space-y-2 text-[var(--muted)] list-decimal pl-5">
 				<li>Arrive, food and drinks, settle in.</li>
 				<li>Moderated conversation, about an hour.</li>
 				<li>Optional dessert or continued conversation for those who want to stay.</li>
 			</ol>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Who It's For / Not For -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+<!-- Who It's For -->
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="grid md:grid-cols-2 gap-8">
 			<div>
-				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHO IT'S FOR</div>
-				<ul class="space-y-3 text-[#1A1A1A]">
-					<li>People curious about God but unsure where to start.</li>
-					<li>People with doubts, questions, or past church baggage.</li>
-					<li>People who want an honest, low-pressure conversation.</li>
-					<li>People who may come once and decide that's enough for now.</li>
+				<Eyebrow text="Who it's for" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					<li class="flex gap-2"><span class="text-[var(--search-blue)] font-bold" aria-hidden="true">&bull;</span> People curious about God but unsure where to start.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue)] font-bold" aria-hidden="true">&bull;</span> People with doubts, questions, or past church baggage.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
 				</ul>
 			</div>
 			<div>
-				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">WHAT IT IS NOT</div>
-				<ul class="space-y-3 text-[#1A1A1A]">
-					<li>A church service.</li>
-					<li>A debate club or apologetics night.</li>
-					<li>An altar call or pressure to decide anything.</li>
-					<li>Content for social media about who attended.</li>
+				<Eyebrow text="What it is not" variant="amber" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					<li class="flex gap-2"><span class="text-[var(--warm-amber)] font-bold" aria-hidden="true">&times;</span> A church service.</li>
+					<li class="flex gap-2"><span class="text-[var(--warm-amber)] font-bold" aria-hidden="true">&times;</span> A debate club or apologetics night.</li>
+					<li class="flex gap-2"><span class="text-[var(--warm-amber)] font-bold" aria-hidden="true">&times;</span> An altar call or pressure to decide anything.</li>
+					<li class="flex gap-2"><span class="text-[var(--warm-amber)] font-bold" aria-hidden="true">&times;</span> Content for social media about who attended.</li>
 				</ul>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Dates / Coming Soon -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+<!-- Dates -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">DATES AND LOCATION</div>
-			<h2 class="text-3xl font-semibold tracking-tight">Coming soon</h2>
-			<p class="mt-4 text-[#243B48]">
+			<Eyebrow text="Dates and location" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Coming soon</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
 				Next Open Forums will be announced to people who have signed up. We keep the group small and the setting comfortable.
 			</p>
-			<p class="mt-3 text-[#243B48]">
-				Stay tuned. Sign up below and we will let you know when the next one opens.
+			<p class="mt-3 text-[var(--muted)]">
+				Sign up below and we will let you know when the next one opens.
 			</p>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- For Hosts -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+<!-- For Hosts -->
+<section class="section-sage section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">FOR HOSTS</div>
-			<h2 class="text-3xl font-semibold tracking-tight">Invite a friend</h2>
-			<p class="mt-4 text-[#243B48]">
-				Hosts are encouraged to bring one or two friends who might be curious. Guests are welcome even if they only know one person in the room.
+			<Eyebrow text="For hosts" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Invite a friend</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				Already been through Formation or just ready to ask? Hosts are encouraged to bring one or two friends who might be curious. Guests are welcome even if they only know one person in the room.
 			</p>
-			<p class="mt-3 text-[#243B48]">
+			<p class="mt-4">
+				<a href="/invite" class="font-sans font-semibold text-[var(--search-blue)] hover:underline">
+					Get copy-paste texts you can actually send &rarr;
+				</a>
+			</p>
+			<p class="mt-3 text-sm text-[var(--muted)]">
 				Privacy matters: no photos or video, and no social posting about who attends.
 			</p>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Interest Form -->
-	<section id="interest" class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
+<!-- Interest Form -->
+<section id="interest" class="section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-xl">
-			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">NEXT STEP</div>
-			<h2 class="text-3xl font-semibold tracking-tight">Keep me posted</h2>
-			<p class="mt-3 text-[#243B48]">Tell us you're interested. We'll reach out with the next date and details. No spam.</p>
+			<Eyebrow text="Next step" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Keep me posted</h2>
+			<p class="mt-3 text-[var(--muted)]">Tell us you are interested. We will reach out with the next date and details. No spam.</p>
 
 			<form
 				id="interest-form"
@@ -111,46 +149,24 @@ import Layout from '../layouts/Layout.astro';
 				method="POST"
 				action="https://formsubmit.co/jake@searchoc.org"
 			>
-				<!-- FormSubmit config -->
 				<input type="hidden" name="_subject" value="Open Forum Interest Signup" />
 				<input type="hidden" name="_captcha" value="false" />
 				<input type="hidden" name="_template" value="table" />
 				<input type="hidden" name="_next" value="/" />
 
 				<div>
-					<label for="name" class="block text-sm font-medium text-[#243B48] mb-1">Name <span class="text-[#3F3F46]">(optional)</span></label>
-					<input
-						type="text"
-						id="name"
-						name="name"
-						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
-						autocomplete="name"
-					/>
+					<label for="name" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Name <span class="text-[var(--cool-gray)]">(optional)</span></label>
+					<input type="text" id="name" name="name" class="input" autocomplete="name" />
 				</div>
 				<div>
-					<label for="email" class="block text-sm font-medium text-[#243B48] mb-1">Email <span class="text-red-600">*</span></label>
-					<input
-						type="email"
-						id="email"
-						name="email"
-						required
-						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
-						autocomplete="email"
-					/>
+					<label for="email" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Email <span class="text-red-600">*</span></label>
+					<input type="email" id="email" name="email" required class="input" autocomplete="email" />
 				</div>
 				<div>
-					<label for="phone" class="block text-sm font-medium text-[#243B48] mb-1">Phone <span class="text-[#3F3F46]">(only if you'd rather I text you)</span></label>
-					<input
-						type="tel"
-						id="phone"
-						name="phone"
-						class="w-full rounded-lg border border-[#E5E7EB] bg-white px-4 py-3 text-[#1A1A1A] focus:border-[#2A6AA3] focus:outline-none"
-						autocomplete="tel"
-						placeholder="(555) 555-5555"
-					/>
+					<label for="phone" class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">Phone <span class="text-[var(--cool-gray)]">(only if you'd rather I text you)</span></label>
+					<input type="tel" id="phone" name="phone" class="input" autocomplete="tel" placeholder="(555) 555-5555" />
 				</div>
 
-				<!-- Honeypot -->
 				<div class="hidden" aria-hidden="true">
 					<label for="website">Website</label>
 					<input type="text" id="website" name="website" tabindex="-1" autocomplete="off" />
@@ -160,69 +176,63 @@ import Layout from '../layouts/Layout.astro';
 					Keep me posted
 				</button>
 
-				<p class="text-xs text-[#3F3F46]">We respect your inbox. Unsubscribe anytime.</p>
-
-				<!-- Mailto fallback -->
-				<p class="mt-4 text-sm text-[#3F3F46]">Having trouble with the form? Email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline text-[#2A6AA3]">jake@searchoc.org</a> directly.</p>
+				<p class="text-xs text-[var(--cool-gray)] font-sans">We respect your inbox. Unsubscribe anytime.</p>
+				<p class="text-sm text-[var(--cool-gray)]">Having trouble? Email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline text-[var(--search-blue)]">jake@searchoc.org</a> directly.</p>
 			</form>
 
-			<div id="form-success" class="hidden mt-6 rounded-xl border border-[#E5E7EB] bg-white p-6 text-[#243B48]">
-				<p class="font-medium text-[#1A1A1A]">Thanks. We'll be in touch.</p>
+			<div id="form-success" class="hidden mt-6 card text-[var(--muted)]">
+				<p class="font-sans font-semibold text-[var(--ink)]">Thanks. We will be in touch.</p>
 				<p class="mt-1 text-sm">No spam. You can expect a short personal note with the next date and location when it is set.</p>
 			</div>
 
-			<div id="form-error" class="hidden mt-4 text-sm text-red-600">
-				Something went wrong submitting the form. You can also email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline">jake@searchoc.org</a> directly.
+			<div id="form-error" class="hidden mt-4 text-sm text-red-600 font-sans">
+				Something went wrong. You can also email <a href="mailto:jake@searchoc.org?subject=Open%20Forum%20Interest" class="underline">jake@searchoc.org</a> directly.
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- FAQ -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
+<!-- FAQ -->
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">QUESTIONS</div>
-			<h2 class="text-3xl font-semibold tracking-tight mb-6">FAQ</h2>
-
-			<div class="space-y-6 text-[#243B48]">
+			<Eyebrow text="Questions" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight mb-8">FAQ</h2>
+			<div class="space-y-6">
 				<div>
-					<p class="font-medium text-[#1A1A1A]">Do I have to be a Christian or believe anything specific?</p>
-					<p class="mt-1">No. This is for people exploring, questioning, or simply curious. No belief required to attend.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Do I have to be a Christian or believe anything specific?</p>
+					<p class="mt-1 text-[var(--muted)]">No. This is for people exploring, questioning, or simply curious. No belief required to attend.</p>
 				</div>
 				<div>
-					<p class="font-medium text-[#1A1A1A]">What if I disagree with something that is said?</p>
-					<p class="mt-1">Respectful disagreement is welcome. The goal is honest conversation, not agreement.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">What if I disagree with something that is said?</p>
+					<p class="mt-1 text-[var(--muted)]">Respectful disagreement is welcome. The goal is honest conversation, not agreement.</p>
 				</div>
 				<div>
-					<p class="font-medium text-[#1A1A1A]">Is this a church service?</p>
-					<p class="mt-1">No. It is a small group conversation in a casual setting. There is no worship, sermon, or altar call.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Is this a church service?</p>
+					<p class="mt-1 text-[var(--muted)]">No. It is a small group conversation in a casual setting. There is no worship, sermon, or altar call.</p>
 				</div>
 				<div>
-					<p class="font-medium text-[#1A1A1A]">Can I come alone?</p>
-					<p class="mt-1">Yes. Many people do. Hosts also invite friends. You are welcome either way.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Can I come alone?</p>
+					<p class="mt-1 text-[var(--muted)]">Yes. Many people do. Hosts also invite friends. You are welcome either way.</p>
 				</div>
 				<div>
-					<p class="font-medium text-[#1A1A1A]">Will I be put on the spot or asked to speak?</p>
-					<p class="mt-1">You can listen the whole time if you prefer. Participation is always optional.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Will I be put on the spot or asked to speak?</p>
+					<p class="mt-1 text-[var(--muted)]">You can listen the whole time if you prefer. Participation is always optional.</p>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Final CTA -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB] bg-white">
-		<div class="max-w-2xl">
-			<h2 class="text-2xl font-semibold tracking-tight">Questions before you decide?</h2>
-			<p class="mt-3 text-[#243B48]">Reach out directly. No pressure.</p>
-			<a href="mailto:jake@searchoc.org" class="mt-5 inline-flex btn-primary min-h-11 items-center">Email jake@searchoc.org</a>
-			<p class="mt-4 text-sm text-[#3F3F46]">Jake Hartson, Area Director, Search OC<br />Orange County, California</p>
-		</div>
-	</section>
-</Layout>
+<CTABlock
+	title="Questions before you decide?"
+	body="Reach out directly. No pressure."
+	primaryLabel="Email Jake"
+	primaryHref="mailto:jake@searchoc.org"
+	variant="blue"
+/>
 
 <script>
-	// Form handling via FormSubmit.co
-	// FormSubmit forwards submissions to jake@searchoc.org
-	// First submission will trigger a confirmation email — Jake must confirm to activate.
 	const form = document.getElementById('interest-form') as HTMLFormElement | null;
 	const success = document.getElementById('form-success') as HTMLDivElement | null;
 	const errorBox = document.getElementById('form-error') as HTMLDivElement | null;
@@ -230,20 +240,16 @@ import Layout from '../layouts/Layout.astro';
 	if (form) {
 		form.addEventListener('submit', async (e) => {
 			e.preventDefault();
-
 			if (success) success.classList.add('hidden');
 			if (errorBox) errorBox.classList.add('hidden');
 
 			const formData = new FormData(form);
-
-			// Honeypot check (basic bot trap)
 			if (formData.get('website')) {
 				form.reset();
 				if (success) success.classList.remove('hidden');
 				return;
 			}
 
-			// Validate required fields client-side for better UX
 			const email = (formData.get('email') || '').toString().trim();
 			if (!email) {
 				if (errorBox) {
@@ -259,7 +265,6 @@ import Layout from '../layouts/Layout.astro';
 					headers: { 'Accept': 'application/json' },
 					body: formData
 				});
-
 				if (res.ok) {
 					form.reset();
 					if (success) success.classList.remove('hidden');
@@ -267,7 +272,7 @@ import Layout from '../layouts/Layout.astro';
 				} else {
 					throw new Error('Form submission failed');
 				}
-			} catch (err) {
+			} catch {
 				if (errorBox) errorBox.classList.remove('hidden');
 			}
 		});

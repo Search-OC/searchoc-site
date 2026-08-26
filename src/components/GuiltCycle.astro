@@ -1,0 +1,39 @@
+---
+const steps = [
+  {
+    number: 1,
+    title: 'You know you should',
+    body: 'Sunday sermon, small group, your own conscience. The Great Commission is not abstract for you. You believe sharing your faith matters.',
+  },
+  {
+    number: 2,
+    title: 'You try, and it goes sideways',
+    body: 'The conversation gets awkward. You said the wrong thing, or said it at the wrong time. Maybe they pulled back. Maybe you did too.',
+  },
+  {
+    number: 3,
+    title: 'You go quiet',
+    body: 'So you stop bringing it up. Faith becomes something you keep at church and home. Work stays work. Your coworkers never hear about the thing that matters most.',
+  },
+  {
+    number: 4,
+    title: 'The guilt comes back',
+    body: 'Weeks or months later, the cycle starts over. You feel behind. You wonder if everyone else has figured this out except you.',
+  },
+];
+---
+
+<div class="grid sm:grid-cols-2 gap-4">
+  {steps.map((step) => (
+    <div class="cycle-step flex gap-4">
+      <span class="cycle-number" aria-hidden="true">{step.number}</span>
+      <div>
+        <h3 class="font-sans font-semibold text-[var(--ink)]">{step.title}</h3>
+        <p class="mt-1.5 text-sm text-[var(--muted)] leading-relaxed">{step.body}</p>
+      </div>
+    </div>
+  ))}
+</div>
+<p class="mt-6 text-center text-[var(--muted)] text-sm font-sans">
+  Sound familiar? You are not alone, and you are not failing. You just need a different approach.
+</p>

@@ -11,12 +11,19 @@ interface Props {
 }
 
 const {
-	title = 'Search OC | Inviting adults to take a next step toward God',
-	description = 'Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.',
+	title = 'Search OC | Talk about your faith without the guilt',
+	description = 'For Christians in the marketplace who want to share their faith but do not know how. Search OC trains you to have honest conversations that actually work.',
 	canonical = '/',
 	ogImage = '/og/card.svg',
 	ogDescription = description
 } = Astro.props;
+
+const navLinks = [
+	{ href: '/', label: 'Home' },
+	{ href: '/formation', label: 'Formation' },
+	{ href: '/open-forums', label: 'Open Forums' },
+	{ href: '/invite', label: 'Invite Someone' },
+];
 ---
 
 <!doctype html>
@@ -28,26 +35,22 @@ const {
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={canonical} />
-		<!-- Open Graph -->
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={ogDescription} />
 		<meta property="og:url" content={'https://searchoc.org' + canonical} />
 		<meta property="og:type" content="website" />
-		<!-- Twitter -->
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={ogDescription} />
 		<meta name="twitter:image" content={ogImage} />
-		<!-- Plausible cookieless analytics -->
 		<script defer data-domain="searchoc.org" src="https://plausible.io/js/plausible.js"></script>
-		<!-- Organization JSON-LD -->
 		<script type="application/ld+json">
 		{
 			"@context": "https://schema.org",
 			"@type": "Organization",
 			"name": "Search OC",
-			"description": "Search OC invites adults to take a next step toward God through honest conversations and relational evangelism.",
+			"description": "Search OC equips Christians in the marketplace to share their faith through honest, relational conversations.",
 			"url": "https://searchoc.org",
 			"email": "jake@searchoc.org",
 			"areaServed": {
@@ -62,21 +65,31 @@ const {
 		</script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
 		<title>{title}</title>
 	</head>
-	<body class="bg-[#FAF8F5] text-[#1A1A1A] font-serif">
+	<body>
 		<a href="#main-content" class="sr-only">Skip to content</a>
 		<SpeedInsights />
-		<header class="border-b border-[#E5E7EB] bg-white">
+		<header class="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md">
 			<nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4" aria-label="Primary">
-				<a href="/" class="text-xl font-semibold tracking-tight text-[#2A6AA3] font-sans min-h-11 inline-flex items-center">Search OC</a>
-				<div class="flex items-center gap-2 text-sm font-medium font-sans">
-					<a href="/" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Home</a>
-					<a href="/formation" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Formation</a>
-					<a href="/open-forums" class="min-h-11 px-3 inline-flex items-center hover:text-[#2A6AA3] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">Open Forums</a>
+				<a href="/" class="font-sans text-lg font-bold tracking-tight text-[var(--search-blue)] min-h-11 inline-flex items-center gap-2">
+					<span class="inline-block w-2 h-2 rounded-full bg-[var(--warm-amber)]" aria-hidden="true"></span>
+					Search OC
+				</a>
+				<div class="hidden md:flex items-center gap-1 text-sm font-medium font-sans">
+					{navLinks.map((link) => (
+						<a
+							href={link.href}
+							class="min-h-11 px-3 inline-flex items-center rounded-lg text-[var(--muted)] hover:text-[var(--search-blue)] hover:bg-[var(--search-blue-light)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]"
+						>
+							{link.label}
+						</a>
+					))}
 				</div>
-				<a href="mailto:jake@searchoc.org" class="min-h-11 px-4 py-2 rounded-lg bg-[#2A6AA3] text-white text-sm font-medium hover:bg-[#1f527d] transition inline-flex items-center justify-center">Start the conversation</a>
+				<a href="/formation" class="min-h-11 px-4 py-2 rounded-full bg-[var(--search-blue)] text-white text-sm font-semibold font-sans hover:bg-[var(--search-blue-deep)] transition inline-flex items-center justify-center shadow-sm">
+					Break the cycle
+				</a>
 			</nav>
 		</header>
 
@@ -84,18 +97,29 @@ const {
 			<slot />
 		</main>
 
-		<footer class="border-t border-[#E5E7EB] bg-white mt-16">
-			<div class="max-w-5xl mx-auto px-6 py-10 text-sm text-[#3F3F46] flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-				<div>
-					Search OC is a local expression of Search Ministries.
-					<br />
-					Inviting adults to take a next step toward God.
-					<br class="hidden sm:block" />
+		<footer class="border-t border-[var(--border)] bg-[var(--surface)] mt-8">
+			<div class="max-w-5xl mx-auto px-6 py-12">
+				<div class="grid md:grid-cols-3 gap-8">
+					<div class="md:col-span-2">
+						<p class="font-sans font-bold text-[var(--search-blue)] text-lg">Search OC</p>
+						<p class="mt-2 text-[var(--muted)] max-w-md leading-relaxed">
+							Equipping Christians in the marketplace to share their faith without guilt, pressure, or awkwardness. A local expression of Search Ministries, serving Orange County for over 40 years.
+						</p>
+					</div>
+					<div class="font-sans text-sm space-y-2">
+						<p class="font-semibold text-[var(--ink)]">Connect</p>
+						<a href="mailto:jake@searchoc.org" class="block text-[var(--search-blue)] hover:underline min-h-11 flex items-center">jake@searchoc.org</a>
+						<p class="text-[var(--muted)]">Orange County, California</p>
+						<p class="text-[var(--muted)] pt-2">Jake Hartson, Area Director</p>
+					</div>
 				</div>
-				<div class="font-sans">
-					<a href="mailto:jake@searchoc.org" class="underline underline-offset-2 hover:text-[#2A6AA3] min-h-11 inline-flex items-center">jake@searchoc.org</a>
-					<span class="mx-2" aria-hidden="true">·</span>
-					<span>Orange County, CA</span>
+				<div class="mt-10 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[var(--cool-gray)] font-sans">
+					<p>More Jesus. Less awkward.</p>
+					<div class="flex gap-4">
+						<a href="/formation" class="hover:text-[var(--search-blue)]">Formation</a>
+						<a href="/open-forums" class="hover:text-[var(--search-blue)]">Open Forums</a>
+						<a href="/invite" class="hover:text-[var(--search-blue)]">Invite Someone</a>
+					</div>
 				</div>
 			</div>
 		</footer>
