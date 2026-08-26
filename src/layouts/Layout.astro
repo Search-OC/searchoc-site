@@ -10,6 +10,8 @@ interface Props {
 	ogDescription?: string;
 }
 
+const SITE = 'https://searchoc.org';
+
 const {
 	title = 'Search OC | Talk about your faith without the guilt',
 	description = 'For Christians in the marketplace who want to share their faith but do not know how. Search OC trains you to have honest conversations that actually work.',
@@ -34,11 +36,11 @@ const navLinks = [
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<link rel="canonical" href={canonical} />
+		<link rel="canonical" href={SITE + canonical} />
 		<meta property="og:image" content={ogImage} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={ogDescription} />
-		<meta property="og:url" content={'https://searchoc.org' + canonical} />
+		<meta property="og:url" content={SITE + canonical} />
 		<meta property="og:type" content="website" />
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
