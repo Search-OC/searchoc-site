@@ -58,4 +58,14 @@ assertStaticHtml(path.join('formation', 'index.html'), {
   mustInclude: ['Formation', '1-2-3']
 });
 
-console.log('✅ Required routes exist in dist/ with static content: / and /formation');
+assertStaticHtml(path.join('open-forums', 'index.html'), {
+  minBytes: 2000,
+  mustInclude: ['Open Forum']
+});
+
+assertStaticHtml(path.join('invite', 'index.html'), {
+  minBytes: 2000,
+  mustInclude: ['Invite']
+});
+
+console.log('✅ Required routes exist in dist/ with static content: /, /formation, /open-forums, /invite');

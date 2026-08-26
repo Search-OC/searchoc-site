@@ -17,9 +17,12 @@ const {
 	title = 'Search OC | Talk about your faith without the guilt',
 	description = 'For Christians in the marketplace who want to share their faith but do not know how. Search OC trains you to have honest conversations that actually work.',
 	canonical = '/',
-	ogImage = '/og/card.svg',
+	ogImage = '/og/home.png',
 	ogDescription = description
 } = Astro.props;
+
+const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE}${ogImage}`;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const navLinks = [
 	{ href: '/', label: 'Home' },
@@ -38,15 +41,17 @@ const navLinks = [
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<link rel="canonical" href={SITE + canonical} />
-		<meta property="og:image" content={ogImage} />
+		<meta property="og:image" content={ogImageUrl} />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={ogDescription} />
 		<meta property="og:url" content={SITE + canonical} />
 		<meta property="og:type" content="website" />
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:title" content={title} />
 		<meta name="twitter:description" content={ogDescription} />
-		<meta name="twitter:image" content={ogImage} />
+		<meta name="twitter:image" content={ogImageUrl} />
 		<script defer data-domain="searchoc.org" src="https://plausible.io/js/plausible.js"></script>
 		<script type="application/ld+json">
 		{
@@ -80,17 +85,24 @@ const navLinks = [
 					Search OC
 				</a>
 				<div class="hidden md:flex items-center gap-1 text-sm font-medium font-sans">
-					{navLinks.map((link) => (
-						<a
-							href={link.href}
-							class="min-h-11 px-3 inline-flex items-center rounded-lg text-[var(--dark-teal)] hover:text-[var(--search-blue-action)] hover:bg-[var(--search-blue-light)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]"
-						>
-							{link.label}
-						</a>
-					))}
+					{navLinks.map((link) => {
+						const current = link.href === '/' ? path === '/' : path === link.href || path.startsWith(`${link.href}/`);
+						return (
+							<a
+								href={link.href}
+								aria-current={current ? 'page' : undefined}
+								class:list={[
+									'min-h-11 px-3 inline-flex items-center rounded-lg text-[var(--dark-teal)] hover:text-[var(--search-blue-action)] hover:bg-[var(--search-blue-light)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]',
+									current && 'text-[var(--search-blue-action)] bg-[var(--search-blue-light)]'
+								]}
+							>
+								{link.label}
+							</a>
+						);
+					})}
 				</div>
 				<a href="/#stay-in-touch" class="min-h-11 px-4 py-2 rounded-xl bg-[var(--search-blue-action)] text-white text-sm font-semibold font-sans hover:bg-[var(--dark-teal)] transition inline-flex items-center justify-center shadow-sm">
-					Stay in touch
+					Get involved
 				</a>
 			</nav>
 		</header>
@@ -131,7 +143,7 @@ const navLinks = [
 						<a href="/formation" class="hover:text-[var(--search-blue-action)]">Formation</a>
 						<a href="/open-forums" class="hover:text-[var(--search-blue-action)]">Open Forums</a>
 						<a href="/invite" class="hover:text-[var(--search-blue-action)]">Invite Someone</a>
-						<a href="/#stay-in-touch" class="hover:text-[var(--search-blue-action)]">Stay in touch</a>
+						<a href="/#stay-in-touch" class="hover:text-[var(--search-blue-action)]">Get involved</a>
 					</div>
 				</div>
 			</div>
