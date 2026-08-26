@@ -1,0 +1,11 @@
+---
+interface Props {
+  text: string;
+  variant?: 'blue' | 'amber' | 'white';
+}
+
+const { text, variant = 'blue' } = Astro.props;
+const variantClass = variant === 'amber' ? 'eyebrow-amber' : variant === 'white' ? 'text-white' : '';
+---
+
+<span class={`eyebrow ${variantClass}`}>{text}</span>

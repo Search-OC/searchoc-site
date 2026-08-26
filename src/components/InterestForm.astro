@@ -1,0 +1,282 @@
+---
+interface Props {
+	formId?: string;
+	source: string;
+	submitLabel?: string;
+	showName?: boolean;
+	showMessage?: boolean;
+	showGuestName?: boolean;
+	showInterests?: boolean;
+	defaultInterests?: string[];
+	defaultNewsletter?: boolean;
+	compact?: boolean;
+}
+
+const {
+	formId = 'interest-form',
+	source,
+	submitLabel = 'Stay in touch',
+	showName = true,
+	showMessage = false,
+	showGuestName = false,
+	showInterests = true,
+	defaultInterests = [],
+	defaultNewsletter = false,
+	compact = false,
+} = Astro.props;
+
+const interests = {
+	formation: defaultInterests.includes('formation'),
+	'open-forums': defaultInterests.includes('open-forums'),
+	general: defaultInterests.includes('general'),
+};
+---
+
+<form
+	id={formId}
+	class={`interest-form space-y-4 ${compact ? 'text-sm' : ''}`}
+	data-source={source}
+	data-form-id={formId}
+	novalidate
+>
+	{showName && (
+		<div>
+			<label for={`${formId}-name`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
+				First name <span class="text-[var(--cool-gray)]">(optional)</span>
+			</label>
+			<input
+				type="text"
+				id={`${formId}-name`}
+				name="name"
+				class="input"
+				autocomplete="given-name"
+			/>
+		</div>
+	)}
+
+	<div>
+		<label for={`${formId}-email`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
+			Email
+		</label>
+		<input
+			type="email"
+			id={`${formId}-email`}
+			name="email"
+			required
+			class="input"
+			autocomplete="email"
+		/>
+	</div>
+
+	{showInterests ? (
+		<fieldset class="space-y-3">
+			<legend class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-2">
+				What would you like to hear about?
+			</legend>
+
+			<label class="flex items-start gap-3 cursor-pointer group">
+				<input
+					type="checkbox"
+					name="interest"
+					value="open-forums"
+					class="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--search-blue-action)] focus:ring-[var(--search-blue)]"
+					checked={interests['open-forums']}
+				/>
+				<span>
+					<span class="font-sans font-medium text-[var(--ink)] group-hover:text-[var(--search-blue-action)] transition">Upcoming Open Forums</span>
+					<span class="block text-xs text-[var(--muted)] mt-0.5">Dates and details for hosted conversations in Orange County.</span>
+				</span>
+			</label>
+
+			<label class="flex items-start gap-3 cursor-pointer group">
+				<input
+					type="checkbox"
+					name="interest"
+					value="formation"
+					class="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--search-blue-action)] focus:ring-[var(--search-blue)]"
+					checked={interests.formation}
+				/>
+				<span>
+					<span class="font-sans font-medium text-[var(--ink)] group-hover:text-[var(--search-blue-action)] transition">Search Formation</span>
+					<span class="block text-xs text-[var(--muted)] mt-0.5">Learn more about the 12-week cohort for relational evangelism.</span>
+				</span>
+			</label>
+
+			<label class="flex items-start gap-3 cursor-pointer group">
+				<input
+					type="checkbox"
+					name="interest"
+					value="general"
+					class="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--search-blue-action)] focus:ring-[var(--search-blue)]"
+					checked={interests.general}
+				/>
+				<span>
+					<span class="font-sans font-medium text-[var(--ink)] group-hover:text-[var(--search-blue-action)] transition">General updates from Search OC</span>
+					<span class="block text-xs text-[var(--muted)] mt-0.5">Occasional news about pathways, events, and resources.</span>
+				</span>
+			</label>
+
+			<label class="flex items-start gap-3 cursor-pointer group pt-2 border-t border-[var(--border)]">
+				<input
+					type="checkbox"
+					name="newsletter"
+					value="true"
+					class="mt-1 h-4 w-4 rounded border-[var(--border-strong)] text-[var(--orange)] focus:ring-[var(--orange)]"
+					checked={defaultNewsletter}
+				/>
+				<span>
+					<span class="font-sans font-medium text-[var(--ink)] group-hover:text-[var(--orange)] transition">Having Killer Conversations</span>
+					<span class="block text-xs text-[var(--muted)] mt-0.5">A short note every other week for Christians who want to talk about their faith without being weird about it.</span>
+				</span>
+			</label>
+		</fieldset>
+	) : (
+		<input type="hidden" name="newsletter" value="true" />
+	)}
+
+	{showGuestName && (
+		<div>
+			<label for={`${formId}-guest`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
+				Who you are inviting <span class="text-[var(--cool-gray)]">(optional, first name is plenty)</span>
+			</label>
+			<input
+				type="text"
+				id={`${formId}-guest`}
+				name="guestName"
+				class="input"
+				autocomplete="off"
+			/>
+		</div>
+	)}
+
+	{showMessage && (
+		<div>
+			<label for={`${formId}-message`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
+				Anything else? <span class="text-[var(--cool-gray)]">(optional)</span>
+			</label>
+			<textarea
+				id={`${formId}-message`}
+				name="message"
+				rows={3}
+				class="input resize-y min-h-[5rem]"
+			></textarea>
+		</div>
+	)}
+
+	<button
+		type="submit"
+		class={`${compact ? 'btn-primary' : 'btn-primary'} w-full min-h-11 inline-flex items-center justify-center interest-submit`}
+	>
+		{submitLabel}
+	</button>
+
+	<p class="text-xs text-[var(--cool-gray)] font-sans leading-relaxed">
+		We respect your inbox. Choose only what you want. Unsubscribe anytime.
+	</p>
+</form>
+
+<div class="interest-success hidden mt-6 card text-[var(--muted)]" data-form-id={formId}>
+	<p class="font-sans font-semibold text-[var(--ink)]">You are on the list.</p>
+	<p class="mt-1 text-sm interest-success-detail">We will be in touch with what you asked for. No spam.</p>
+</div>
+
+<div class="interest-error hidden mt-4 text-sm text-red-600 font-sans" data-form-id={formId} role="alert"></div>
+
+<script>
+	function initInterestForms() {
+		document.querySelectorAll('.interest-form').forEach((formEl) => {
+			const form = formEl as HTMLFormElement;
+			if (form.dataset.initialized) return;
+			form.dataset.initialized = 'true';
+
+			const formId = form.dataset.formId || 'interest-form';
+			const source = form.dataset.source || 'website';
+			const success = document.querySelector(`.interest-success[data-form-id="${formId}"]`) as HTMLElement | null;
+			const errorBox = document.querySelector(`.interest-error[data-form-id="${formId}"]`) as HTMLElement | null;
+			const submitBtn = form.querySelector('.interest-submit') as HTMLButtonElement | null;
+			const defaultLabel = submitBtn?.textContent || 'Stay in touch';
+
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				if (success) success.classList.add('hidden');
+				if (errorBox) errorBox.classList.add('hidden');
+
+				const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value.trim();
+				const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value.trim();
+				const guestName = (form.querySelector('[name="guestName"]') as HTMLInputElement)?.value.trim();
+				const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement)?.value.trim();
+				const newsletter = form.querySelector('[name="newsletter"][type="hidden"]')
+					? true
+					: Boolean(form.querySelector('[name="newsletter"]:checked'));
+				const interests = Array.from(form.querySelectorAll('[name="interest"]:checked')).map(
+					(el) => (el as HTMLInputElement).value
+				);
+
+				if (!email || !email.includes('@')) {
+					if (errorBox) {
+						errorBox.textContent = 'Please enter a valid email.';
+						errorBox.classList.remove('hidden');
+					}
+					return;
+				}
+
+				if (!newsletter && interests.length === 0) {
+					if (errorBox) {
+						errorBox.textContent = 'Choose at least one way to stay in touch.';
+						errorBox.classList.remove('hidden');
+					}
+					return;
+				}
+
+				if (submitBtn) {
+					submitBtn.disabled = true;
+					submitBtn.textContent = 'Sending...';
+				}
+
+				try {
+					const res = await fetch('/api/interest', {
+						method: 'POST',
+						headers: { 'Content-Type': 'application/json' },
+						body: JSON.stringify({ email, name, guestName, message, newsletter, interests, source }),
+					});
+
+					if (res.ok) {
+						form.classList.add('hidden');
+						if (success) {
+							const detail = success.querySelector('.interest-success-detail');
+							if (detail) {
+								const parts: string[] = [];
+								if (interests.includes('open-forums')) parts.push('Open Forum dates');
+								if (interests.includes('formation')) parts.push('Formation details');
+								if (newsletter) parts.push('Having Killer Conversations');
+								detail.textContent = parts.length
+									? `We will send you ${parts.join(', ')}. No spam.`
+									: 'We will be in touch with what you asked for. No spam.';
+							}
+							success.classList.remove('hidden');
+						}
+					} else {
+						const data = await res.json().catch(() => ({}));
+						throw new Error(data.error || 'Submission failed');
+					}
+				} catch (err) {
+					if (errorBox) {
+						errorBox.textContent =
+							err instanceof Error && err.message
+								? err.message
+								: 'Something went wrong. Please try again in a minute.';
+						errorBox.classList.remove('hidden');
+					}
+				} finally {
+					if (submitBtn) {
+						submitBtn.disabled = false;
+						submitBtn.textContent = defaultLabel;
+					}
+				}
+			});
+		});
+	}
+
+	initInterestForms();
+	document.addEventListener('astro:page-load', initInterestForms);
+</script>

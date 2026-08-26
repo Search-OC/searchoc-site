@@ -1,76 +1,150 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import GuiltCycle from '../components/GuiltCycle.astro';
+import StayInTouch from '../components/StayInTouch.astro';
 ---
 
 <Layout
-	title="Search OC | Honest questions about God"
-	description="A safe place in Orange County to ask the questions you actually have. No pressure and no script."
+	title="Search OC | Talk about your faith without the guilt"
+	description="For Christians in the marketplace who want to share their faith but don't know how. Search OC helps you break the Great Commission guilt cycle."
 	canonical="/"
 	ogImage="/og/home.png"
 />
-	<!-- Hero -->
-	<section class="max-w-5xl mx-auto px-6 pt-16 pb-12 text-center">
-		<div class="inline-block px-3 py-1 rounded-full bg-[#2A6AA3]/15 text-[#2A6AA3] text-xs tracking-[2px] font-sans font-semibold mb-6">SEARCH OC</div>
-		<h1 class="text-5xl md:text-6xl font-bold tracking-tighter text-[#1A1A1A] leading-none">
-			Inviting adults to take a next step toward God.
-		</h1>
-		<p class="mt-6 max-w-xl mx-auto text-xl text-[#243B48]">
-			We create safe spaces for honest conversations about faith, doubt, and life. No pressure. No scripts. Just real questions and real people.
-		</p>
-		<div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-			<a href="/formation" class="btn-primary inline-flex items-center justify-center min-h-11">Explore Formation</a>
-			<a href="mailto:jake@searchoc.org" class="btn-secondary inline-flex items-center justify-center min-h-11">Start the conversation</a>
-		</div>
-		<p class="mt-4 text-sm text-[#3F3F46]">Orange County, California</p>
-	</section>
 
-	<!-- Mission & Intro -->
-	<section class="max-w-5xl mx-auto px-6 section border-t border-[#E5E7EB]">
-		<div class="grid md:grid-cols-2 gap-10 items-center">
+<!-- Hero -->
+<section class="hero-gradient">
+	<div class="max-w-5xl mx-auto px-6 pt-20 pb-16 md:pt-24 md:pb-20">
+		<div class="max-w-3xl">
+			<Eyebrow text="For Christians in the marketplace" />
+			<h1 class="mt-5 text-4xl md:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.08]">
+				You want to share your faith. You just don't know how to do it without making things weird.
+			</h1>
+			<p class="mt-6 lead max-w-2xl">
+				Most Christians feel the tension: you know you should talk about God, but every time you try it goes sideways. So you stop. Then the guilt comes back. Search OC exists to break that cycle.
+			</p>
+			<div class="mt-8 flex flex-col sm:flex-row gap-3">
+				<a href="/formation" class="btn-primary inline-flex items-center justify-center min-h-11">Break the guilt cycle</a>
+				<a href="#the-cycle" class="btn-secondary inline-flex items-center justify-center min-h-11">Does this sound like you?</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- The Guilt Cycle -->
+<section id="the-cycle" class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-2xl mb-10">
+			<Eyebrow text="The Great Commission guilt cycle" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The loop that keeps you stuck</h2>
+			<p class="mt-4 lead">
+				It is not that you do not care. It is that nobody taught you a way to talk about faith that fits real life: the office, the dinner table, the friend who has been burned by church.
+			</p>
+		</div>
+		<GuiltCycle />
+	</div>
+</section>
+
+<!-- The Shift -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="grid md:grid-cols-2 gap-12 items-center">
 			<div>
-				<h2 class="text-3xl font-semibold tracking-tight">A local expression of Search Ministries.</h2>
-				<p class="mt-4 text-lg text-[#243B48]">
-					For nearly 50 years Search Ministries has helped adults explore questions about God in safe, relational settings. Search OC has served Orange County for over 40 years.
+				<Eyebrow text="A different way" />
+				<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">What if evangelism did not have to feel like a sales pitch?</h2>
+				<p class="mt-4 text-[var(--muted)] leading-relaxed">
+					Search OC trains everyday Christians in relational evangelism: learning to value the person in front of you, ask better questions, and create space for honest conversations about God and life.
 				</p>
-				<p class="mt-4">
-					Our mission is simple: create spaces where people can be curious about God without feeling judged or pressured.
+				<p class="mt-4 text-[var(--muted)] leading-relaxed">
+					No scripts. No pressure to close. No guilt when someone is not ready. Just a practical, repeatable way to love people well and trust God with the results.
 				</p>
 			</div>
-			<div class="card">
-				<div class="uppercase tracking-[1.5px] text-xs font-sans text-[#2A6AA3] mb-2">Our Approach</div>
-				<ul class="space-y-3 text-[#1A1A1A]">
-					<li class="flex gap-3"><span class="text-[#2A6AA3] font-bold" aria-hidden="true">1</span> Value the one in front of you.</li>
-					<li class="flex gap-3"><span class="text-[#2A6AA3] font-bold" aria-hidden="true">2</span> Trust God with the results. Spiritual growth is a process.</li>
-					<li class="flex gap-3"><span class="text-[#2A6AA3] font-bold" aria-hidden="true">3</span> Address real barriers with gentleness and honesty.</li>
-				</ul>
+			<div class="space-y-4">
+				<div class="callout">
+					"More Jesus. Less awkward."
+				</div>
+				<div class="card">
+					<p class="font-sans font-semibold text-[var(--ink)] mb-3">The Search approach</p>
+					<ul class="space-y-3 text-[var(--muted)] text-sm">
+						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">1</span> Value the one in front of you, not the outcome.</li>
+						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">2</span> Trust God with the results. Spiritual growth is a process.</li>
+						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">3</span> Address real barriers with gentleness, not arguments.</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
-	<!-- Pathways -->
-	<section class="max-w-5xl mx-auto px-6 section bg-white border-t border-[#E5E7EB]">
-		<h2 class="text-3xl font-semibold tracking-tight mb-8">Pathways to explore</h2>
+<!-- Pathways -->
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-2xl mb-10">
+			<Eyebrow text="Two pathways" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Start where you are</h2>
+			<p class="mt-4 text-[var(--muted)]">
+				Whether you need training for yourself or a table to invite a friend to, we have a next step that fits.
+			</p>
+		</div>
 		<div class="grid md:grid-cols-2 gap-6">
-			<a href="/formation" class="card block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">
-				<div class="text-[#2A6AA3] font-sans text-sm tracking-widest mb-2">EQUIP YOUR CHURCH</div>
-				<h3 class="text-2xl font-semibold group-hover:text-[#2A6AA3]">Search Formation</h3>
-				<p class="mt-3 text-[#243B48]">A 12-week cohort that trains everyday Christians in relational evangelism. Practical. Reproducible. Focused on honest conversations.</p>
-				<div class="mt-4 text-sm font-medium text-[#2A6AA3]">Learn more about Formation</div>
+			<a href="/formation" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
+				<Eyebrow text="For you" />
+				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Search Formation</h3>
+				<p class="mt-3 text-[var(--muted)] leading-relaxed">
+					A 12-week cohort that moves you from guilt and avoidance into confident, natural conversations. Practical training for Christians who are done with the cycle.
+				</p>
+				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
+					Learn about Formation &rarr;
+				</span>
 			</a>
-			<a href="/open-forums" class="card block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2A6AA3]">
-				<div class="text-[#2A6AA3] font-sans text-sm tracking-widest mb-2">CONVERSATIONS</div>
-				<h3 class="text-2xl font-semibold group-hover:text-[#2A6AA3]">Open Forums</h3>
-				<p class="mt-3 text-[#243B48]">Casual, hosted conversations about God, faith, doubt, and life's big questions. No pressure. Come once.</p>
-				<div class="mt-4 text-sm font-medium text-[#2A6AA3]">Learn more about Open Forums →</div>
+			<a href="/open-forums" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
+				<Eyebrow text="For your friend" variant="amber" />
+				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Open Forums</h3>
+				<p class="mt-3 text-[var(--muted)] leading-relaxed">
+					A casual, hosted conversation about God, faith, and life's big questions. One hour, food and drinks, no sermon. The kind of table your curious friend might actually say yes to.
+				</p>
+				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
+					Learn about Open Forums &rarr;
+				</span>
 			</a>
 		</div>
-	</section>
+		<p class="mt-8 text-center">
+			<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
+				Already know who you'd invite? Here is how to ask &rarr;
+			</a>
+		</p>
+	</div>
+</section>
 
-	<!-- Simple CTA -->
-	<section class="max-w-3xl mx-auto px-6 py-16 text-center">
-		<h2 class="text-2xl font-semibold">Ready to start a conversation?</h2>
-		<p class="mt-3 text-[#243B48]">Whether you are a church leader, a curious friend, or someone who wants to learn how to talk about faith naturally, we are here.</p>
-		<a href="mailto:jake@searchoc.org" class="mt-6 inline-flex btn-primary min-h-11 items-center">Email jake@searchoc.org</a>
-		<p class="mt-3 text-xs text-[#3F3F46]">Jake Hartson, Area Director, Search OC</p>
-	</section>
-</Layout>
+<!-- Credibility -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+			<div>
+				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">40+</p>
+				<p class="mt-1 text-sm text-[var(--muted)]">Years serving Orange County</p>
+			</div>
+			<div>
+				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">50</p>
+				<p class="mt-1 text-sm text-[var(--muted)]">Years of Search Ministries nationally</p>
+			</div>
+			<div>
+				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">1</p>
+				<p class="mt-1 text-sm text-[var(--muted)]">Conversation at a time. That is the whole model.</p>
+			</div>
+		</div>
+		<p class="mt-8 max-w-2xl text-[var(--muted)] leading-relaxed">
+			We are not a new fad or a church program. Search OC is a steady, relational presence focused on honest conversations. We have been equipping Christians to share their faith the right way for decades.
+		</p>
+	</div>
+</section>
+
+<!-- Stay in touch -->
+<StayInTouch
+	id="stay-in-touch"
+	title="Ready to stop going in circles?"
+	body="Tell us what you are looking for. Upcoming Open Forums, Formation details, or our newsletter — choose what fits. No pressure, no spam."
+	source="home"
+	variant="blue"
+	defaultNewsletter={false}
+/>
