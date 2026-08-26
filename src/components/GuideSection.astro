@@ -1,0 +1,43 @@
+---
+interface Props {
+  variant?: 'default' | 'compact';
+}
+
+const { variant = 'default' } = Astro.props;
+---
+
+<section class={`${variant === 'compact' ? 'section-tight' : 'section'} section-blue`}>
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <div>
+        <p class="font-sans text-xs font-bold uppercase tracking-[0.12em] text-[var(--lime)]">Your guide in Orange County</p>
+        <h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-white">
+          We get the guilt cycle. We have been helping people break it for over 40 years.
+        </h2>
+        <p class="mt-5 text-white leading-relaxed">
+          Search OC is a local expression of Search Ministries. We are not here to make you feel behind, preach at your coworkers, or turn evangelism into performance. We equip everyday Christians to love the person in front of them and start conversations that actually work.
+        </p>
+        <p class="mt-4 text-white leading-relaxed">
+          You bring the relationships. We bring the model, the training, and the table. Together, one conversation at a time.
+        </p>
+      </div>
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-6">
+          <p class="font-sans text-sm font-bold uppercase tracking-[0.1em] text-[var(--lime)]">Empathy</p>
+          <p class="mt-2 text-white italic leading-relaxed">
+            "Most Christians were never taught a way to talk about faith that fits Monday morning. The awkwardness is real. The guilt is real. So is the desire to do better."
+          </p>
+        </div>
+        <div class="rounded-2xl border border-white/15 bg-white/10 p-6">
+          <p class="font-sans text-sm font-bold uppercase tracking-[0.1em] text-[var(--lime)]">Authority</p>
+          <ul class="mt-3 space-y-2 text-white text-sm">
+            <li class="flex gap-2"><span aria-hidden="true">→</span> 40+ years serving Orange County</li>
+            <li class="flex gap-2"><span aria-hidden="true">→</span> 50 years of Search Ministries nationally</li>
+            <li class="flex gap-2"><span aria-hidden="true">→</span> Proven relational model used in workplaces, homes, and Open Forums</li>
+            <li class="flex gap-2"><span aria-hidden="true">→</span> Part of the Search family alongside <a href="https://searchnational.org" class="underline underline-offset-2 hover:text-[var(--lime)]" target="_blank" rel="noopener noreferrer">Search Ministries</a> and <a href="https://reachothers.org" class="underline underline-offset-2 hover:text-[var(--lime)]" target="_blank" rel="noopener noreferrer">REACH</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

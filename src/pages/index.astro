@@ -2,6 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import GuiltCycle from '../components/GuiltCycle.astro';
+import StoryBrandProblem from '../components/StoryBrandProblem.astro';
+import GuideSection from '../components/GuideSection.astro';
+import StoryBrandPlan from '../components/StoryBrandPlan.astro';
+import StakesSection from '../components/StakesSection.astro';
 import StayInTouch from '../components/StayInTouch.astro';
 ---
 
@@ -12,78 +16,84 @@ import StayInTouch from '../components/StayInTouch.astro';
 	ogImage="/og/home.png"
 >
 
-<!-- Hero -->
-<section class="hero-gradient">
-	<div class="max-w-5xl mx-auto px-6 pt-20 pb-16 md:pt-24 md:pb-20">
+<!-- Hero: Character + Problem (StoryBrand) -->
+<section class="hero-gradient border-b border-[var(--border)]">
+	<div class="max-w-5xl mx-auto px-6 pt-16 pb-14 md:pt-20 md:pb-20">
 		<div class="max-w-3xl">
-			<Eyebrow text="For Christians in the marketplace" />
-			<h1 class="mt-5 text-4xl md:text-6xl font-bold tracking-tight text-[var(--ink)] leading-[1.08]">
+			<Eyebrow text="Orange County · For Christians in the marketplace" />
+			<h1 class="mt-4 text-4xl md:text-[3.4rem] font-bold tracking-tight text-[var(--ink)] leading-[1.08]">
 				You want to share your faith. You just don't know how to do it without making things weird.
 			</h1>
 			<p class="mt-6 lead max-w-2xl">
-				Most Christians feel the tension: you know you should talk about God, but every time you try it goes sideways. So you stop. Then the guilt comes back. Search OC exists to break that cycle.
+				You are not failing. You were never given a way that fits real life: the office, the dinner table, the friend who has been burned by church. That is the problem. We help you break the guilt cycle and start conversations that actually work.
 			</p>
 			<div class="mt-8 flex flex-col sm:flex-row gap-3">
-				<a href="/formation" class="btn-primary inline-flex items-center justify-center min-h-11">Break the guilt cycle</a>
+				<a href="#plan" class="btn-primary inline-flex items-center justify-center min-h-11">Show me the plan</a>
 				<a href="#the-cycle" class="btn-secondary inline-flex items-center justify-center min-h-11">Does this sound like you?</a>
 			</div>
+			<p class="mt-5 font-sans text-sm text-[var(--muted)]">
+				A local guide from Search Ministries · Serving Orange County for 40+ years
+			</p>
 		</div>
 	</div>
 </section>
 
-<!-- The Guilt Cycle -->
-<section id="the-cycle" class="section-warm section">
+<!-- Problem: 3 levels -->
+<section class="section-warm section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-2xl mb-10">
-			<Eyebrow text="The Great Commission guilt cycle" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The loop that keeps you stuck</h2>
+			<Eyebrow text="The problem" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">It is not that you do not care</h2>
 			<p class="mt-4 lead">
-				It is not that you do not care. It is that nobody taught you a way to talk about faith that fits real life: the office, the dinner table, the friend who has been burned by church.
+				Most Christians in the marketplace feel the same tension. The guilt is internal. The stakes are real. And the old playbook was never built for your actual relationships.
+			</p>
+		</div>
+		<StoryBrandProblem />
+	</div>
+</section>
+
+<!-- Guilt Cycle -->
+<section id="the-cycle" class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-2xl mb-10">
+			<Eyebrow text="Sound familiar?" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The Great Commission guilt cycle</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				This loop is why good-hearted Christians go quiet. Naming it is the first step out.
 			</p>
 		</div>
 		<GuiltCycle />
 	</div>
 </section>
 
-<!-- The Shift -->
-<section class="section">
+<!-- Guide: Empathy + Authority -->
+<GuideSection />
+
+<!-- Plan -->
+<section id="plan" class="section-warm section">
 	<div class="max-w-5xl mx-auto px-6">
-		<div class="grid md:grid-cols-2 gap-12 items-center">
-			<div>
-				<Eyebrow text="A different way" />
-				<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">What if evangelism did not have to feel like a sales pitch?</h2>
-				<p class="mt-4 text-[var(--muted)] leading-relaxed">
-					Search OC trains everyday Christians in relational evangelism: learning to value the person in front of you, ask better questions, and create space for honest conversations about God and life.
-				</p>
-				<p class="mt-4 text-[var(--muted)] leading-relaxed">
-					No scripts. No pressure to close. No guilt when someone is not ready. Just a practical, repeatable way to love people well and trust God with the results.
-				</p>
-			</div>
-			<div class="space-y-4">
-				<div class="callout">
-					"More Jesus. Less awkward."
-				</div>
-				<div class="card">
-					<p class="font-sans font-semibold text-[var(--ink)] mb-3">The Search approach</p>
-					<ul class="space-y-3 text-[var(--muted)] text-sm">
-						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">1</span> Value the one in front of you, not the outcome.</li>
-						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">2</span> Trust God with the results. Spiritual growth is a process.</li>
-						<li class="flex gap-3"><span class="text-[var(--search-blue-action)] font-bold font-sans" aria-hidden="true">3</span> Address real barriers with gentleness, not arguments.</li>
-					</ul>
-				</div>
-			</div>
+		<div class="max-w-2xl mb-10">
+			<Eyebrow text="The plan" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Three steps. No performance required.</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				You do not need to become an expert. You need a simple path and a guide who has walked this with thousands of people before you.
+			</p>
+		</div>
+		<StoryBrandPlan />
+		<div class="mt-8 callout max-w-2xl">
+			"More Jesus. Less awkward."
 		</div>
 	</div>
 </section>
 
 <!-- Pathways -->
-<section class="section-warm section">
+<section class="section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-2xl mb-10">
-			<Eyebrow text="Two pathways" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Start where you are</h2>
+			<Eyebrow text="Pick your next step" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Start where you actually are</h2>
 			<p class="mt-4 text-[var(--muted)]">
-				Whether you need training for yourself or a table to invite a friend to, we have a next step that fits.
+				Need training for yourself, or a table to invite a friend to? Both paths lead to the same place: one honest conversation at a time.
 			</p>
 		</div>
 		<div class="grid md:grid-cols-2 gap-6">
@@ -91,61 +101,43 @@ import StayInTouch from '../components/StayInTouch.astro';
 				<Eyebrow text="For you" />
 				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Search Formation</h3>
 				<p class="mt-3 text-[var(--muted)] leading-relaxed">
-					A 12-week cohort that moves you from guilt and avoidance into confident, natural conversations. Practical training for Christians who are done with the cycle.
+					A 12-week cohort for Christians who are done with the guilt cycle. Learn to value the person, ask better questions, and invite honest conversations without scripts.
 				</p>
 				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
-					Learn about Formation &rarr;
+					Explore Formation &rarr;
 				</span>
 			</a>
 			<a href="/open-forums" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
 				<Eyebrow text="For your friend" variant="amber" />
 				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Open Forums</h3>
 				<p class="mt-3 text-[var(--muted)] leading-relaxed">
-					A casual, hosted conversation about God, faith, and life's big questions. One hour, food and drinks, no sermon. The kind of table your curious friend might actually say yes to.
+					One hour, food and drinks, no sermon. A hosted conversation about God and life's big questions. The kind of table your curious friend might actually say yes to.
 				</p>
 				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
-					Learn about Open Forums &rarr;
+					Explore Open Forums &rarr;
 				</span>
 			</a>
 		</div>
 		<p class="mt-8 text-center">
 			<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
-				Already know who you'd invite? Here is how to ask &rarr;
+				Already know who you would invite? Here is how to ask &rarr;
 			</a>
 		</p>
 	</div>
 </section>
 
-<!-- Credibility -->
-<section class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
-			<div>
-				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">40+</p>
-				<p class="mt-1 text-sm text-[var(--muted)]">Years serving Orange County</p>
-			</div>
-			<div>
-				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">50</p>
-				<p class="mt-1 text-sm text-[var(--muted)]">Years of Search Ministries nationally</p>
-			</div>
-			<div>
-				<p class="font-sans text-3xl font-bold text-[var(--search-blue)]">1</p>
-				<p class="mt-1 text-sm text-[var(--muted)]">Conversation at a time. That is the whole model.</p>
-			</div>
-		</div>
-		<p class="mt-8 max-w-2xl text-[var(--muted)] leading-relaxed">
-			We are not a new fad or a church program. Search OC is a steady, relational presence focused on honest conversations. We have been equipping Christians to share their faith the right way for decades.
-		</p>
-	</div>
-</section>
+<!-- Stakes: Failure vs Success -->
+<StakesSection />
 
-<!-- Stay in touch -->
+<!-- CTA -->
 <StayInTouch
 	id="stay-in-touch"
+	eyebrow="Take the next step"
 	title="Ready to stop going in circles?"
-	body="Tell us what you are looking for. Upcoming Open Forums, Formation details, or our newsletter — choose what fits. No pressure, no spam."
+	body="Tell us what you need: Formation details, upcoming Open Forums, or our newsletter Having Killer Conversations. Choose what fits. No pressure, no spam."
 	source="home"
 	variant="blue"
 	defaultNewsletter={false}
+	submitLabel="Start here"
 />
 </Layout>
