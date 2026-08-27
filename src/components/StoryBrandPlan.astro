@@ -1,0 +1,29 @@
+---
+const steps = [
+  {
+    number: '1',
+    title: 'Name where you are',
+    body: 'Stuck in the guilt cycle? Ready to invite one friend? Leading a church team? Start with your actual situation, not a program.',
+  },
+  {
+    number: '2',
+    title: 'Learn a way that fits real life',
+    body: 'Formation gives you a repeatable model: value the person, ask better questions, trust God with the results. No scripts. No pressure to close.',
+  },
+  {
+    number: '3',
+    title: 'Invite one honest conversation',
+    body: 'Open Forums give your curious friend a table where they can ask hard questions without a sermon, altar call, or social media post about who showed up.',
+  },
+];
+---
+
+<ol class="grid md:grid-cols-3 gap-5 list-none p-0 m-0">
+  {steps.map((step) => (
+    <li class="relative card pt-8">
+      <span class="absolute top-6 left-6 cycle-number" aria-hidden="true">{step.number}</span>
+      <h3 class="mt-4 font-sans font-bold text-lg text-[var(--ink)]">{step.title}</h3>
+      <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{step.body}</p>
+    </li>
+  ))}
+</ol>

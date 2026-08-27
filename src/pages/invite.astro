@@ -10,22 +10,32 @@ import StayInTouch from '../components/StayInTouch.astro';
 	canonical="/invite"
 	ogImage="/og/invite.png"
 	ogDescription="Three texts you can actually send, and what to say when they ask something you can't answer."
-/>
+>
 
 <!-- Hero -->
-<section class="hero-gradient">
-	<div class="max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-20">
-		<div class="max-w-3xl">
-			<Eyebrow text="For the person doing the inviting" variant="amber" />
-			<h1 class="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-				You have someone in mind. Here is how to ask.
-			</h1>
-			<p class="mt-5 lead">
-				You already know who. You just do not know how to bring it up without it getting weird. That is what this page is for.
-			</p>
-		</div>
+<section class="hero-photo hero-photo--amber">
+	<div class="hero-photo__media" aria-hidden="true">
+		<img
+			src="/images/marketplace-talk.jpg"
+			alt=""
+			width="2400"
+			height="1350"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="hero-photo__veil" aria-hidden="true"></div>
+	<div class="hero-photo__content">
+		<p class="brand-mark rise-in">Search OC</p>
+		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">The invite</p>
+		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			You have someone in mind. Here is how to ask.
+		</h1>
+		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+			You already know who. You just do not know how to bring it up without it getting weird. That is what this page is for.
+		</p>
 	</div>
 </section>
+<img class="sr-only" src="/images/marketplace-talk.jpg" alt="A man gesturing warmly while talking across a cafe table" />
 
 <!-- The ask is smaller -->
 <section class="section">
@@ -174,3 +184,4 @@ import StayInTouch from '../components/StayInTouch.astro';
 		});
 	});
 </script>
+</Layout>

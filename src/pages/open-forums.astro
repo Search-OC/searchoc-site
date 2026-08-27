@@ -9,28 +9,49 @@ import StayInTouch from '../components/StayInTouch.astro';
 	description="A casual, hosted conversation about God, faith, and life's big questions. One hour, no sermon, no pressure."
 	canonical="/open-forums"
 	ogImage="/og/forum.png"
-/>
+>
 
 <!-- Hero -->
-<section class="hero-gradient">
-	<div class="max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-20">
-		<div class="max-w-3xl">
-			<Eyebrow text="Open Forums" variant="amber" />
-			<h1 class="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-				The table your curious friend might actually say yes to.
-			</h1>
-			<p class="mt-5 lead">
-				An Open Forum is a hosted conversation over food and drinks. No sermon. No pressure. Real talk about God, faith, doubt, and life's big questions.
-			</p>
-			<p class="mt-4 text-[var(--muted)]">
-				Spiritually curious adults in Orange County are welcome. Come once. No commitment required.
-			</p>
-			<div class="mt-7">
-				<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Keep me posted</a>
-			</div>
+<section class="hero-photo hero-photo--amber">
+	<div class="hero-photo__media" aria-hidden="true">
+		<img
+			src="/images/dinner-party.jpg"
+			alt=""
+			width="2400"
+			height="1350"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="hero-photo__veil" aria-hidden="true"></div>
+	<div class="hero-photo__content">
+		<p class="brand-mark rise-in">Search OC</p>
+		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
+		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			The table your curious friend might actually say yes to.
+		</h1>
+		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+			A hosted conversation over food and drinks. No sermon. No pressure. Real talk about God, faith, doubt, and life's big questions.
+		</p>
+		<p class="mt-4 text-white/85 max-w-xl rise-in rise-in-delay-2">
+			Spiritually curious adults in Orange County are welcome. Come once. No commitment required.
+		</p>
+		<div class="mt-8 rise-in rise-in-delay-3">
+			<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Keep me posted</a>
 		</div>
 	</div>
 </section>
+<img class="sr-only" src="/images/dinner-party.jpg" alt="Friends gathered around a dinner table with food and candles" />
+
+<figure class="media-band">
+	<img
+		src="/images/forum-discussion.jpg"
+		alt="Friends laughing around a table with books and coffee during an evening discussion"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Food, drinks, and honest questions. That is the whole night.</figcaption>
+</figure>
 
 <!-- What to Expect -->
 <section class="section">
@@ -114,6 +135,17 @@ import StayInTouch from '../components/StayInTouch.astro';
 	</div>
 </section>
 
+<figure class="media-band">
+	<img
+		src="/images/patio-gathering.jpg"
+		alt="A diverse group of friends laughing around an outdoor patio table"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Eight to twelve people. One table. Room for honest questions.</figcaption>
+</figure>
+
 <!-- For Hosts -->
 <section class="section-sage section">
 	<div class="max-w-5xl mx-auto px-6">
@@ -186,3 +218,4 @@ import StayInTouch from '../components/StayInTouch.astro';
 	defaultInterests={['open-forums']}
 	submitLabel="Stay in touch"
 />
+</Layout>

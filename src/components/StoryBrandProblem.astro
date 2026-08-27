@@ -1,0 +1,29 @@
+---
+const problems = [
+  {
+    level: 'External',
+    title: 'Real conversations, real stakes',
+    body: 'You have coworkers, neighbors, and friends who need honest space to explore God. But the office is not a pulpit, and dinner with old friends is not a Bible study.',
+  },
+  {
+    level: 'Internal',
+    title: 'The guilt that will not quit',
+    body: 'You know you should say something. You try. It goes weird. You go quiet. Weeks later the guilt comes back, and you wonder if everyone else has this figured out but you.',
+  },
+  {
+    level: 'Philosophical',
+    title: 'Faith should not feel like a sales pitch',
+    body: 'You love Jesus. You also love people. Those two should fit together in real life, but nobody taught you how to hold both without pressure, scripts, or pretending you have all the answers.',
+  },
+];
+---
+
+<div class="grid md:grid-cols-3 gap-5">
+  {problems.map((problem) => (
+    <div class="card h-full">
+      <p class="font-sans text-xs font-bold uppercase tracking-[0.12em] text-[var(--search-blue-action)]">{problem.level}</p>
+      <h3 class="mt-2 font-sans font-bold text-lg text-[var(--ink)]">{problem.title}</h3>
+      <p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{problem.body}</p>
+    </div>
+  ))}
+</div>
