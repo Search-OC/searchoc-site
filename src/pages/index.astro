@@ -16,27 +16,37 @@ import StayInTouch from '../components/StayInTouch.astro';
 	ogImage="/og/home.png"
 >
 
-<!-- Hero: Character + Problem (StoryBrand) -->
-<section class="hero-gradient border-b border-[var(--border)]">
-	<div class="max-w-5xl mx-auto px-6 pt-16 pb-14 md:pt-20 md:pb-20">
-		<div class="max-w-3xl">
-			<Eyebrow text="Orange County · For Christians in the marketplace" />
-			<h1 class="mt-4 text-4xl md:text-[3.4rem] font-bold tracking-tight text-[var(--ink)] leading-[1.08]">
-				You want to share your faith. You just don't know how to do it without making things weird.
-			</h1>
-			<p class="mt-6 lead max-w-2xl">
-				You are not failing. You were never given a way that fits real life: the office, the dinner table, the friend who has been burned by church. That is the problem. We help you break the guilt cycle and start conversations that actually work.
-			</p>
-			<div class="mt-8 flex flex-col sm:flex-row gap-3">
-				<a href="#plan" class="btn-primary inline-flex items-center justify-center min-h-11">Show me the plan</a>
-				<a href="#the-cycle" class="btn-secondary inline-flex items-center justify-center min-h-11">Does this sound like you?</a>
-			</div>
-			<p class="mt-5 font-sans text-sm text-[var(--muted)]">
-				A local guide from Search Ministries · Serving Orange County for 40+ years
-			</p>
+<!-- Hero: brand + character + problem (StoryBrand), full-bleed marketplace photo -->
+<section class="hero-photo">
+	<div class="hero-photo__media" aria-hidden="true">
+		<img
+			src="/images/cafe-conversation.jpg"
+			alt=""
+			width="2400"
+			height="1350"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="hero-photo__veil" aria-hidden="true"></div>
+	<div class="hero-photo__content">
+		<p class="brand-mark rise-in">Search OC</p>
+		<h1 class="mt-5 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			You want to share your faith. You just don't know how to do it without making things weird.
+		</h1>
+		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+			We help Christians in the marketplace break the guilt cycle and start conversations that actually work.
+		</p>
+		<div class="mt-8 flex flex-col sm:flex-row gap-3 rise-in rise-in-delay-3">
+			<a href="#plan" class="btn-primary inline-flex items-center justify-center min-h-11">Show me the plan</a>
+			<a href="#the-cycle" class="btn-secondary inline-flex items-center justify-center min-h-11">Does this sound like you?</a>
 		</div>
 	</div>
 </section>
+<img
+	class="sr-only"
+	src="/images/cafe-conversation.jpg"
+	alt="Friends talking and laughing together at a bright cafe table"
+/>
 
 <!-- Problem: 3 levels -->
 <section class="section-warm section">
@@ -65,6 +75,18 @@ import StayInTouch from '../components/StayInTouch.astro';
 		<GuiltCycle />
 	</div>
 </section>
+
+<!-- Atmospheric break -->
+<figure class="media-band">
+	<img
+		src="/images/coffee-table.jpg"
+		alt="A latte on a wooden cafe table during a quiet conversation"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Real conversations happen at ordinary tables.</figcaption>
+</figure>
 
 <!-- Guide: Empathy + Authority -->
 <GuideSection />
@@ -98,6 +120,15 @@ import StayInTouch from '../components/StayInTouch.astro';
 		</div>
 		<div class="grid md:grid-cols-2 gap-6">
 			<a href="/formation" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
+				<div class="pathway-media">
+					<img
+						src="/images/women-cafe.jpg"
+						alt="Two women talking over coffee in a bright cafe"
+						width="2400"
+						height="1350"
+						loading="lazy"
+					/>
+				</div>
 				<Eyebrow text="For you" />
 				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Search Formation</h3>
 				<p class="mt-3 text-[var(--muted)] leading-relaxed">
@@ -108,6 +139,15 @@ import StayInTouch from '../components/StayInTouch.astro';
 				</span>
 			</a>
 			<a href="/open-forums" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
+				<div class="pathway-media">
+					<img
+						src="/images/window-conversation.jpg"
+						alt="Two men laughing together by a bright cafe window"
+						width="2400"
+						height="1350"
+						loading="lazy"
+					/>
+				</div>
 				<Eyebrow text="For your friend" variant="amber" />
 				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Open Forums</h3>
 				<p class="mt-3 text-[var(--muted)] leading-relaxed">
@@ -128,6 +168,28 @@ import StayInTouch from '../components/StayInTouch.astro';
 
 <!-- Stakes: Failure vs Success -->
 <StakesSection />
+
+<figure class="media-band" style="min-height: 14rem;">
+	<img
+		src="/images/outdoor-friends.jpg"
+		alt="A diverse group of friends laughing together outdoors"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Success looks like real friendships and honest talk.</figcaption>
+</figure>
+
+<figure class="media-band" style="min-height: 12rem;">
+	<img
+		src="/images/writing-coffee.jpg"
+		alt="Someone writing at a wooden table next to a coffee mug"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Take one small next step. We will meet you there.</figcaption>
+</figure>
 
 <!-- CTA -->
 <StayInTouch

@@ -28,23 +28,33 @@ const weeks = [
 >
 
 <!-- Hero -->
-<section class="hero-gradient">
-	<div class="max-w-5xl mx-auto px-6 pt-16 pb-12 md:pt-20">
-		<div class="max-w-3xl">
-			<Eyebrow text="Your plan · Search Formation" />
-			<h1 class="mt-4 text-4xl md:text-5xl font-bold tracking-tight leading-[1.1]">
-				You were never meant to carry the guilt alone. Here is a way to talk about faith that fits your actual life.
-			</h1>
-			<p class="mt-5 lead">
-				Formation is a 12-week cohort that moves you from the guilt cycle into confident, natural conversations. No scripts. No pressure to close. Just a proven model for loving people well at work, at home, and everywhere in between.
-			</p>
-			<div class="mt-7 flex flex-wrap gap-3">
-				<a href="#formation-interest" class="btn-primary min-h-11 inline-flex items-center">Learn more about Formation</a>
-				<a href="#model" class="btn-secondary min-h-11 inline-flex items-center">See the 1-2-3 model</a>
-			</div>
+<section class="hero-photo">
+	<div class="hero-photo__media" aria-hidden="true">
+		<img
+			src="/images/women-cafe.jpg"
+			alt=""
+			width="2400"
+			height="1350"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="hero-photo__veil" aria-hidden="true"></div>
+	<div class="hero-photo__content">
+		<p class="brand-mark rise-in">Search OC</p>
+		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Formation</p>
+		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			A way to talk about faith that fits your actual life.
+		</h1>
+		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+			A 12-week cohort that moves you from the guilt cycle into confident, natural conversations. No scripts. No pressure to close.
+		</p>
+		<div class="mt-8 flex flex-wrap gap-3 rise-in rise-in-delay-3">
+			<a href="#formation-interest" class="btn-primary min-h-11 inline-flex items-center">Learn more about Formation</a>
+			<a href="#model" class="btn-secondary min-h-11 inline-flex items-center">See the 1-2-3 model</a>
 		</div>
 	</div>
 </section>
+<img class="sr-only" src="/images/women-cafe.jpg" alt="Two women talking over coffee in a bright cafe" />
 
 <!-- Guilt Cycle -->
 <section class="section-warm section">
@@ -59,6 +69,17 @@ const weeks = [
 		<GuiltCycle />
 	</div>
 </section>
+
+<figure class="media-band" style="min-height: 10rem;">
+	<img
+		src="/images/sand-texture.jpg"
+		alt=""
+		width="2400"
+		height="1350"
+		loading="lazy"
+		aria-hidden="true"
+	/>
+</figure>
 
 <!-- What Formation Does -->
 <section class="section">
