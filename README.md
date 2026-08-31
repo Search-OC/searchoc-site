@@ -2,9 +2,9 @@
 
 Public website for Search OC at searchoc.org.
 
-- Home: `/`
-- Formation primer: `/formation`
+- Home: `/` — public Open Forum invite
 - Open Forums: `/open-forums`
+- Formation primer: `/formation` (shareable landing; not in main nav)
 
 ## Update Path (Notion → Build → Deploy)
 

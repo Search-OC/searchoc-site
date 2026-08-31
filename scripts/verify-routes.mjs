@@ -11,7 +11,7 @@ function assertExists(relativePath) {
   return fullPath;
 }
 
-function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [] } = {}) {
+function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mustNotInclude = [] } = {}) {
   const fullPath = assertExists(relativePath);
   const html = fs.readFileSync(fullPath, 'utf8');
   if (html.length < minBytes) {
@@ -33,6 +33,11 @@ function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [] } = 
       throw new Error(`dist/${relativePath} missing expected content: ${JSON.stringify(needle)}`);
     }
   }
+  for (const needle of mustNotInclude) {
+    if (html.includes(needle)) {
+      throw new Error(`dist/${relativePath} must not include ${JSON.stringify(needle)}`);
+    }
+  }
   // noscript-only body is not acceptable for public SEO pages
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   const body = bodyMatch ? bodyMatch[1] : '';
@@ -50,12 +55,13 @@ if (!fs.existsSync(distDir)) {
 
 assertStaticHtml('index.html', {
   minBytes: 2000,
-  mustInclude: ['Search OC', 'Formation']
+  mustInclude: ['Search OC', 'Open Forum'],
+  mustNotInclude: ['href="/formation"', 'href="/foundation"', 'Explore Formation']
 });
 
 assertStaticHtml(path.join('formation', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Formation', '1-2-3']
+  mustInclude: ['Formation', '1-2-3', 'href="/open-forums"']
 });
 
 assertStaticHtml(path.join('open-forums', 'index.html'), {
