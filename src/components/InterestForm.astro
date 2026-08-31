@@ -44,7 +44,7 @@ const interests = {
 	{showName && (
 		<div>
 			<label for={`${formId}-name`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
-				First name <span class="text-[var(--cool-gray)]">(optional)</span>
+				First name <span class="optional-hint">(optional)</span>
 			</label>
 			<input
 				type="text"
@@ -146,7 +146,7 @@ const interests = {
 	{showGuestName && (
 		<div>
 			<label for={`${formId}-guest`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
-				Who you are inviting <span class="text-[var(--cool-gray)]">(optional, first name is plenty)</span>
+				Who you are inviting <span class="optional-hint">(optional, first name is plenty)</span>
 			</label>
 			<input
 				type="text"
@@ -161,7 +161,7 @@ const interests = {
 	{showMessage && (
 		<div>
 			<label for={`${formId}-message`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
-				Anything else? <span class="text-[var(--cool-gray)]">(optional)</span>
+				Anything else? <span class="optional-hint">(optional)</span>
 			</label>
 			<textarea
 				id={`${formId}-message`}
