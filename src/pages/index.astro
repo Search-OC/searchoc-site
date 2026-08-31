@@ -2,11 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import StayInTouch from '../components/StayInTouch.astro';
+
+const questions = [
+	'Why is there evil and suffering in the world?',
+	'Where do we come from?',
+	'Why are we here?',
+	'What is our purpose?',
+	'Is this the way things were intended, or is there a greater plan out there?',
+];
 ---
 
 <Layout
-	title="Search OC | Questions about God? You are not the only one."
-	description="A safe place in Orange County to ask them out loud. Open Forums are hosted conversations about God. Believers and unbelievers are both welcome."
+	title="Search OC | Life's big questions"
+	description="A table in Orange County for life's big questions. Leave an email to get notified of the next Open Forum gathering."
 	canonical="/"
 	ogImage="/og/home.png"
 >
@@ -27,13 +35,13 @@ import StayInTouch from '../components/StayInTouch.astro';
 		<p class="brand-mark rise-in">Search OC</p>
 		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
 		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
-			Questions about God? You are not the only one.
+			Life's big questions
 		</h1>
 		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
-			Search OC hosts Open Forums: a table in Orange County for honest conversation about God, faith, and life's big questions. Believers and unbelievers can both pull up a chair.
+			Search OC hosts Open Forums: a table in Orange County for the questions people actually carry. Food, drinks, honest conversation. You do not have to have it figured out.
 		</p>
 		<div class="mt-8 flex flex-col sm:flex-row gap-3 rise-in rise-in-delay-3">
-			<a href="#stay-in-touch" class="btn-amber inline-flex items-center justify-center min-h-11">Keep me posted</a>
+			<a href="#stay-in-touch" class="btn-amber inline-flex items-center justify-center min-h-11">Get notified of the next gathering</a>
 			<a href="/open-forums" class="btn-secondary inline-flex items-center justify-center min-h-11">See what a night looks like</a>
 		</div>
 	</div>
@@ -44,39 +52,29 @@ import StayInTouch from '../components/StayInTouch.astro';
 	alt="Friends gathered around a dinner table with food and candles"
 />
 
-<!-- What it is -->
+<!-- The questions -->
 <section class="section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<Eyebrow text="What this is" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">A table for honest questions</h2>
+			<Eyebrow text="The conversation" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">A table for the questions that linger</h2>
 			<p class="mt-4 lead">
-				An Open Forum is a hosted conversation over food and drinks. About an hour. No sermon. No pressure to believe anything. Room for the questions you actually have.
-			</p>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				That table is Search OC's public invite. You do not need to pick a program first. Curious people and people of faith can sit together and talk.
+				An Open Forum is a hosted conversation over food and drinks. About an hour. No lecture. No pressure to agree. Room for the questions you actually have.
 			</p>
 		</div>
-		<div class="mt-10 grid md:grid-cols-3 gap-5">
-			<div class="card h-full">
-				<p class="font-sans font-semibold text-[var(--ink)]">Truly open</p>
-				<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-					Doubt, anger, and skepticism are welcome. You do not have to be a Christian to come, and you do not have to agree with anyone in the room.
-				</p>
-			</div>
-			<div class="card h-full">
-				<p class="font-sans font-semibold text-[var(--ink)]">One honest hour</p>
-				<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-					Food and drinks, a moderated conversation, then optional lingering if you want it. Come once. No commitment required.
-				</p>
-			</div>
-			<div class="card h-full">
-				<p class="font-sans font-semibold text-[var(--ink)]">Guests speak first</p>
-				<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-					Your questions lead. The host shares a viewpoint later in the night, not first. You can listen the whole time if you prefer.
-				</p>
-			</div>
-		</div>
+		<ol class="mt-10 max-w-3xl space-y-3 list-none p-0 m-0">
+			{questions.map((question, i) => (
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">{i + 1}</span>
+					<p class="font-sans font-semibold text-[var(--ink)] pt-0.5">{question}</p>
+				</li>
+			))}
+		</ol>
+		<p class="mt-8">
+			<a href="/open-forums" class="font-sans font-semibold text-[var(--search-blue-action)] hover:underline">
+				See what a night looks like &rarr;
+			</a>
+		</p>
 	</div>
 </section>
 
@@ -98,18 +96,18 @@ import StayInTouch from '../components/StayInTouch.astro';
 			<div>
 				<Eyebrow text="Who it is for" />
 				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People curious about God but unsure where to start.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People with doubts, questions, or past church baggage.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People of faith who want a safe table to bring a friend.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who have been carrying a question for a long time.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to bring a friend who might actually say yes.</li>
 					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
 				</ul>
 			</div>
 			<div>
 				<Eyebrow text="What it is not" variant="amber" />
 				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A church service, sermon, or altar call.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate club or a sales pitch for faith.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A class, a course, or homework.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A lecture or a class.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate to win.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Pressure to agree, join, or decide anything.</li>
 					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Content for social media about who attended.</li>
 				</ul>
 			</div>
@@ -136,10 +134,10 @@ import StayInTouch from '../components/StayInTouch.astro';
 					Forty years of tables in Orange County
 				</h2>
 				<p class="mt-5 text-white leading-relaxed">
-					Search OC is a local expression of Search Ministries. We host Open Forums because honest conversation about God still needs a room that is not a pulpit and not a performance.
+					Search OC is a local expression of Search Ministries. We host Open Forums because some questions need a room that is not a lecture and not a performance.
 				</p>
 				<p class="mt-4 text-white leading-relaxed">
-					If you have a question, you belong at the table. If you have a friend with a question, you can bring them. That is the whole public invite.
+					If you have a question, you belong at the table. If you have a friend with a question, you can bring them.
 				</p>
 			</div>
 		</div>
@@ -153,7 +151,7 @@ import StayInTouch from '../components/StayInTouch.astro';
 			<Eyebrow text="Already thinking of someone?" />
 			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The ask is smaller than you think</h2>
 			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				You are not inviting anyone to church. You are inviting them to one table, for one hour, to talk about one honest question. They can come once and never come back, and nothing about your friendship has to change.
+				You are inviting someone to one table, for one hour, to talk about one honest question. They can come once and never come back, and nothing about your friendship has to change.
 			</p>
 			<p class="mt-6">
 				<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
@@ -177,14 +175,16 @@ import StayInTouch from '../components/StayInTouch.astro';
 
 <StayInTouch
 	id="stay-in-touch"
-	eyebrow="Take the next step"
-	title="Want the next Open Forum date?"
-	body="Sign up and we will let you know when the next table is set. No pressure, no spam."
+	eyebrow="Just an email"
+	title="Get notified of the next gathering"
+	body="Leave an email. We will write when the next table is set, so we can see who is free to come."
 	source="home"
 	variant="blue"
-	submitLabel="Keep me posted"
-	defaultInterests={['open-forums']}
+	submitLabel="Notify me"
+	showName={true}
+	showInterests={false}
 	showFormationInterest={false}
+	defaultInterests={['open-forums']}
 	defaultNewsletter={false}
 />
 </Layout>

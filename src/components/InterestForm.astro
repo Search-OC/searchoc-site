@@ -135,7 +135,12 @@ const interests = {
 			</label>
 		</fieldset>
 	) : (
-		<input type="hidden" name="newsletter" value="true" />
+		<>
+			{defaultInterests.map((interest) => (
+				<input type="hidden" name="interest" value={interest} />
+			))}
+			{defaultNewsletter && <input type="hidden" name="newsletter" value="true" />}
+		</>
 	)}
 
 	{showGuestName && (
@@ -175,7 +180,9 @@ const interests = {
 	</button>
 
 	<p class="text-xs text-[var(--cool-gray)] font-sans leading-relaxed">
-		We respect your inbox. Choose only what you want. Unsubscribe anytime.
+		{showInterests
+			? 'We respect your inbox. Choose only what you want. Unsubscribe anytime.'
+			: 'We only use this to tell you about the next gathering. Unsubscribe anytime.'}
 	</p>
 </form>
 
@@ -212,9 +219,9 @@ const interests = {
 				const newsletter = form.querySelector('[name="newsletter"][type="hidden"]')
 					? true
 					: Boolean(form.querySelector('[name="newsletter"]:checked'));
-				const interests = Array.from(form.querySelectorAll('[name="interest"]:checked')).map(
-					(el) => (el as HTMLInputElement).value
-				);
+				const interests = Array.from(
+					form.querySelectorAll('[name="interest"]:checked, input[name="interest"][type="hidden"]')
+				).map((el) => (el as HTMLInputElement).value);
 
 				if (!email || !email.includes('@')) {
 					if (errorBox) {

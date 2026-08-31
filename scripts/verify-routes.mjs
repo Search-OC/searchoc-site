@@ -55,8 +55,8 @@ if (!fs.existsSync(distDir)) {
 
 assertStaticHtml('index.html', {
   minBytes: 2000,
-  mustInclude: ['Search OC', 'Open Forum'],
-  mustNotInclude: ['href="/formation"', 'href="/foundation"', 'Explore Formation']
+  mustInclude: ['Search OC', 'Open Forum', "Life's big questions"],
+  mustNotInclude: ['href="/formation"', 'href="/foundation"', 'Explore Formation', 'Coming soon']
 });
 
 assertStaticHtml(path.join('formation', 'index.html'), {
@@ -66,7 +66,8 @@ assertStaticHtml(path.join('formation', 'index.html'), {
 
 assertStaticHtml(path.join('open-forums', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Open Forum']
+  mustInclude: ['Open Forum', "Life's big questions", 'Get notified of the next gathering'],
+  mustNotInclude: ['Coming soon']
 });
 
 assertStaticHtml(path.join('invite', 'index.html'), {
