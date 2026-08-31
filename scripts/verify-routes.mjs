@@ -55,13 +55,21 @@ if (!fs.existsSync(distDir)) {
 
 assertStaticHtml('index.html', {
   minBytes: 2000,
-  mustInclude: ['Search OC', 'Open Forum', "Life's big questions"],
-  mustNotInclude: ['href="/formation"', 'href="/foundation"', 'Explore Formation', 'Coming soon']
+  mustInclude: ['Search Orange County', 'Open Forum', "Life's big questions"],
+  mustNotInclude: [
+    'href="/formation"',
+    'href="/foundation"',
+    'Explore Formation',
+    'Coming soon',
+    'id="footer-form"',
+    '>Home</a>',
+    '>Invite Someone</a>'
+  ]
 });
 
 assertStaticHtml(path.join('formation', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Formation', '1-2-3', 'href="/open-forums"']
+  mustInclude: ['Formation', '1-2-3', 'href="/open-forums"', 'id="footer-form"', 'Having Killer Conversations']
 });
 
 assertStaticHtml(path.join('open-forums', 'index.html'), {

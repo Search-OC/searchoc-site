@@ -5,7 +5,7 @@ interface Props {
 }
 
 const { text, variant = 'blue' } = Astro.props;
-const variantClass = variant === 'amber' ? 'eyebrow-amber' : variant === 'white' ? 'text-white' : '';
+const variantClass = variant === 'amber' ? 'eyebrow-amber' : variant === 'white' ? 'eyebrow-white' : '';
 ---
 
 <span class={`eyebrow ${variantClass}`}>{text}</span>
