@@ -23,12 +23,11 @@ const {
 
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${SITE}${ogImage}`;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
-
-const navLinks = [
-	{ href: '/', label: 'Home' },
-	{ href: '/open-forums', label: 'Open Forums' },
-	{ href: '/invite', label: 'Invite Someone' },
-];
+const showNewsletter =
+	path === '/formation' ||
+	path.startsWith('/formation/') ||
+	path === '/foundation' ||
+	path.startsWith('/foundation/');
 ---
 
 <!doctype html>
@@ -78,32 +77,15 @@ const navLinks = [
 		<a href="#main-content" class="sr-only">Skip to content</a>
 		<SpeedInsights />
 		<header class="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--surface)]/90 backdrop-blur-md">
-			<nav class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4" aria-label="Primary">
-				<a href="/" class="font-sans text-lg font-bold tracking-tight text-[var(--search-blue-action)] min-h-11 inline-flex items-center gap-2">
-					<span class="inline-block w-2.5 h-2.5 rounded-sm bg-[var(--orange)]" aria-hidden="true"></span>
-					Search OC
+			<div class="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between gap-4">
+				<a href="/" class="font-sans text-sm sm:text-lg font-bold tracking-tight text-[var(--search-blue-action)] min-h-11 min-w-0 inline-flex items-center gap-2">
+					<span class="inline-block w-2.5 h-2.5 rounded-sm bg-[var(--orange)] shrink-0" aria-hidden="true"></span>
+					<span class="leading-tight">Search Orange County</span>
 				</a>
-				<div class="hidden md:flex items-center gap-1 text-sm font-medium font-sans">
-					{navLinks.map((link) => {
-						const current = link.href === '/' ? path === '/' : path === link.href || path.startsWith(`${link.href}/`);
-						return (
-							<a
-								href={link.href}
-								aria-current={current ? 'page' : undefined}
-								class:list={[
-									'min-h-11 px-3 inline-flex items-center rounded-lg text-[var(--dark-teal)] hover:text-[var(--search-blue-action)] hover:bg-[var(--search-blue-light)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]',
-									current && 'text-[var(--search-blue-action)] bg-[var(--search-blue-light)]'
-								]}
-							>
-								{link.label}
-							</a>
-						);
-					})}
-				</div>
-				<a href="/#stay-in-touch" class="min-h-11 px-4 py-2 rounded-xl bg-[var(--search-blue-action)] text-white text-sm font-semibold font-sans hover:bg-[var(--dark-teal)] transition inline-flex items-center justify-center shadow-sm">
+				<a href="/#stay-in-touch" class="shrink-0 min-h-11 px-4 py-2 rounded-xl bg-[var(--search-blue-action)] text-white text-sm font-semibold font-sans hover:bg-[var(--dark-teal)] transition inline-flex items-center justify-center shadow-sm">
 					Get involved
 				</a>
-			</nav>
+			</div>
 		</header>
 
 		<main id="main-content">
@@ -112,37 +94,34 @@ const navLinks = [
 
 		<footer class="border-t border-[var(--border)] bg-[var(--surface)] mt-8">
 			<div class="max-w-5xl mx-auto px-6 py-12">
-				<div class="grid md:grid-cols-2 gap-10">
+				<div class:list={[showNewsletter && 'grid md:grid-cols-2 gap-10']}>
 					<div>
-						<p class="font-sans font-bold text-[var(--search-blue-action)] text-lg">Search OC</p>
+						<p class="font-sans font-bold text-[var(--search-blue-action)] text-lg">Search Orange County</p>
 						<p class="mt-2 text-[var(--muted)] max-w-md leading-relaxed">
 							Search OC hosts Open Forums in Orange County: a table for life's big questions. A local expression of Search Ministries, serving Orange County for over 40 years.
 						</p>
 						<p class="mt-4 font-sans text-sm text-[var(--cool-gray)]">Orange County, California</p>
 					</div>
-					<div>
-						<p class="font-sans font-semibold text-[var(--ink)] mb-1">Having Killer Conversations</p>
-						<p class="text-sm text-[var(--muted)] mb-4">
-							A short note every other week for Christians who want to talk about faith without being weird about it.
-						</p>
-						<InterestForm
-							formId="footer-form"
-							source="footer"
-							submitLabel="Subscribe"
-							showName={false}
-							showInterests={false}
-							defaultNewsletter={true}
-							compact={true}
-						/>
-					</div>
+					{showNewsletter && (
+						<div>
+							<p class="font-sans font-semibold text-[var(--ink)] mb-1">Having Killer Conversations</p>
+							<p class="text-sm text-[var(--muted)] mb-4">
+								A short note every other week for Christians who want to talk about faith without being weird about it.
+							</p>
+							<InterestForm
+								formId="footer-form"
+								source="footer"
+								submitLabel="Subscribe"
+								showName={false}
+								showInterests={false}
+								defaultNewsletter={true}
+								compact={true}
+							/>
+						</div>
+					)}
 				</div>
-				<div class="mt-10 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[var(--cool-gray)] font-sans">
+				<div class="mt-10 pt-6 border-t border-[var(--border)] text-xs text-[var(--cool-gray)] font-sans">
 					<p>Honest questions. Real conversation.</p>
-					<div class="flex gap-4">
-						<a href="/open-forums" class="hover:text-[var(--search-blue-action)]">Open Forums</a>
-						<a href="/invite" class="hover:text-[var(--search-blue-action)]">Invite Someone</a>
-						<a href="/#stay-in-touch" class="hover:text-[var(--search-blue-action)]">Get involved</a>
-					</div>
 				</div>
 			</div>
 		</footer>
