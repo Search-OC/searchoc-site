@@ -555,7 +555,7 @@ h1, h2, h3, h4, .font-sans {
 }
 
 .optional-hint {
-  color: var(--cool-gray);
+  color: var(--muted);
 }
 
 .stay-in-touch-on-dark .optional-hint {
