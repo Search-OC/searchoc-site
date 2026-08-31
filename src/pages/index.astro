@@ -1,26 +1,29 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
-import GuiltCycle from '../components/GuiltCycle.astro';
-import StoryBrandProblem from '../components/StoryBrandProblem.astro';
-import GuideSection from '../components/GuideSection.astro';
-import StoryBrandPlan from '../components/StoryBrandPlan.astro';
-import StakesSection from '../components/StakesSection.astro';
 import StayInTouch from '../components/StayInTouch.astro';
+
+const questions = [
+	'Why is there evil and suffering in the world?',
+	'Where do we come from?',
+	'Why are we here?',
+	'What is our purpose?',
+	'Is this the way things were intended, or is there a greater plan out there?',
+];
 ---
 
 <Layout
-	title="Search OC | Talk about your faith without the guilt"
-	description="For Christians in the marketplace who want to share their faith but don't know how. Search OC helps you break the Great Commission guilt cycle."
+	title="Search OC | Life's big questions"
+	description="A table in Orange County for life's big questions. Leave an email to get notified of the next Open Forum gathering."
 	canonical="/"
 	ogImage="/og/home.png"
 >
 
-<!-- Hero: brand + character + problem (StoryBrand), full-bleed marketplace photo -->
-<section class="hero-photo">
+<!-- Hero: Open Forum invite -->
+<section class="hero-photo hero-photo--amber">
 	<div class="hero-photo__media" aria-hidden="true">
 		<img
-			src="/images/cafe-conversation.jpg"
+			src="/images/dinner-party.jpg"
 			alt=""
 			width="2400"
 			height="1350"
@@ -30,176 +33,158 @@ import StayInTouch from '../components/StayInTouch.astro';
 	<div class="hero-photo__veil" aria-hidden="true"></div>
 	<div class="hero-photo__content">
 		<p class="brand-mark rise-in">Search OC</p>
-		<h1 class="mt-5 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
-			You want to share your faith. You just don't know how to do it without making things weird.
+		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
+		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			Life's big questions
 		</h1>
 		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
-			We help Christians in the marketplace break the guilt cycle and start conversations that actually work.
+			Search OC hosts Open Forums: a table in Orange County for the questions people actually carry. Food, drinks, honest conversation. You do not have to have it figured out.
 		</p>
 		<div class="mt-8 flex flex-col sm:flex-row gap-3 rise-in rise-in-delay-3">
-			<a href="#plan" class="btn-primary inline-flex items-center justify-center min-h-11">Show me the plan</a>
-			<a href="#the-cycle" class="btn-secondary inline-flex items-center justify-center min-h-11">Does this sound like you?</a>
+			<a href="#stay-in-touch" class="btn-amber inline-flex items-center justify-center min-h-11">Get notified of the next gathering</a>
+			<a href="/open-forums" class="btn-secondary inline-flex items-center justify-center min-h-11">See what a night looks like</a>
 		</div>
 	</div>
 </section>
 <img
 	class="sr-only"
-	src="/images/cafe-conversation.jpg"
-	alt="Friends talking and laughing together at a bright cafe table"
+	src="/images/dinner-party.jpg"
+	alt="Friends gathered around a dinner table with food and candles"
 />
 
-<!-- Problem: 3 levels -->
-<section class="section-warm section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-2xl mb-10">
-			<Eyebrow text="The problem" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">It is not that you do not care</h2>
-			<p class="mt-4 lead">
-				Most Christians in the marketplace feel the same tension. The guilt is internal. The stakes are real. And the old playbook was never built for your actual relationships.
-			</p>
-		</div>
-		<StoryBrandProblem />
-	</div>
-</section>
-
-<!-- Guilt Cycle -->
-<section id="the-cycle" class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-2xl mb-10">
-			<Eyebrow text="Sound familiar?" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The Great Commission guilt cycle</h2>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				This loop is why good-hearted Christians go quiet. Naming it is the first step out.
-			</p>
-		</div>
-		<GuiltCycle />
-	</div>
-</section>
-
-<!-- Atmospheric break -->
-<figure class="media-band">
-	<img
-		src="/images/coffee-table.jpg"
-		alt="A latte on a wooden cafe table during a quiet conversation"
-		width="2400"
-		height="1350"
-		loading="lazy"
-	/>
-	<figcaption class="media-band__caption">Real conversations happen at ordinary tables.</figcaption>
-</figure>
-
-<!-- Guide: Empathy + Authority -->
-<GuideSection />
-
-<!-- Plan -->
-<section id="plan" class="section-warm section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-2xl mb-10">
-			<Eyebrow text="The plan" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Three steps. No performance required.</h2>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				You do not need to become an expert. You need a simple path and a guide who has walked this with thousands of people before you.
-			</p>
-		</div>
-		<StoryBrandPlan />
-		<div class="mt-8 callout max-w-2xl">
-			"More Jesus. Less awkward."
-		</div>
-	</div>
-</section>
-
-<!-- Pathways -->
+<!-- The questions -->
 <section class="section">
 	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-2xl mb-10">
-			<Eyebrow text="Pick your next step" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Start where you actually are</h2>
-			<p class="mt-4 text-[var(--muted)]">
-				Need training for yourself, or a table to invite a friend to? Both paths lead to the same place: one honest conversation at a time.
+		<div class="max-w-3xl">
+			<Eyebrow text="The conversation" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">A table for the questions that linger</h2>
+			<p class="mt-4 lead">
+				An Open Forum is a hosted conversation over food and drinks. About an hour. No lecture. No pressure to agree. Room for the questions you actually have.
 			</p>
 		</div>
-		<div class="grid md:grid-cols-2 gap-6">
-			<a href="/open-forums" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
-				<div class="pathway-media">
-					<img
-						src="/images/dinner-party.jpg"
-						alt="Friends gathered around a dinner table with food and candles"
-						width="2400"
-						height="1350"
-						loading="lazy"
-					/>
-				</div>
-				<Eyebrow text="For your friend" variant="amber" />
-				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Open Forums</h3>
-				<p class="mt-3 text-[var(--muted)] leading-relaxed">
-					One hour, food and drinks, no sermon. A hosted conversation about God and life's big questions. The kind of table your curious friend might actually say yes to.
-				</p>
-				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
-					Explore Open Forums &rarr;
-				</span>
-			</a>
-			<a href="/formation" class="card card-interactive block group focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--search-blue)]">
-				<div class="pathway-media">
-					<img
-						src="/images/women-cafe.jpg"
-						alt="Two women talking over coffee in a bright cafe"
-						width="2400"
-						height="1350"
-						loading="lazy"
-					/>
-				</div>
-				<Eyebrow text="For you" />
-				<h3 class="mt-2 text-2xl font-bold group-hover:text-[var(--search-blue-action)] transition">Search Formation</h3>
-				<p class="mt-3 text-[var(--muted)] leading-relaxed">
-					A 12-week cohort for Christians who are done with the guilt cycle. Learn to value the person, ask better questions, and invite honest conversations without scripts.
-				</p>
-				<span class="mt-5 inline-flex items-center text-sm font-semibold font-sans text-[var(--search-blue-action)]">
-					Explore Formation &rarr;
-				</span>
-			</a>
-		</div>
-		<p class="mt-8 text-center">
-			<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
-				Already know who you would invite? Here is how to ask &rarr;
+		<ol class="mt-10 max-w-3xl space-y-3 list-none p-0 m-0">
+			{questions.map((question, i) => (
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">{i + 1}</span>
+					<p class="font-sans font-semibold text-[var(--ink)] pt-0.5">{question}</p>
+				</li>
+			))}
+		</ol>
+		<p class="mt-8">
+			<a href="/open-forums" class="font-sans font-semibold text-[var(--search-blue-action)] hover:underline">
+				See what a night looks like &rarr;
 			</a>
 		</p>
 	</div>
 </section>
 
-<!-- Stakes: Failure vs Success -->
-<StakesSection />
+<figure class="media-band">
+	<img
+		src="/images/forum-discussion.jpg"
+		alt="Friends laughing around a table with books and coffee during an evening discussion"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">Food, drinks, and honest questions. That is the whole night.</figcaption>
+</figure>
+
+<!-- Who it's for -->
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="grid md:grid-cols-2 gap-8">
+			<div>
+				<Eyebrow text="Who it is for" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who have been carrying a question for a long time.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to bring a friend who might actually say yes.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
+				</ul>
+			</div>
+			<div>
+				<Eyebrow text="What it is not" variant="amber" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A lecture or a class.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate to win.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Pressure to agree, join, or decide anything.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Content for social media about who attended.</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Who hosts -->
+<section class="section-blue overflow-hidden">
+	<div class="split-media">
+		<div class="split-media__image order-2 md:order-1">
+			<img
+				src="/images/marketplace-talk.jpg"
+				alt="A man gesturing warmly while talking across a cafe table"
+				width="2400"
+				height="1350"
+				loading="lazy"
+			/>
+		</div>
+		<div class="order-1 md:order-2 px-6 py-12 md:py-16 md:px-10 flex items-center">
+			<div class="max-w-xl">
+				<p class="font-sans text-xs font-bold uppercase tracking-[0.12em] text-[var(--lime)]">Search OC</p>
+				<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-white">
+					Forty years of tables in Orange County
+				</h2>
+				<p class="mt-5 text-white leading-relaxed">
+					Search OC is a local expression of Search Ministries. We host Open Forums because some questions need a room that is not a lecture and not a performance.
+				</p>
+				<p class="mt-4 text-white leading-relaxed">
+					If you have a question, you belong at the table. If you have a friend with a question, you can bring them.
+				</p>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Invite a friend -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-2xl">
+			<Eyebrow text="Already thinking of someone?" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The ask is smaller than you think</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				You are inviting someone to one table, for one hour, to talk about one honest question. They can come once and never come back, and nothing about your friendship has to change.
+			</p>
+			<p class="mt-6">
+				<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
+					Here is how to ask &rarr;
+				</a>
+			</p>
+		</div>
+	</div>
+</section>
 
 <figure class="media-band" style="min-height: 14rem;">
 	<img
-		src="/images/outdoor-friends.jpg"
-		alt="A diverse group of friends laughing together outdoors"
+		src="/images/patio-gathering.jpg"
+		alt="A diverse group of friends laughing around an outdoor patio table"
 		width="2400"
 		height="1350"
 		loading="lazy"
 	/>
-	<figcaption class="media-band__caption">Success looks like real friendships and honest talk.</figcaption>
+	<figcaption class="media-band__caption">Eight to twelve people. One table. Room for honest questions.</figcaption>
 </figure>
 
-<figure class="media-band" style="min-height: 12rem;">
-	<img
-		src="/images/writing-coffee.jpg"
-		alt="Someone writing at a wooden table next to a coffee mug"
-		width="2400"
-		height="1350"
-		loading="lazy"
-	/>
-	<figcaption class="media-band__caption">Take one small next step. We will meet you there.</figcaption>
-</figure>
-
-<!-- CTA -->
 <StayInTouch
 	id="stay-in-touch"
-	eyebrow="Take the next step"
-	title="Ready to stop going in circles?"
-	body="Tell us what you need: Formation details, upcoming Open Forums, or our newsletter Having Killer Conversations. Choose what fits. No pressure, no spam."
+	eyebrow="Just an email"
+	title="Get notified of the next gathering"
+	body="Leave an email. We will write when the next table is set, so we can see who is free to come."
 	source="home"
 	variant="blue"
+	submitLabel="Notify me"
+	showName={true}
+	showInterests={false}
+	showFormationInterest={false}
+	defaultInterests={['open-forums']}
 	defaultNewsletter={false}
-	submitLabel="Start here"
 />
 </Layout>

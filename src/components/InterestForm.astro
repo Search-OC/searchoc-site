@@ -7,6 +7,7 @@ interface Props {
 	showMessage?: boolean;
 	showGuestName?: boolean;
 	showInterests?: boolean;
+	showFormationInterest?: boolean;
 	defaultInterests?: string[];
 	defaultNewsletter?: boolean;
 	compact?: boolean;
@@ -20,6 +21,7 @@ const {
 	showMessage = false,
 	showGuestName = false,
 	showInterests = true,
+	showFormationInterest = true,
 	defaultInterests = [],
 	defaultNewsletter = false,
 	compact = false,
@@ -88,6 +90,7 @@ const interests = {
 				</span>
 			</label>
 
+			{showFormationInterest && (
 			<label class="flex items-start gap-3 cursor-pointer group">
 				<input
 					type="checkbox"
@@ -101,6 +104,7 @@ const interests = {
 					<span class="block text-xs text-[var(--muted)] mt-0.5">Learn more about the 12-week cohort for relational evangelism.</span>
 				</span>
 			</label>
+			)}
 
 			<label class="flex items-start gap-3 cursor-pointer group">
 				<input
@@ -131,7 +135,12 @@ const interests = {
 			</label>
 		</fieldset>
 	) : (
-		<input type="hidden" name="newsletter" value="true" />
+		<>
+			{defaultInterests.map((interest) => (
+				<input type="hidden" name="interest" value={interest} />
+			))}
+			{defaultNewsletter && <input type="hidden" name="newsletter" value="true" />}
+		</>
 	)}
 
 	{showGuestName && (
@@ -171,7 +180,9 @@ const interests = {
 	</button>
 
 	<p class="text-xs text-[var(--cool-gray)] font-sans leading-relaxed">
-		We respect your inbox. Choose only what you want. Unsubscribe anytime.
+		{showInterests
+			? 'We respect your inbox. Choose only what you want. Unsubscribe anytime.'
+			: 'We only use this to tell you about the next gathering. Unsubscribe anytime.'}
 	</p>
 </form>
 
@@ -208,9 +219,9 @@ const interests = {
 				const newsletter = form.querySelector('[name="newsletter"][type="hidden"]')
 					? true
 					: Boolean(form.querySelector('[name="newsletter"]:checked'));
-				const interests = Array.from(form.querySelectorAll('[name="interest"]:checked')).map(
-					(el) => (el as HTMLInputElement).value
-				);
+				const interests = Array.from(
+					form.querySelectorAll('[name="interest"]:checked, input[name="interest"][type="hidden"]')
+				).map((el) => (el as HTMLInputElement).value);
 
 				if (!email || !email.includes('@')) {
 					if (errorBox) {

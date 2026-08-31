@@ -14,6 +14,7 @@ interface Props {
 	showMessage?: boolean;
 	showGuestName?: boolean;
 	showInterests?: boolean;
+	showFormationInterest?: boolean;
 	defaultInterests?: string[];
 	defaultNewsletter?: boolean;
 	compact?: boolean;
@@ -31,6 +32,7 @@ const {
 	showMessage,
 	showGuestName,
 	showInterests,
+	showFormationInterest,
 	defaultInterests,
 	defaultNewsletter,
 	compact,
@@ -66,6 +68,7 @@ const bodyClass = isBlue ? 'text-white' : 'text-[var(--muted)]';
 					showMessage={showMessage}
 					showGuestName={showGuestName}
 					showInterests={showInterests}
+					showFormationInterest={showFormationInterest}
 					defaultInterests={defaultInterests}
 					defaultNewsletter={defaultNewsletter}
 					compact={compact}

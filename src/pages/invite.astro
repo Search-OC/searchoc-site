@@ -43,7 +43,7 @@ import StayInTouch from '../components/StayInTouch.astro';
 		<div class="max-w-3xl">
 			<h2 class="text-3xl font-bold tracking-tight">The ask is smaller than you think</h2>
 			<p class="mt-6 text-[var(--muted)] leading-relaxed">
-				You are not inviting anyone to church. You are inviting them to one table, for one hour, to talk about one honest question. Eight to twelve people, food, no sermon, no follow-up unless they ask for it.
+				You are inviting them to one table, for one hour, to talk about one honest question. Eight to twelve people, food, no lecture, no follow-up unless they ask for it.
 			</p>
 			<p class="mt-4 text-[var(--muted)] leading-relaxed">
 				They can come once and never come back, and nothing about your friendship changes. That is the whole deal. It is small on purpose.
@@ -69,7 +69,7 @@ import StayInTouch from '../components/StayInTouch.astro';
 				<div class="card">
 					<Eyebrow text="A close friend" />
 					<div class="mt-3 border border-[var(--border)] rounded-xl p-5 bg-[var(--surface)]">
-						<p>Random one for you. I go to this thing where eight or so people sit around a table over dinner and argue about God for an hour. Nobody preaches, nobody is selling anything. Honestly I just think you'd have things to say. Want to come with me?</p>
+						<p>Random one for you. I go to this thing where eight or so people sit around a table over dinner and talk about life's big questions for an hour. Nobody preaches, nobody is selling anything. Honestly I just think you'd have things to say. Want to come with me?</p>
 					</div>
 					<button class="mt-3 text-sm font-semibold font-sans text-[var(--search-blue-action)] hover:underline copy-btn" data-target="text-1">Copy</button>
 				</div>
@@ -77,15 +77,15 @@ import StayInTouch from '../components/StayInTouch.astro';
 				<div class="card">
 					<Eyebrow text="Someone you work with" />
 					<div class="mt-3 border border-[var(--border)] rounded-xl p-5 bg-[var(--surface)]">
-						<p>This is a little out of left field. There's a group I'm part of that gets a handful of people around a table over dinner and takes on one big question, like whether suffering makes God impossible. It's an hour, it's not a church thing, and you can disagree with everyone in the room. I thought of you. Any interest?</p>
+						<p>This is a little out of left field. There's a group I'm part of that gets a handful of people around a table over dinner and takes on one big question, like why there is suffering in the world, or what we're even here for. It's an hour, it's not a lecture, and you can disagree with everyone in the room. I thought of you. Any interest?</p>
 					</div>
 					<button class="mt-3 text-sm font-semibold font-sans text-[var(--search-blue-action)] hover:underline copy-btn" data-target="text-2">Copy</button>
 				</div>
 
 				<div class="card">
-					<Eyebrow text="Someone church has burned" />
+					<Eyebrow text="Someone who is wary" />
 					<div class="mt-3 border border-[var(--border)] rounded-xl p-5 bg-[var(--surface)]">
-						<p>I want to run something by you, and it is completely fine to say no. There's a table I go to where people ask the questions about God that churches usually dodge. No worship, no sermon, no one is going to corner you at the end. The people who have been burned are usually the ones who make the night worth it. If you ever want to come, I'll sit next to you.</p>
+						<p>I want to run something by you, and it is completely fine to say no. There's a table I go to where people ask the questions about life that usually stay stuck in your head. No lecture, no one is going to corner you at the end. If you ever want to come, I'll sit next to you.</p>
 					</div>
 					<button class="mt-3 text-sm font-semibold font-sans text-[var(--search-blue-action)] hover:underline copy-btn" data-target="text-3">Copy</button>
 				</div>
@@ -123,13 +123,13 @@ import StayInTouch from '../components/StayInTouch.astro';
 			<h2 class="mt-3 text-3xl font-bold tracking-tight">Two things to hold onto</h2>
 			<div class="mt-8 grid sm:grid-cols-2 gap-6">
 				<div class="card">
-					<h3 class="font-sans font-bold text-lg">God is responsible for the results.</h3>
+					<h3 class="font-sans font-bold text-lg">The invite is your job. The rest is not.</h3>
 					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
-						Your job is the invitation. Whether they come, what they think, what happens in them after, none of that is yours to carry. Show up, prepare, use what you've been given. Let go of the rest.
+						Whether they come, what they think, what happens after, none of that is yours to carry. Show up, ask, and let go of the rest.
 					</p>
 				</div>
 				<div class="card">
-					<h3 class="font-sans font-bold text-lg">A spiritual journey is a process.</h3>
+					<h3 class="font-sans font-bold text-lg">Nobody arrives in one conversation.</h3>
 					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">
 						Nobody arrives in one conversation. One honest hour at a table is a real step, even if it is the only one you ever see. You are probably not the first person in this story and you will not be the last.
 					</p>
@@ -153,15 +153,16 @@ import StayInTouch from '../components/StayInTouch.astro';
 
 <StayInTouch
 	id="cta"
-	eyebrow="Get the date"
-	title="You will want to know the date"
-	body="Hard to invite anyone to a night that does not have a date yet. Sign up and you will know the moment the next table is set, early enough to ask before it fills. If you already know who you are bringing, add their first name below."
+	eyebrow="Just an email"
+	title="Get notified of the next gathering"
+	body="Leave an email. We will write when the next table is set, early enough to ask someone before it fills. If you already know who you are bringing, add their first name below."
 	source="invite"
 	variant="warm"
-	submitLabel="Keep me in the loop"
+	submitLabel="Notify me"
 	showGuestName={true}
+	showInterests={false}
 	defaultInterests={['open-forums']}
-	defaultNewsletter={true}
+	defaultNewsletter={false}
 />
 
 <script is:inline>
@@ -169,9 +170,9 @@ import StayInTouch from '../components/StayInTouch.astro';
 		btn.addEventListener('click', async () => {
 			const targetId = btn.getAttribute('data-target');
 			const textMap = {
-				'text-1': 'Random one for you. I go to this thing where eight or so people sit around a table over dinner and argue about God for an hour. Nobody preaches, nobody is selling anything. Honestly I just think you\'d have things to say. Want to come with me?',
-				'text-2': "This is a little out of left field. There's a group I'm part of that gets a handful of people around a table over dinner and takes on one big question, like whether suffering makes God impossible. It's an hour, it's not a church thing, and you can disagree with everyone in the room. I thought of you. Any interest?",
-				'text-3': 'I want to run something by you, and it is completely fine to say no. There\'s a table I go to where people ask the questions about God that churches usually dodge. No worship, no sermon, no one is going to corner you at the end. The people who have been burned are usually the ones who make the night worth it. If you ever want to come, I\'ll sit next to you.'
+				'text-1': 'Random one for you. I go to this thing where eight or so people sit around a table over dinner and talk about life\'s big questions for an hour. Nobody preaches, nobody is selling anything. Honestly I just think you\'d have things to say. Want to come with me?',
+				'text-2': "This is a little out of left field. There's a group I'm part of that gets a handful of people around a table over dinner and takes on one big question, like why there is suffering in the world, or what we're even here for. It's an hour, it's not a lecture, and you can disagree with everyone in the room. I thought of you. Any interest?",
+				'text-3': 'I want to run something by you, and it is completely fine to say no. There\'s a table I go to where people ask the questions about life that usually stay stuck in your head. No lecture, no one is going to corner you at the end. If you ever want to come, I\'ll sit next to you.'
 			};
 			const text = textMap[targetId];
 			if (!text) return;

@@ -14,8 +14,8 @@ interface Props {
 const SITE = 'https://searchoc.org';
 
 const {
-	title = 'Search OC | Talk about your faith without the guilt',
-	description = 'For Christians in the marketplace who want to share their faith but do not know how. Search OC trains you to have honest conversations that actually work.',
+	title = "Search OC | Life's big questions",
+	description = 'A table in Orange County for life\'s big questions. Leave an email to get notified of the next Open Forum gathering.',
 	canonical = '/',
 	ogImage = '/og/home.png',
 	ogDescription = description
@@ -26,7 +26,6 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 
 const navLinks = [
 	{ href: '/', label: 'Home' },
-	{ href: '/formation', label: 'Formation' },
 	{ href: '/open-forums', label: 'Open Forums' },
 	{ href: '/invite', label: 'Invite Someone' },
 ];
@@ -58,7 +57,7 @@ const navLinks = [
 			"@context": "https://schema.org",
 			"@type": "Organization",
 			"name": "Search OC",
-			"description": "Search OC equips Christians in the marketplace to share their faith through honest, relational conversations.",
+			"description": "Search OC hosts Open Forums in Orange County: a table for life's big questions.",
 			"url": "https://searchoc.org",
 			"areaServed": {
 				"@type": "Place",
@@ -117,7 +116,7 @@ const navLinks = [
 					<div>
 						<p class="font-sans font-bold text-[var(--search-blue-action)] text-lg">Search OC</p>
 						<p class="mt-2 text-[var(--muted)] max-w-md leading-relaxed">
-							Equipping Christians in the marketplace to share their faith without guilt, pressure, or awkwardness. A local expression of Search Ministries, serving Orange County for over 40 years.
+							Search OC hosts Open Forums in Orange County: a table for life's big questions. A local expression of Search Ministries, serving Orange County for over 40 years.
 						</p>
 						<p class="mt-4 font-sans text-sm text-[var(--cool-gray)]">Orange County, California</p>
 					</div>
@@ -138,9 +137,8 @@ const navLinks = [
 					</div>
 				</div>
 				<div class="mt-10 pt-6 border-t border-[var(--border)] flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-[var(--cool-gray)] font-sans">
-					<p>More Jesus. Less awkward.</p>
+					<p>Honest questions. Real conversation.</p>
 					<div class="flex gap-4">
-						<a href="/formation" class="hover:text-[var(--search-blue-action)]">Formation</a>
 						<a href="/open-forums" class="hover:text-[var(--search-blue-action)]">Open Forums</a>
 						<a href="/invite" class="hover:text-[var(--search-blue-action)]">Invite Someone</a>
 						<a href="/#stay-in-touch" class="hover:text-[var(--search-blue-action)]">Get involved</a>

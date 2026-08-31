@@ -2,11 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
 import StayInTouch from '../components/StayInTouch.astro';
+
+const questions = [
+	'Why is there evil and suffering in the world?',
+	'Where do we come from?',
+	'Why are we here?',
+	'What is our purpose?',
+	'Is this the way things were intended, or is there a greater plan out there?',
+];
 ---
 
 <Layout
-	title="Open Forums | Search OC"
-	description="A casual, hosted conversation about God, faith, and life's big questions. One hour, no sermon, no pressure."
+	title="Open Forums | Life's big questions"
+	description="A hosted conversation in Orange County about life's big questions. Leave an email to get notified of the next gathering."
 	canonical="/open-forums"
 	ogImage="/og/forum.png"
 >
@@ -27,20 +35,38 @@ import StayInTouch from '../components/StayInTouch.astro';
 		<p class="brand-mark rise-in">Search OC</p>
 		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
 		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
-			The table your curious friend might actually say yes to.
+			Life's big questions
 		</h1>
 		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
-			A hosted conversation over food and drinks. No sermon. No pressure. Real talk about God, faith, doubt, and life's big questions.
-		</p>
-		<p class="mt-4 text-white/85 max-w-xl rise-in rise-in-delay-2">
-			Spiritually curious adults in Orange County are welcome. Come once. No commitment required.
+			A hosted conversation over food and drinks. About an hour. Honest talk, no lecture, no pressure to agree. Come once if you want. That is enough.
 		</p>
 		<div class="mt-8 rise-in rise-in-delay-3">
-			<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Keep me posted</a>
+			<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Get notified of the next gathering</a>
 		</div>
 	</div>
 </section>
 <img class="sr-only" src="/images/dinner-party.jpg" alt="Friends gathered around a dinner table with food and candles" />
+
+<!-- The questions -->
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text="The conversation" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The questions people actually carry</h2>
+			<p class="mt-4 lead">
+				An Open Forum is a table for the questions that do not fit in a hallway or a group chat. You do not need the right words. You do not need to have it figured out.
+			</p>
+		</div>
+		<ol class="mt-10 max-w-3xl space-y-3 list-none p-0 m-0">
+			{questions.map((question, i) => (
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">{i + 1}</span>
+					<p class="font-sans font-semibold text-[var(--ink)] pt-0.5">{question}</p>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
 
 <figure class="media-band">
 	<img
@@ -78,7 +104,7 @@ import StayInTouch from '../components/StayInTouch.astro';
 					<span class="cycle-number" aria-hidden="true">3</span>
 					<div>
 						<p class="font-sans font-semibold">Guests speak first</p>
-						<p class="mt-1 text-sm text-[var(--muted)]">The moderator shares a viewpoint later in the night, not first. Your questions lead.</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">Your questions lead. You can listen the whole time if you prefer.</p>
 					</div>
 				</div>
 			</div>
@@ -100,18 +126,18 @@ import StayInTouch from '../components/StayInTouch.astro';
 			<div>
 				<Eyebrow text="Who it's for" />
 				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People curious about God but unsure where to start.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People with doubts, questions, or past church baggage.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who have been carrying a question for a long time.</li>
 					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to bring a friend who might actually say yes.</li>
 					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
 				</ul>
 			</div>
 			<div>
 				<Eyebrow text="What it is not" variant="amber" />
 				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A church service.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate club or apologetics night.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> An altar call or pressure to decide anything.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A lecture or a class.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate to win.</li>
+					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Pressure to agree, join, or decide anything.</li>
 					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Content for social media about who attended.</li>
 				</ul>
 			</div>
@@ -119,21 +145,35 @@ import StayInTouch from '../components/StayInTouch.astro';
 	</div>
 </section>
 
-<!-- Dates -->
+<!-- Notify / email campaign -->
 <section class="section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<Eyebrow text="Dates and location" />
-			<h2 class="mt-3 text-3xl font-bold tracking-tight">Coming soon</h2>
+			<Eyebrow text="The next gathering" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Get notified of the next gathering</h2>
 			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				Next Open Forums will be announced to people who have signed up. We keep the group small and the setting comfortable.
+				We keep the group small and the setting comfortable. When a table is set, we email the people who asked to hear about it, so we can see who is free to come.
 			</p>
 			<p class="mt-3 text-[var(--muted)]">
-				Sign up below and we will let you know when the next one opens.
+				We only need an email address. That is the whole ask.
 			</p>
 		</div>
 	</div>
 </section>
+
+<StayInTouch
+	id="interest"
+	eyebrow="Just an email"
+	title="Get notified of the next gathering"
+	body="Leave an email. We will write when the next table is set."
+	source="open-forums"
+	variant="warm"
+	submitLabel="Notify me"
+	showName={true}
+	showInterests={false}
+	defaultInterests={['open-forums']}
+	defaultNewsletter={false}
+/>
 
 <figure class="media-band">
 	<img
@@ -150,10 +190,10 @@ import StayInTouch from '../components/StayInTouch.astro';
 <section class="section-sage section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<Eyebrow text="For hosts" />
+			<Eyebrow text="Bring someone" />
 			<h2 class="mt-3 text-3xl font-bold tracking-tight">Invite a friend</h2>
 			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				Already been through Formation or just ready to ask? Hosts are encouraged to bring one or two friends who might be curious. Guests are welcome even if they only know one person in the room.
+				If someone in your life has been carrying one of these questions, you can bring them. Guests are welcome even if they only know one person in the room.
 			</p>
 			<p class="mt-4">
 				<a href="/invite" class="font-sans font-semibold text-[var(--search-blue-action)] hover:underline">
@@ -167,16 +207,6 @@ import StayInTouch from '../components/StayInTouch.astro';
 	</div>
 </section>
 
-<StayInTouch
-	id="interest"
-	title="Keep me posted"
-	body="Tell us you are interested in upcoming Open Forums. We will reach out with the next date and details when it is set."
-	source="open-forums"
-	variant="warm"
-	submitLabel="Keep me posted"
-	defaultInterests={['open-forums']}
-/>
-
 <!-- FAQ -->
 <section class="section-warm section">
 	<div class="max-w-5xl mx-auto px-6">
@@ -185,7 +215,7 @@ import StayInTouch from '../components/StayInTouch.astro';
 			<h2 class="mt-3 text-3xl font-bold tracking-tight mb-8">FAQ</h2>
 			<div class="space-y-6">
 				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Do I have to be a Christian or believe anything specific?</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Do I have to believe anything specific?</p>
 					<p class="mt-1 text-[var(--muted)]">No. This is for people exploring, questioning, or simply curious. No belief required to attend.</p>
 				</div>
 				<div>
@@ -193,12 +223,12 @@ import StayInTouch from '../components/StayInTouch.astro';
 					<p class="mt-1 text-[var(--muted)]">Respectful disagreement is welcome. The goal is honest conversation, not agreement.</p>
 				</div>
 				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Is this a church service?</p>
-					<p class="mt-1 text-[var(--muted)]">No. It is a small group conversation in a casual setting. There is no worship, sermon, or altar call.</p>
+					<p class="font-sans font-semibold text-[var(--ink)]">Is this a class or a service?</p>
+					<p class="mt-1 text-[var(--muted)]">No. It is a small group conversation in a casual setting. There is no lecture you have to sit through, and no pressure at the end.</p>
 				</div>
 				<div>
 					<p class="font-sans font-semibold text-[var(--ink)]">Can I come alone?</p>
-					<p class="mt-1 text-[var(--muted)]">Yes. Many people do. Hosts also invite friends. You are welcome either way.</p>
+					<p class="mt-1 text-[var(--muted)]">Yes. Many people do. People also invite friends. You are welcome either way.</p>
 				</div>
 				<div>
 					<p class="font-sans font-semibold text-[var(--ink)]">Will I be put on the spot or asked to speak?</p>
@@ -208,14 +238,4 @@ import StayInTouch from '../components/StayInTouch.astro';
 		</div>
 	</div>
 </section>
-
-<StayInTouch
-	id="forum-questions"
-	title="Questions before you decide?"
-	body="Sign up below and we will answer anything you need to know before the next Open Forum."
-	source="open-forums-faq"
-	variant="blue"
-	defaultInterests={['open-forums']}
-	submitLabel="Stay in touch"
-/>
 </Layout>
