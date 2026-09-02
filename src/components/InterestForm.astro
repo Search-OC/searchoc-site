@@ -212,7 +212,7 @@ const interests = {
 	<p class="font-sans font-semibold text-[var(--ink)]">You are on the list.</p>
 	<p
 		class="mt-1 text-sm interest-success-detail"
-		data-fixed={successDetail ? 'true' : undefined}
+		data-success={successDetail || undefined}
 	>
 		{successDetail || 'We will be in touch with what you asked for. No spam.'}
 	</p>
@@ -295,7 +295,7 @@ const interests = {
 						form.classList.add('hidden');
 						if (success) {
 							const detail = success.querySelector('.interest-success-detail');
-							if (detail && detail.getAttribute('data-fixed') !== 'true') {
+							if (detail && !detail.getAttribute('data-success')) {
 								const parts: string[] = [];
 								if (interests.includes('open-forums')) parts.push('Open Forum dates');
 								if (interests.includes('formation')) parts.push('Formation details');

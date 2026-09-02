@@ -19,7 +19,6 @@ function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mus
       `dist/${relativePath} is too small (${html.length} bytes). Expected a real static page, not a JS shell.`
     );
   }
-  // Fail client-only shells that Lighthouse cannot paint (NO_FCP).
   if (/document\.write\s*\(/.test(html) && !/<h1[\s>]/i.test(html)) {
     throw new Error(
       `dist/${relativePath} looks client-rendered only (document.write without <h1>). Use static HTML in the initial response.`
@@ -38,7 +37,6 @@ function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mus
       throw new Error(`dist/${relativePath} must not include ${JSON.stringify(needle)}`);
     }
   }
-  // noscript-only body is not acceptable for public SEO pages
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   const body = bodyMatch ? bodyMatch[1] : '';
   const bodyWithoutNoscript = body.replace(/<noscript[\s\S]*?<\/noscript>/gi, '').trim();

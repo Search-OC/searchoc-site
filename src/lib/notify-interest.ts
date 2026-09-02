@@ -13,7 +13,6 @@ export interface InterestNotification {
 
 export async function notifyInterest(data: InterestNotification): Promise<{ ok: boolean }> {
 	if (!INTEREST_NOTIFICATION_EMAIL) {
-		// Notification email is optional when Beehiiv handles subscriptions.
 		return { ok: true };
 	}
 
