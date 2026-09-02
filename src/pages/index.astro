@@ -1,7 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
-import StayInTouch from '../components/StayInTouch.astro';
+import InterestForm from '../components/InterestForm.astro';
 
 const questions = [
 	'Why is there evil and suffering in the world?',
@@ -13,14 +13,13 @@ const questions = [
 ---
 
 <Layout
-	title="Search OC | Life's big questions"
-	description="A table in Orange County for life's big questions. Leave an email to get notified of the next Open Forum gathering."
+	title="Search OC | There is no safe room for that question"
+	description="There is no safe room for that question. Open Forum is a table in Orange County. Leave an email or a phone number to hear when the next one is set."
 	canonical="/"
 	ogImage="/og/home.png"
 >
 
-<!-- Hero: Open Forum invite -->
-<section class="hero-photo hero-photo--amber">
+<section class="hero-photo hero-photo--amber hero-photo--with-form">
 	<div class="hero-photo__media" aria-hidden="true">
 		<img
 			src="/images/dinner-party.jpg"
@@ -32,17 +31,33 @@ const questions = [
 	</div>
 	<div class="hero-photo__veil" aria-hidden="true"></div>
 	<div class="hero-photo__content">
-		<p class="brand-mark rise-in">Search OC</p>
-		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
-		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
-			Life's big questions
+		<p class="font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in">Open Forum</p>
+		<h1 class="mt-3 max-w-3xl text-2xl sm:text-3xl md:text-[2.5rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			There is no safe room for that question.
 		</h1>
-		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
-			Search OC hosts Open Forums: a table in Orange County for the questions people actually carry. Food, drinks, honest conversation. You do not have to have it figured out.
+		<p class="mt-3 lead max-w-xl rise-in rise-in-delay-2">
+			You walked away from church, or you never found a group that goes that deep. You still want to think critically about the world and what you are experiencing. Bring your questions. Learn with others who are exploring something similar.
 		</p>
-		<div class="mt-8 flex flex-col sm:flex-row gap-3 rise-in rise-in-delay-3">
-			<a href="#stay-in-touch" class="btn-amber inline-flex items-center justify-center min-h-11">Get notified of the next gathering</a>
-			<a href="/open-forums" class="btn-secondary inline-flex items-center justify-center min-h-11">See what a night looks like</a>
+		<p class="mt-3 max-w-xl font-sans text-sm md:text-base rise-in rise-in-delay-2">
+			Open Forum is the table. Food, drinks, honest conversation. No lecture. No pressure.
+		</p>
+		<div id="stay-in-touch" class="stay-in-touch-on-dark mt-5 max-w-md rise-in rise-in-delay-3">
+			<p class="mb-3 font-sans text-sm">
+				Leave an email or a phone number. We will tell you when the next table is set.
+			</p>
+			<InterestForm
+				formId="stay-in-touch-form"
+				source="home"
+				submitLabel="Let me know when the next one is"
+				showName={false}
+				showInterests={false}
+				showFormationInterest={false}
+				defaultInterests={['open-forums']}
+				defaultNewsletter={false}
+				compact={true}
+				acceptPhone={true}
+				successDetail="We will tell you when the next table is set."
+			/>
 		</div>
 	</div>
 </section>
@@ -52,11 +67,10 @@ const questions = [
 	alt="Friends gathered around a dinner table with food and candles"
 />
 
-<!-- The questions -->
 <section class="section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
-			<Eyebrow text="The conversation" />
+			<Eyebrow text="What a night is" />
 			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">A table for the questions that linger</h2>
 			<p class="mt-4 lead">
 				An Open Forum is a hosted conversation over food and drinks. About an hour. No lecture. No pressure to agree. Room for the questions you actually have.
@@ -70,11 +84,6 @@ const questions = [
 				</li>
 			))}
 		</ol>
-		<p class="mt-8">
-			<a href="/open-forums" class="font-sans font-semibold text-[var(--search-blue-action)] hover:underline">
-				See what a night looks like &rarr;
-			</a>
-		</p>
 	</div>
 </section>
 
@@ -89,16 +98,15 @@ const questions = [
 	<figcaption class="media-band__caption">Food, drinks, and honest questions. That is the whole night.</figcaption>
 </figure>
 
-<!-- Who it's for -->
 <section class="section-warm section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="grid md:grid-cols-2 gap-8">
 			<div>
 				<Eyebrow text="Who it is for" />
 				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who have been carrying a question for a long time.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to bring a friend who might actually say yes.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who walked away from church and still have questions.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who never found a group that goes that deep.</li>
+					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to think critically, not be talked into a conclusion.</li>
 					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
 				</ul>
 			</div>
@@ -115,53 +123,6 @@ const questions = [
 	</div>
 </section>
 
-<!-- Who hosts -->
-<section class="section-blue overflow-hidden">
-	<div class="split-media">
-		<div class="split-media__image order-2 md:order-1">
-			<img
-				src="/images/marketplace-talk.jpg"
-				alt="A man gesturing warmly while talking across a cafe table"
-				width="2400"
-				height="1350"
-				loading="lazy"
-			/>
-		</div>
-		<div class="order-1 md:order-2 px-6 py-12 md:py-16 md:px-10 flex items-center">
-			<div class="max-w-xl">
-				<p class="font-sans text-xs font-bold uppercase tracking-[0.12em] text-[var(--lime)]">Search OC</p>
-				<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight text-white">
-					Forty years of tables in Orange County
-				</h2>
-				<p class="mt-5 text-white leading-relaxed">
-					Search OC is a local expression of Search Ministries. We host Open Forums because some questions need a room that is not a lecture and not a performance.
-				</p>
-				<p class="mt-4 text-white leading-relaxed">
-					If you have a question, you belong at the table. If you have a friend with a question, you can bring them.
-				</p>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Invite a friend -->
-<section class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-2xl">
-			<Eyebrow text="Already thinking of someone?" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The ask is smaller than you think</h2>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				You are inviting someone to one table, for one hour, to talk about one honest question. They can come once and never come back, and nothing about your friendship has to change.
-			</p>
-			<p class="mt-6">
-				<a href="/invite" class="font-sans font-semibold text-[var(--orange-action)] hover:underline">
-					Here is how to ask &rarr;
-				</a>
-			</p>
-		</div>
-	</div>
-</section>
-
 <figure class="media-band" style="min-height: 14rem;">
 	<img
 		src="/images/patio-gathering.jpg"
@@ -170,21 +131,6 @@ const questions = [
 		height="1350"
 		loading="lazy"
 	/>
-	<figcaption class="media-band__caption">Eight to twelve people. One table. Room for honest questions.</figcaption>
+	<figcaption class="media-band__caption">A table. Room for the question you brought.</figcaption>
 </figure>
-
-<StayInTouch
-	id="stay-in-touch"
-	eyebrow="Just an email"
-	title="Get notified of the next gathering"
-	body="Leave an email. We will write when the next table is set, so we can see who is free to come."
-	source="home"
-	variant="blue"
-	submitLabel="Notify me"
-	showName={true}
-	showInterests={false}
-	showFormationInterest={false}
-	defaultInterests={['open-forums']}
-	defaultNewsletter={false}
-/>
 </Layout>

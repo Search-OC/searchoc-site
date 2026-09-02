@@ -11,6 +11,8 @@ interface Props {
 	defaultInterests?: string[];
 	defaultNewsletter?: boolean;
 	compact?: boolean;
+	acceptPhone?: boolean;
+	successDetail?: string;
 }
 
 const {
@@ -25,6 +27,8 @@ const {
 	defaultInterests = [],
 	defaultNewsletter = false,
 	compact = false,
+	acceptPhone = false,
+	successDetail,
 } = Astro.props;
 
 const interests = {
@@ -36,9 +40,10 @@ const interests = {
 
 <form
 	id={formId}
-	class={`interest-form space-y-4 ${compact ? 'text-sm' : ''}`}
+	class={`interest-form ${compact ? 'space-y-3 text-sm' : 'space-y-4'}`}
 	data-source={source}
 	data-form-id={formId}
+	data-accept-phone={acceptPhone ? 'true' : 'false'}
 	novalidate
 >
 	{showName && (
@@ -64,11 +69,26 @@ const interests = {
 			type="email"
 			id={`${formId}-email`}
 			name="email"
-			required
+			required={!acceptPhone}
 			class="input"
 			autocomplete="email"
 		/>
 	</div>
+
+	{acceptPhone && (
+		<div>
+			<label for={`${formId}-phone`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
+				Phone
+			</label>
+			<input
+				type="tel"
+				id={`${formId}-phone`}
+				name="phone"
+				class="input"
+				autocomplete="tel"
+			/>
+		</div>
+	)}
 
 	{showInterests ? (
 		<fieldset class="space-y-3">
@@ -174,26 +194,35 @@ const interests = {
 
 	<button
 		type="submit"
-		class={`${compact ? 'btn-primary' : 'btn-primary'} w-full min-h-11 inline-flex items-center justify-center interest-submit`}
+		class="btn-primary w-full min-h-11 inline-flex items-center justify-center interest-submit"
 	>
 		{submitLabel}
 	</button>
 
 	<p class="text-xs text-[var(--muted)] font-sans leading-relaxed">
-		{showInterests
-			? 'We respect your inbox. Choose only what you want. Unsubscribe anytime.'
-			: 'We only use this to tell you about the next gathering. Unsubscribe anytime.'}
+		{acceptPhone
+			? 'We only use this to tell you when the next table is set.'
+			: showInterests
+				? 'We respect your inbox. Choose only what you want. Unsubscribe anytime.'
+				: 'We only use this to tell you about the next gathering. Unsubscribe anytime.'}
 	</p>
 </form>
 
 <div class="interest-success hidden mt-6 card text-[var(--muted)]" data-form-id={formId}>
 	<p class="font-sans font-semibold text-[var(--ink)]">You are on the list.</p>
-	<p class="mt-1 text-sm interest-success-detail">We will be in touch with what you asked for. No spam.</p>
+	<p
+		class="mt-1 text-sm interest-success-detail"
+		data-success={successDetail || undefined}
+	>
+		{successDetail || 'We will be in touch with what you asked for. No spam.'}
+	</p>
 </div>
 
 <div class="interest-error hidden mt-4 text-sm text-red-600 font-sans" data-form-id={formId} role="alert"></div>
 
 <script>
+	import { parseContactHandle } from '../lib/contact-handle';
+
 	function initInterestForms() {
 		document.querySelectorAll('.interest-form').forEach((formEl) => {
 			const form = formEl as HTMLFormElement;
@@ -202,6 +231,7 @@ const interests = {
 
 			const formId = form.dataset.formId || 'interest-form';
 			const source = form.dataset.source || 'website';
+			const acceptPhone = form.dataset.acceptPhone === 'true';
 			const success = document.querySelector(`.interest-success[data-form-id="${formId}"]`) as HTMLElement | null;
 			const errorBox = document.querySelector(`.interest-error[data-form-id="${formId}"]`) as HTMLElement | null;
 			const submitBtn = form.querySelector('.interest-submit') as HTMLButtonElement | null;
@@ -213,6 +243,7 @@ const interests = {
 				if (errorBox) errorBox.classList.add('hidden');
 
 				const email = (form.querySelector('[name="email"]') as HTMLInputElement)?.value.trim();
+				const phone = (form.querySelector('[name="phone"]') as HTMLInputElement)?.value.trim();
 				const name = (form.querySelector('[name="name"]') as HTMLInputElement)?.value.trim();
 				const guestName = (form.querySelector('[name="guestName"]') as HTMLInputElement)?.value.trim();
 				const message = (form.querySelector('[name="message"]') as HTMLTextAreaElement)?.value.trim();
@@ -223,7 +254,16 @@ const interests = {
 					form.querySelectorAll('[name="interest"]:checked, input[name="interest"][type="hidden"]')
 				).map((el) => (el as HTMLInputElement).value);
 
-				if (!email || !email.includes('@')) {
+				if (acceptPhone) {
+					const parsed = parseContactHandle({ email, phone });
+					if (!parsed.ok) {
+						if (errorBox) {
+							errorBox.textContent = parsed.error;
+							errorBox.classList.remove('hidden');
+						}
+						return;
+					}
+				} else if (!email || !email.includes('@')) {
 					if (errorBox) {
 						errorBox.textContent = 'Please enter a valid email.';
 						errorBox.classList.remove('hidden');
@@ -248,14 +288,14 @@ const interests = {
 					const res = await fetch('/api/interest', {
 						method: 'POST',
 						headers: { 'Content-Type': 'application/json' },
-						body: JSON.stringify({ email, name, guestName, message, newsletter, interests, source }),
+						body: JSON.stringify({ email, phone, name, guestName, message, newsletter, interests, source }),
 					});
 
 					if (res.ok) {
 						form.classList.add('hidden');
 						if (success) {
 							const detail = success.querySelector('.interest-success-detail');
-							if (detail) {
+							if (detail && !detail.getAttribute('data-success')) {
 								const parts: string[] = [];
 								if (interests.includes('open-forums')) parts.push('Open Forum dates');
 								if (interests.includes('formation')) parts.push('Formation details');

@@ -18,6 +18,8 @@ interface Props {
 	defaultInterests?: string[];
 	defaultNewsletter?: boolean;
 	compact?: boolean;
+	acceptPhone?: boolean;
+	successDetail?: string;
 }
 
 const {
@@ -36,6 +38,8 @@ const {
 	defaultInterests,
 	defaultNewsletter,
 	compact,
+	acceptPhone,
+	successDetail,
 } = Astro.props;
 
 const isBlue = variant === 'blue';
@@ -72,6 +76,8 @@ const bodyClass = isBlue ? 'text-white' : 'text-[var(--muted)]';
 					defaultInterests={defaultInterests}
 					defaultNewsletter={defaultNewsletter}
 					compact={compact}
+					acceptPhone={acceptPhone}
+					successDetail={successDetail}
 				/>
 			</div>
 		</div>
