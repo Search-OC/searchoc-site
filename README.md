@@ -26,6 +26,15 @@ Public website for Search OC at searchoc.org.
 
 ## Local Development
 
+Preview in Cursor, one step:
+
+1. Open this folder in Cursor.
+2. Press **F5**, or open Run and Debug and start **Preview site**.
+
+The site starts at [http://localhost:4321](http://localhost:4321) and a browser opens. To keep the preview inside Cursor, open the Command Palette and run **Simple Browser: Show**, then paste that URL.
+
+Same server from a terminal:
+
 ```sh
 npm run dev
 ```
