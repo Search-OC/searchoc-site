@@ -5,7 +5,7 @@
 			"name": "Preview site",
 			"type": "node-terminal",
 			"request": "launch",
-			"command": "./node_modules/.bin/astro dev --open"
+			"command": "./node_modules/.bin/astro dev"
 		}
 	]
 }

@@ -28,10 +28,12 @@ Public website for Search OC at searchoc.org.
 
 Preview in Cursor, one step:
 
-1. Open this folder in Cursor.
+1. In the Cursor app on your MacBook, open this folder. If the repo lives on another Mac, connect with **Remote-SSH** so Cursor stays on the MacBook and the files stay on that machine.
 2. Press **F5**, or open Run and Debug and start **Preview site**.
 
-The site starts at [http://localhost:4321](http://localhost:4321) and a browser opens. To keep the preview inside Cursor, open the Command Palette and run **Simple Browser: Show**, then paste that URL.
+Astro starts on port 4321. Cursor forwards that port to the MacBook and should open an in-editor preview. If it does not, open the Command Palette and run **Simple Browser: Show**, then paste [http://localhost:4321](http://localhost:4321).
+
+Do not use a Terminal.app SSH session as the only connection. `--open` would launch a browser on the remote Mac, not in Cursor. This project no longer uses `--open` for that reason.
 
 Same server from a terminal:
 
