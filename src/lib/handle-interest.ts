@@ -1,4 +1,9 @@
 import { isBeehiivConfigured, subscribeToBeehiiv } from './beehiiv';
+import {
+	contactEmail,
+	contactPhone,
+	parseContactHandle,
+} from './contact-handle';
 import { isNotificationConfigured, notifyInterest } from './notify-interest';
 
 const VALID_INTERESTS = new Set(['formation', 'open-forums', 'general']);
@@ -12,6 +17,7 @@ function parseInterests(value: unknown): string[] {
 
 export interface InterestPayload {
 	email?: unknown;
+	phone?: unknown;
 	name?: unknown;
 	guestName?: unknown;
 	message?: unknown;
@@ -28,7 +34,16 @@ export async function handleInterestSubmission(body: InterestPayload): Promise<R
 		);
 	}
 
-	const email = (body.email || '').toString().trim().toLowerCase();
+	const parsed = parseContactHandle({ email: body.email, phone: body.phone });
+	if (!parsed.ok) {
+		return new Response(JSON.stringify({ error: parsed.error }), {
+			status: 400,
+			headers: { 'Content-Type': 'application/json' },
+		});
+	}
+
+	const email = contactEmail(parsed.contact);
+	const phone = contactPhone(parsed.contact);
 	const name = (body.name || '').toString().trim();
 	const guestName = (body.guestName || '').toString().trim();
 	const message = (body.message || '').toString().trim();
@@ -36,11 +51,13 @@ export async function handleInterestSubmission(body: InterestPayload): Promise<R
 	const newsletter = Boolean(body.newsletter);
 	const interests = parseInterests(body.interests);
 
-	if (!email || !email.includes('@')) {
-		return new Response(JSON.stringify({ error: 'Valid email is required.' }), {
-			status: 400,
-			headers: { 'Content-Type': 'application/json' },
-		});
+	if (!email && !isNotificationConfigured()) {
+		return new Response(
+			JSON.stringify({
+				error: 'Please enter an email. We cannot store a phone number alone.',
+			}),
+			{ status: 400, headers: { 'Content-Type': 'application/json' } }
+		);
 	}
 
 	if (!newsletter && interests.length === 0) {
@@ -59,8 +76,9 @@ export async function handleInterestSubmission(body: InterestPayload): Promise<R
 	if (message) customFields.message = message;
 
 	let beehiivOk = true;
-	const shouldSubscribe = newsletter || interests.length > 0;
-	if (shouldSubscribe && isBeehiivConfigured()) {
+	const shouldSubscribe = Boolean(email) && (newsletter || interests.length > 0);
+	const attemptedBeehiiv = shouldSubscribe && isBeehiivConfigured();
+	if (attemptedBeehiiv && email) {
 		const result = await subscribeToBeehiiv({
 			email,
 			utmSource: source,
@@ -73,9 +91,11 @@ export async function handleInterestSubmission(body: InterestPayload): Promise<R
 	}
 
 	let notifyOk = true;
-	if (isNotificationConfigured()) {
+	const attemptedNotify = isNotificationConfigured();
+	if (attemptedNotify) {
 		const result = await notifyInterest({
 			email,
+			phone,
 			name,
 			source,
 			interests,
@@ -86,14 +106,14 @@ export async function handleInterestSubmission(body: InterestPayload): Promise<R
 		notifyOk = result.ok;
 	}
 
-	if (!beehiivOk && shouldSubscribe && isBeehiivConfigured()) {
+	if (attemptedBeehiiv && !beehiivOk) {
 		return new Response(JSON.stringify({ error: 'Could not save your interest.' }), {
 			status: 502,
 			headers: { 'Content-Type': 'application/json' },
 		});
 	}
 
-	if (!notifyOk && !shouldSubscribe) {
+	if (!attemptedBeehiiv && attemptedNotify && !notifyOk) {
 		return new Response(JSON.stringify({ error: 'Could not save your interest.' }), {
 			status: 502,
 			headers: { 'Content-Type': 'application/json' },

@@ -1,7 +1,8 @@
 const INTEREST_NOTIFICATION_EMAIL = import.meta.env.INTEREST_NOTIFICATION_EMAIL;
 
 export interface InterestNotification {
-	email: string;
+	email?: string;
+	phone?: string;
 	name?: string;
 	source: string;
 	interests: string[];
@@ -21,7 +22,8 @@ export async function notifyInterest(data: InterestNotification): Promise<{ ok: 
 		_subject: subject,
 		_template: 'table',
 		_captcha: 'false',
-		email: data.email,
+		email: data.email || '(not provided)',
+		phone: data.phone || '(not provided)',
 		name: data.name || '(not provided)',
 		source: data.source,
 		interests: data.interests.join(', ') || 'none selected',
