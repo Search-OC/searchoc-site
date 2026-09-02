@@ -55,7 +55,20 @@ if (!fs.existsSync(distDir)) {
 
 assertStaticHtml('index.html', {
   minBytes: 2000,
-  mustInclude: ['Search Orange County', 'Open Forum', "Life's big questions"],
+  mustInclude: [
+    'Search Orange County',
+    'Open Forum',
+    'safe room',
+    'walked away',
+    'goes that deep',
+    'think critically',
+    'questions',
+    'Learn with',
+    'name="email"',
+    'name="phone"',
+    'id="stay-in-touch"',
+    'Tell me when'
+  ],
   mustNotInclude: [
     'href="/formation"',
     'href="/foundation"',
@@ -63,7 +76,11 @@ assertStaticHtml('index.html', {
     'Coming soon',
     'id="footer-form"',
     '>Home</a>',
-    '>Invite Someone</a>'
+    '>Invite Someone</a>',
+    'Eight to twelve',
+    'Get involved',
+    'href="/open-forums"',
+    'Forty years of tables'
   ]
 });
 

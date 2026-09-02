@@ -293,6 +293,34 @@ h1, h2, h3, h4, .font-sans {
     );
 }
 
+.hero-photo--with-form {
+  min-height: 0;
+}
+
+.hero-photo--with-form .hero-photo__content {
+  padding: 4.25rem 1.25rem 1.25rem;
+}
+
+.hero-photo--with-form .lead {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+@media (min-width: 768px) {
+  .hero-photo--with-form {
+    min-height: min(70vh, 42rem);
+  }
+
+  .hero-photo--with-form .hero-photo__content {
+    padding: 6.5rem 1.5rem 2.5rem;
+  }
+
+  .hero-photo--with-form .lead {
+    font-size: 1.15rem;
+    line-height: 1.65;
+  }
+}
+
 /* Mid-page visual anchors — not cards */
 .media-band {
   position: relative;
