@@ -22,5 +22,17 @@
     "variant": "",
     "headline": "You do not need a script. You need a posture.",
     "subline": "Training for Christians who want honest conversations about faith."
+  },
+  {
+    "slug": "resources",
+    "variant": "",
+    "headline": "Free resources for better conversations.",
+    "subline": "Tools for you, and for a friend who is exploring."
+  },
+  {
+    "slug": "foundation",
+    "variant": "reversed",
+    "headline": "Keep going after the questions start landing.",
+    "subline": "Seven short studies for a small group or a one-on-one."
   }
 ]

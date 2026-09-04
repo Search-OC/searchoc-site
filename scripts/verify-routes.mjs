@@ -11,7 +11,7 @@ function assertExists(relativePath) {
   return fullPath;
 }
 
-function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mustNotInclude = [] } = {}) {
+function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mustNotInclude = [], mustNotMatch = [] } = {}) {
   const fullPath = assertExists(relativePath);
   const html = fs.readFileSync(fullPath, 'utf8');
   if (html.length < minBytes) {
@@ -37,6 +37,12 @@ function assertStaticHtml(relativePath, { minBytes = 1500, mustInclude = [], mus
       throw new Error(`dist/${relativePath} must not include ${JSON.stringify(needle)}`);
     }
   }
+  for (const pattern of mustNotMatch) {
+    const re = pattern instanceof RegExp ? pattern : new RegExp(pattern);
+    if (re.test(html)) {
+      throw new Error(`dist/${relativePath} matched forbidden pattern: ${re}`);
+    }
+  }
   const bodyMatch = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
   const body = bodyMatch ? bodyMatch[1] : '';
   const bodyWithoutNoscript = body.replace(/<noscript[\s\S]*?<\/noscript>/gi, '').trim();
@@ -51,6 +57,7 @@ if (!fs.existsSync(distDir)) {
   throw new Error('dist/ directory does not exist. Did the build step run?');
 }
 
+// Homepage is an isolated entry point. It must not link into the inner ecosystem.
 assertStaticHtml('index.html', {
   minBytes: 2000,
   mustInclude: [
@@ -70,6 +77,8 @@ assertStaticHtml('index.html', {
   mustNotInclude: [
     'href="/formation"',
     'href="/foundation"',
+    'href="/resources"',
+    'href="/invite"',
     'Explore Formation',
     'Coming soon',
     'id="footer-form"',
@@ -82,20 +91,81 @@ assertStaticHtml('index.html', {
   ]
 });
 
+const noHomeLink = { mustNotMatch: [/href=(["'])\/\1/] };
+
 assertStaticHtml(path.join('formation', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Formation', '1-2-3', 'href="/open-forums"', 'id="footer-form"', 'Having Killer Conversations']
+  mustInclude: [
+    'Formation',
+    '1-2-3',
+    'href="/open-forums"',
+    'id="footer-form"',
+    'Having Killer Conversations',
+    'id="stay-in-touch"',
+    'Get involved'
+  ],
+  mustNotInclude: ['Back to Search OC home'],
+  ...noHomeLink
 });
 
 assertStaticHtml(path.join('open-forums', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Open Forum', "Life's big questions", 'Get notified of the next gathering'],
-  mustNotInclude: ['Coming soon']
+  mustInclude: [
+    'Open Forum',
+    "Life's big questions",
+    'id="stay-in-touch"',
+    'name="phone"',
+    'Get involved',
+    'href="/formation"',
+    'href="/foundation"',
+    'href="/resources"',
+    'href="/invite"'
+  ],
+  mustNotInclude: ['Coming soon'],
+  ...noHomeLink
 });
 
 assertStaticHtml(path.join('invite', 'index.html'), {
   minBytes: 2000,
-  mustInclude: ['Invite']
+  mustInclude: ['Invite', 'id="stay-in-touch"', 'Get involved', 'href="/open-forums"'],
+  ...noHomeLink
 });
 
-console.log('✅ Required routes exist in dist/ with static content: /, /formation, /open-forums, /invite');
+assertStaticHtml(path.join('resources', 'index.html'), {
+  minBytes: 2000,
+  mustInclude: [
+    'Resources',
+    'REACH',
+    'Questioning God',
+    'id="stay-in-touch"',
+    'Get involved',
+    'href="/formation"',
+    'href="/foundation"',
+    'href="/open-forums"'
+  ],
+  ...noHomeLink
+});
+
+assertStaticHtml(path.join('foundation', 'index.html'), {
+  minBytes: 2000,
+  mustInclude: [
+    'Foundations',
+    'Inquire',
+    'Explore',
+    'Grow',
+    'Speak',
+    'Listen',
+    'Invest',
+    'Invite',
+    'id="stay-in-touch"',
+    'Get involved',
+    'href="/open-forums"',
+    'href="/formation"',
+    'href="/resources"'
+  ],
+  ...noHomeLink
+});
+
+console.log(
+  '✅ Required routes exist in dist/ with static content: /, /formation, /open-forums, /invite, /resources, /foundation'
+);

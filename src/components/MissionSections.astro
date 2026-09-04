@@ -1,0 +1,113 @@
+---
+import Eyebrow from './Eyebrow.astro';
+
+// Shared mission content for / and /open-forums. The homepage is isolated and the Open Forums page
+// is the hub of the inner ecosystem, but both have to describe the same night. Headings and
+// captions stay per-page so the two do not read as byte-identical to a crawler.
+interface Props {
+	questionsEyebrow?: string;
+	questionsHeading?: string;
+	questionsLead?: string;
+	audience?: string[];
+	forumCaption?: string;
+	patioCaption?: string;
+	patioMinHeight?: string;
+}
+
+const questions = [
+	'Why is there evil and suffering in the world?',
+	'Where do we come from?',
+	'Why are we here?',
+	'What is our purpose?',
+	'Is this the way things were intended, or is there a greater plan out there?',
+];
+
+const notThis = [
+	'A lecture or a class.',
+	'A debate to win.',
+	'Pressure to agree, join, or decide anything.',
+	'Content for social media about who attended.',
+];
+
+const {
+	questionsEyebrow = 'What a night is',
+	questionsHeading = 'A table for the questions that linger',
+	questionsLead = 'An Open Forum is a hosted conversation over food and drinks. About an hour. No lecture. No pressure to agree. Room for the questions you actually have.',
+	audience = [
+		'People who walked away from church and still have questions.',
+		'People who never found a group that goes that deep.',
+		'People who want to think critically, not be talked into a conclusion.',
+		'People who may come once and decide that is enough for now.',
+	],
+	forumCaption = 'Food, drinks, and honest questions. That is the whole night.',
+	patioCaption = 'A table. Room for the question you brought.',
+	patioMinHeight = '14rem',
+} = Astro.props;
+---
+
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text={questionsEyebrow} />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">{questionsHeading}</h2>
+			<p class="mt-4 lead">{questionsLead}</p>
+		</div>
+		<ol class="mt-10 max-w-3xl space-y-3 list-none p-0 m-0">
+			{questions.map((question, i) => (
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">{i + 1}</span>
+					<p class="font-sans font-semibold text-[var(--ink)] pt-0.5">{question}</p>
+				</li>
+			))}
+		</ol>
+	</div>
+</section>
+
+<figure class="media-band">
+	<img
+		src="/images/forum-discussion.jpg"
+		alt="Friends laughing around a table with books and coffee during an evening discussion"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">{forumCaption}</figcaption>
+</figure>
+
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="grid md:grid-cols-2 gap-8">
+			<div>
+				<Eyebrow text="Who it is for" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					{audience.map((item) => (
+						<li class="flex gap-2">
+							<span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> {item}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div>
+				<Eyebrow text="What it is not" variant="amber" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					{notThis.map((item) => (
+						<li class="flex gap-2">
+							<span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> {item}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<figure class="media-band" style={`min-height: ${patioMinHeight};`}>
+	<img
+		src="/images/patio-gathering.jpg"
+		alt="A diverse group of friends laughing around an outdoor patio table"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">{patioCaption}</figcaption>
+</figure>
