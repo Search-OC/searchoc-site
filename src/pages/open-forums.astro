@@ -1,26 +1,60 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Eyebrow from '../components/Eyebrow.astro';
+import InterestForm from '../components/InterestForm.astro';
+import MissionSections from '../components/MissionSections.astro';
 import StayInTouch from '../components/StayInTouch.astro';
 
-const questions = [
-	'Why is there evil and suffering in the world?',
-	'Where do we come from?',
-	'Why are we here?',
-	'What is our purpose?',
-	'Is this the way things were intended, or is there a greater plan out there?',
+const audience = [
+	'People who have been carrying a question for a long time.',
+	'People who want an honest, low-pressure conversation.',
+	'People who want to bring a friend who might actually say yes.',
+	'People who may come once and decide that is enough for now.',
 ];
+
+const faq = [
+	{
+		q: 'Do I have to believe anything specific?',
+		a: 'No. This is for people exploring, questioning, or simply curious. No belief required to attend.',
+	},
+	{
+		q: 'What if I disagree with something that is said?',
+		a: 'Respectful disagreement is welcome. The goal is honest conversation, not agreement.',
+	},
+	{
+		q: 'Is this a class or a service?',
+		a: 'No. It is a small group conversation in a casual setting. There is no lecture you have to sit through, and no pressure at the end.',
+	},
+	{
+		q: 'Can I come alone?',
+		a: 'Yes. Many people do. People also invite friends. You are welcome either way.',
+	},
+	{
+		q: 'Will I be put on the spot or asked to speak?',
+		a: 'You can listen the whole time if you prefer. Participation is always optional.',
+	},
+];
+
+const faqSchema = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faq.map(({ q, a }) => ({
+		'@type': 'Question',
+		name: q,
+		acceptedAnswer: { '@type': 'Answer', text: a },
+	})),
+};
 ---
 
 <Layout
 	title="Open Forums | Life's big questions"
-	description="A hosted conversation in Orange County about life's big questions. Leave an email to get notified of the next gathering."
+	description="A hosted conversation in Orange County about life's big questions. Leave an email or a phone number to hear when the next table is set."
 	canonical="/open-forums"
 	ogImage="/og/forum.png"
 >
 
-<!-- Hero -->
-<section class="hero-photo hero-photo--amber">
+<!-- Hero: same email-or-phone capture the homepage uses -->
+<section class="hero-photo hero-photo--amber hero-photo--with-form">
 	<div class="hero-photo__media" aria-hidden="true">
 		<img
 			src="/images/dinner-party.jpg"
@@ -34,50 +68,41 @@ const questions = [
 	<div class="hero-photo__content">
 		<p class="brand-mark rise-in">Search OC</p>
 		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Open Forums</p>
-		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+		<h1 class="mt-4 max-w-3xl text-2xl sm:text-3xl md:text-[2.5rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
 			Life's big questions
 		</h1>
-		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+		<p class="mt-3 lead max-w-xl rise-in rise-in-delay-2">
 			A hosted conversation over food and drinks. About an hour. Honest talk, no lecture, no pressure to agree. Come once if you want. That is enough.
 		</p>
-		<div class="mt-8 rise-in rise-in-delay-3">
-			<a href="#interest" class="btn-amber min-h-11 inline-flex items-center">Get notified of the next gathering</a>
+		<div class="stay-in-touch-on-dark mt-5 max-w-md rise-in rise-in-delay-3">
+			<p class="mb-3 font-sans text-sm">
+				Leave an email or a phone number. We will tell you when the next table is set.
+			</p>
+			<InterestForm
+				formId="open-forums-hero-form"
+				source="open-forums-hero"
+				submitLabel="Let me know when the next one is"
+				showName={false}
+				showInterests={false}
+				showFormationInterest={false}
+				defaultInterests={['open-forums']}
+				defaultNewsletter={false}
+				compact={true}
+				acceptPhone={true}
+				successDetail="We will tell you when the next table is set."
+			/>
 		</div>
 	</div>
 </section>
 <img class="sr-only" src="/images/dinner-party.jpg" alt="Friends gathered around a dinner table with food and candles" />
 
-<!-- The questions -->
-<section class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-3xl">
-			<Eyebrow text="The conversation" />
-			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The questions people actually carry</h2>
-			<p class="mt-4 lead">
-				An Open Forum is a table for the questions that do not fit in a hallway or a group chat. You do not need the right words. You do not need to have it figured out.
-			</p>
-		</div>
-		<ol class="mt-10 max-w-3xl space-y-3 list-none p-0 m-0">
-			{questions.map((question, i) => (
-				<li class="cycle-step flex gap-4">
-					<span class="cycle-number" aria-hidden="true">{i + 1}</span>
-					<p class="font-sans font-semibold text-[var(--ink)] pt-0.5">{question}</p>
-				</li>
-			))}
-		</ol>
-	</div>
-</section>
-
-<figure class="media-band">
-	<img
-		src="/images/forum-discussion.jpg"
-		alt="Friends laughing around a table with books and coffee during an evening discussion"
-		width="2400"
-		height="1350"
-		loading="lazy"
-	/>
-	<figcaption class="media-band__caption">Food, drinks, and honest questions. That is the whole night.</figcaption>
-</figure>
+<MissionSections
+	questionsEyebrow="The conversation"
+	questionsHeading="The questions people actually carry"
+	questionsLead="An Open Forum is a table for the questions that do not fit in a hallway or a group chat. You do not need the right words. You do not need to have it figured out."
+	audience={audience}
+	patioCaption="Eight to twelve people. One table. Room for honest questions."
+/>
 
 <!-- What to Expect -->
 <section class="section">
@@ -119,74 +144,7 @@ const questions = [
 	</div>
 </section>
 
-<!-- Who It's For -->
-<section class="section-warm section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="grid md:grid-cols-2 gap-8">
-			<div>
-				<Eyebrow text="Who it's for" />
-				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who have been carrying a question for a long time.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want an honest, low-pressure conversation.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who want to bring a friend who might actually say yes.</li>
-					<li class="flex gap-2"><span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> People who may come once and decide that is enough for now.</li>
-				</ul>
-			</div>
-			<div>
-				<Eyebrow text="What it is not" variant="amber" />
-				<ul class="mt-4 space-y-3 text-[var(--muted)]">
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A lecture or a class.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> A debate to win.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Pressure to agree, join, or decide anything.</li>
-					<li class="flex gap-2"><span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> Content for social media about who attended.</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- Notify / email campaign -->
-<section class="section">
-	<div class="max-w-5xl mx-auto px-6">
-		<div class="max-w-3xl">
-			<Eyebrow text="The next gathering" />
-			<h2 class="mt-3 text-3xl font-bold tracking-tight">Get notified of the next gathering</h2>
-			<p class="mt-4 text-[var(--muted)] leading-relaxed">
-				We keep the group small and the setting comfortable. When a table is set, we email the people who asked to hear about it, so we can see who is free to come.
-			</p>
-			<p class="mt-3 text-[var(--muted)]">
-				We only need an email address. That is the whole ask.
-			</p>
-		</div>
-	</div>
-</section>
-
-<StayInTouch
-	id="interest"
-	eyebrow="Just an email"
-	title="Get notified of the next gathering"
-	body="Leave an email. We will write when the next table is set."
-	source="open-forums"
-	variant="warm"
-	submitLabel="Notify me"
-	showName={true}
-	showInterests={false}
-	defaultInterests={['open-forums']}
-	defaultNewsletter={false}
-/>
-
-<figure class="media-band">
-	<img
-		src="/images/patio-gathering.jpg"
-		alt="A diverse group of friends laughing around an outdoor patio table"
-		width="2400"
-		height="1350"
-		loading="lazy"
-	/>
-	<figcaption class="media-band__caption">Eight to twelve people. One table. Room for honest questions.</figcaption>
-</figure>
-
-<!-- For Hosts -->
+<!-- Where the ecosystem goes next -->
 <section class="section-sage section">
 	<div class="max-w-5xl mx-auto px-6">
 		<div class="max-w-3xl">
@@ -203,9 +161,39 @@ const questions = [
 			<p class="mt-3 text-sm text-[var(--muted)]">
 				Privacy matters: no photos or video, and no social posting about who attends.
 			</p>
+			<div class="mt-8 grid sm:grid-cols-3 gap-4">
+				<a href="/formation" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Formation</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">A 12-week cohort for Christians who want to talk about faith without the guilt cycle.</p>
+				</a>
+				<a href="/foundation" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Foundations</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">A small-group book series for people who want to keep going after the questions start landing.</p>
+				</a>
+				<a href="/resources" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Resources</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">Podcasts, books, and tools worth handing to a friend who is exploring.</p>
+				</a>
+			</div>
 		</div>
 	</div>
 </section>
+
+<StayInTouch
+	id="stay-in-touch"
+	eyebrow="The next gathering"
+	title="Get notified of the next gathering"
+	body="We keep the group small and the setting comfortable. When a table is set, we write the people who asked to hear about it. Leave an email or a phone number. That is the whole ask."
+	source="open-forums"
+	variant="warm"
+	submitLabel="Notify me"
+	showName={true}
+	showInterests={false}
+	defaultInterests={['open-forums']}
+	defaultNewsletter={false}
+	acceptPhone={true}
+	successDetail="We will tell you when the next table is set."
+/>
 
 <!-- FAQ -->
 <section class="section-warm section">
@@ -214,28 +202,16 @@ const questions = [
 			<Eyebrow text="Questions" />
 			<h2 class="mt-3 text-3xl font-bold tracking-tight mb-8">FAQ</h2>
 			<div class="space-y-6">
-				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Do I have to believe anything specific?</p>
-					<p class="mt-1 text-[var(--muted)]">No. This is for people exploring, questioning, or simply curious. No belief required to attend.</p>
-				</div>
-				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">What if I disagree with something that is said?</p>
-					<p class="mt-1 text-[var(--muted)]">Respectful disagreement is welcome. The goal is honest conversation, not agreement.</p>
-				</div>
-				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Is this a class or a service?</p>
-					<p class="mt-1 text-[var(--muted)]">No. It is a small group conversation in a casual setting. There is no lecture you have to sit through, and no pressure at the end.</p>
-				</div>
-				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Can I come alone?</p>
-					<p class="mt-1 text-[var(--muted)]">Yes. Many people do. People also invite friends. You are welcome either way.</p>
-				</div>
-				<div>
-					<p class="font-sans font-semibold text-[var(--ink)]">Will I be put on the spot or asked to speak?</p>
-					<p class="mt-1 text-[var(--muted)]">You can listen the whole time if you prefer. Participation is always optional.</p>
-				</div>
+				{faq.map(({ q, a }) => (
+					<div>
+						<p class="font-sans font-semibold text-[var(--ink)]">{q}</p>
+						<p class="mt-1 text-[var(--muted)]">{a}</p>
+					</div>
+				))}
 			</div>
 		</div>
 	</div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 </Layout>

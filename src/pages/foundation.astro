@@ -1,0 +1,234 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Eyebrow from '../components/Eyebrow.astro';
+import StayInTouch from '../components/StayInTouch.astro';
+
+// Titles listed in order without numbers. Printed materials call Explore book one, so numeric
+// labels on this page would contradict the PDFs once Inquire is published.
+const books = [
+	{
+		title: 'Inquire',
+		body: '',
+	},
+	{
+		title: 'Explore',
+		body: 'How a person gains acceptance with God: the gospel, why it cannot be earned, and why the relationship is secure. Written for someone still deciding.',
+	},
+	{
+		title: 'Grow',
+		body: 'What a moment-by-moment relationship with God actually looks like day to day.',
+	},
+	{
+		title: 'Speak',
+		body: 'Prayer: what it is, why it matters, and the honest questions about prayers that seem unanswered.',
+	},
+	{
+		title: 'Listen',
+		body: 'The Bible: why to study it and how to hear from God through it.',
+	},
+	{
+		title: 'Invest',
+		body: 'Stewardship: God owns everything, and time, money, and gifts are ours to manage well.',
+	},
+	{
+		title: 'Invite',
+		body: 'Evangelism: sharing the good news with people far from Christ.',
+	},
+];
+
+const forWhom = [
+	'People who have started asking real questions about God and want something more than a one-off conversation.',
+	'Small groups that want a short, repeatable study without a curriculum that assumes everyone already believes.',
+	'A Christian walking with a friend one-on-one who needs a shared text that does not turn the friendship into a class.',
+];
+
+const notThis = [
+	'A lecture series or a classroom course.',
+	'A debate to win.',
+	'A program that requires a large group or a paid facilitator.',
+	'Pressure to finish every book before the conversation counts.',
+];
+---
+
+<Layout
+	title="Foundations | Search OC"
+	description="A small-group book series for people who want to keep going after the questions start landing. Seven short studies for a table or a one-on-one."
+	canonical="/foundation"
+	ogImage="/og/foundation.png"
+>
+
+<section class="hero-photo">
+	<div class="hero-photo__media" aria-hidden="true">
+		<img
+			src="/images/cafe-conversation.jpg"
+			alt=""
+			width="2400"
+			height="1350"
+			fetchpriority="high"
+		/>
+	</div>
+	<div class="hero-photo__veil" aria-hidden="true"></div>
+	<div class="hero-photo__content">
+		<p class="brand-mark rise-in">Search OC</p>
+		<p class="mt-3 font-sans text-xs font-bold uppercase tracking-[0.14em] text-white/85 rise-in rise-in-delay-1">Foundations</p>
+		<h1 class="mt-4 max-w-3xl text-3xl md:text-[2.75rem] font-bold tracking-tight leading-[1.12] rise-in rise-in-delay-1">
+			Keep going after the questions start landing.
+		</h1>
+		<p class="mt-5 lead max-w-xl rise-in rise-in-delay-2">
+			Foundations is a short book series for a small group or a one-on-one. Each study is brief enough to finish over a few weeks, and concrete enough that the conversation has somewhere to go.
+		</p>
+		<div class="mt-8 rise-in rise-in-delay-3">
+			<a href="#stay-in-touch" class="btn-primary min-h-11 inline-flex items-center">Ask about starting a group</a>
+		</div>
+	</div>
+</section>
+<img class="sr-only" src="/images/cafe-conversation.jpg" alt="Two people talking across a cafe table" />
+
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text="What it is" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">Seven short studies. One table at a time.</h2>
+			<p class="mt-4 lead">
+				An Open Forum is often where the first honest question gets said out loud. Foundations is what comes next for people who want to keep going. The series moves from the first questions about God through prayer, Scripture, stewardship, and sharing the good news.
+			</p>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				You do not need a church classroom. You need a few people willing to sit with a short book and talk about what it actually says.
+			</p>
+		</div>
+	</div>
+</section>
+
+<section class="section-warm section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="grid md:grid-cols-2 gap-8">
+			<div>
+				<Eyebrow text="Who it is for" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					{forWhom.map((item) => (
+						<li class="flex gap-2">
+							<span class="text-[var(--search-blue-action)] font-bold" aria-hidden="true">&bull;</span> {item}
+						</li>
+					))}
+				</ul>
+			</div>
+			<div>
+				<Eyebrow text="What it is not" variant="amber" />
+				<ul class="mt-4 space-y-3 text-[var(--muted)]">
+					{notThis.map((item) => (
+						<li class="flex gap-2">
+							<span class="text-[var(--orange)] font-bold" aria-hidden="true">&times;</span> {item}
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text="How it works" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">A simple rhythm</h2>
+			<ol class="mt-8 space-y-4 list-none p-0 m-0">
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">1</span>
+					<div>
+						<p class="font-sans font-semibold">Gather a few people</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">A small group or a one-on-one. Homes work. So do quiet cafes.</p>
+					</div>
+				</li>
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">2</span>
+					<div>
+						<p class="font-sans font-semibold">Read one short book together</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">Each title is designed to finish in a few weeks, not a semester.</p>
+					</div>
+				</li>
+				<li class="cycle-step flex gap-4">
+					<span class="cycle-number" aria-hidden="true">3</span>
+					<div>
+						<p class="font-sans font-semibold">Talk about what it says</p>
+						<p class="mt-1 text-sm text-[var(--muted)]">Leader's guides exist for each study. The point is the conversation, not covering every page.</p>
+					</div>
+				</li>
+			</ol>
+		</div>
+	</div>
+</section>
+
+<figure class="media-band">
+	<img
+		src="/images/window-conversation.jpg"
+		alt="Two people talking near a bright window"
+		width="2400"
+		height="1350"
+		loading="lazy"
+	/>
+	<figcaption class="media-band__caption">A short book. A few people. Room for the next question.</figcaption>
+</figure>
+
+<section class="section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text="The series" />
+			<h2 class="mt-3 text-3xl md:text-4xl font-bold tracking-tight">The seven titles</h2>
+			<p class="mt-4 lead">
+				Listed in the order most groups move through them. No numbers, because the printed books already have their own.
+			</p>
+			<ul class="mt-10 space-y-4 list-none p-0 m-0">
+				{books.map((book) => (
+					<li class="card">
+						<p class="font-sans font-bold text-lg text-[var(--ink)]">{book.title}</p>
+						{book.body ? (
+							<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">{book.body}</p>
+						) : null}
+					</li>
+				))}
+			</ul>
+		</div>
+	</div>
+</section>
+
+<section class="section-sage section">
+	<div class="max-w-5xl mx-auto px-6">
+		<div class="max-w-3xl">
+			<Eyebrow text="Related" />
+			<h2 class="mt-3 text-3xl font-bold tracking-tight">Where this sits next to everything else</h2>
+			<p class="mt-4 text-[var(--muted)] leading-relaxed">
+				Open Forums are the table for the first honest question. Formation trains Christians to host and invite. Foundations is the shared text for people who want to keep going afterward.
+			</p>
+			<div class="mt-8 grid sm:grid-cols-3 gap-4">
+				<a href="/open-forums" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Open Forums</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">See what a night at the table looks like.</p>
+				</a>
+				<a href="/formation" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Formation</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">The 12-week cohort for relational evangelism.</p>
+				</a>
+				<a href="/resources" class="card hover:border-[var(--search-blue-action)] transition">
+					<p class="font-sans font-semibold text-[var(--ink)]">Resources</p>
+					<p class="mt-2 text-sm text-[var(--muted)] leading-relaxed">Podcasts, books, and REACH.</p>
+				</a>
+			</div>
+		</div>
+	</div>
+</section>
+
+<StayInTouch
+	id="stay-in-touch"
+	eyebrow="Next step"
+	title="Want to start a Foundations group?"
+	body="Tell us you are interested. We will send details on materials, Leader's Guides, and how groups typically run. No pressure."
+	source="foundation"
+	variant="blue"
+	submitLabel="Ask about Foundations"
+	showName={true}
+	showMessage={true}
+	showInterests={false}
+	defaultInterests={['general']}
+	defaultNewsletter={false}
+/>
+</Layout>

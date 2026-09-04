@@ -65,6 +65,9 @@ const interests = {
 		<label for={`${formId}-email`} class="block text-sm font-medium font-sans text-[var(--dark-teal)] mb-1">
 			Email
 		</label>
+		{acceptPhone && (
+			<p class="mb-1 text-xs text-[var(--muted)] font-sans">Either an email or a phone number works. You do not need both.</p>
+		)}
 		<input
 			type="email"
 			id={`${formId}-email`}
