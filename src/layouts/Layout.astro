@@ -31,7 +31,7 @@ const showNewsletter =
 	path === '/foundation' ||
 	path.startsWith('/foundation/');
 
-// The homepage is a standalone entry point for someone searching Search OC or Jake by name. It
+// The homepage is a standalone entry point for someone searching Search OC by name. It
 // links to no inner page so a first-time skeptic is not routed into material written for
 // Christians. Inner pages cross-link freely and treat /open-forums as the hub.
 const isFull = nav === 'full';
@@ -85,16 +85,6 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 				"@type": "Organization",
 				"name": "Search Ministries",
 				"url": "https://searchnational.org"
-			},
-			"employee": {
-				"@type": "Person",
-				"name": "Jake Hartson",
-				"email": "jhartson@searchnational.org",
-				"jobTitle": "Search OC",
-				"worksFor": {
-					"@type": "Organization",
-					"name": "Search OC"
-				}
 			}
 		}
 		</script>
@@ -187,6 +177,14 @@ const isCurrent = (href: string) => path === href || path.startsWith(`${href}/`)
 							Search OC hosts Open Forums in Orange County: a table for life's big questions. A local expression of Search Ministries, serving Orange County for over 40 years.
 						</p>
 						<p class="mt-4 font-sans text-sm text-[var(--muted)]">Orange County, California</p>
+						<p class="mt-4">
+							<a
+								href="mailto:jhartson@searchnational.org"
+								class="font-sans text-sm font-semibold text-[var(--search-blue-action)] hover:underline"
+							>
+								Contact me
+							</a>
+						</p>
 					</div>
 					{showNewsletter && (
 						<div>
